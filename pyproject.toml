@@ -15,6 +15,7 @@ requires-python = ">=3.9,<4.0"
 dynamic = ["version"]
 
 dependencies = [
+  "linkml>=1.9.4",
   "linkml-runtime >=1.9.4",
 ]
 
