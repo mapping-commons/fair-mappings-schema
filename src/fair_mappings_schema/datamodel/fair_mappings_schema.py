@@ -1,5 +1,5 @@
 # Auto generated from fair_mappings_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-10-04T08:59:08
+# Generation date: 2025-10-04T08:59:50
 # Schema: fair-mappings-schema
 #
 # id: https://w3id.org/mapping-commons/fair-mappings-schema
