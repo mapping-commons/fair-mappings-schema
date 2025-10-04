@@ -3,7 +3,7 @@ id: https://w3id.org/mapping-commons/fair-mappings-schema
 name: fair-mappings-schema
 title: fair-mappings-schema
 description: |-
-  A basic metadata schema for FAIR mapping specifications
+  A minimal metadata schema for FAIR mapping specifications
 license: Apache-2.0
 see_also:
   - https://mapping-commons.github.io/fair-mappings-schema
@@ -23,74 +23,89 @@ imports:
 
 classes:
 
-  NamedThing:
-    description: >-
-      A generic grouping for any identifiable entity
+  Agent:
+    description: An entity that can create or contribute to a digital object, such as an author or creator.
     slots:
       - id
-      - name
-      - description
-    class_uri: schema:Thing
-
-  Person:
-    is_a: NamedThing
+      - label
+  
+  Source:
     description: >-
-      Represents a Person
+      A data source from which entities are drawn, such as a database, ontology, or vocabulary.
     slots:
-      - primary_email
-      - birth_date
-      - age_in_years
-      - vital_status
-    slot_usage:
-      primary_email:
-        pattern: "^\\S+@[\\S+\\.]+\\S+"
+      - name
+      - version
+      - type
+      - documentation
+      - content
+      - content_type
+      - metadata
+      - metadata_type
 
-  PersonCollection:
-    tree_root: true
+  MappingSpecification:
     description: >-
-      A holder for Person objects
-    attributes:
-      entries:
-        range: Person
-        multivalued: true
-        inlined_as_list: true
+      A formal description of correspondences between entities in a source and a target, expressed as rules, functions, or mapping statements.
+    slots:
+      - author
+      - creator
+      - publication_date
+      - license
+      - version
+      - description
+      - mapping_specification_type
+      - mapping_method
+      - documentation
+      - mapping_content
+      - subject_source
+      - object_source
 
 slots:
   id:
+    description: Identifier for the information entity
     identifier: true
-    slot_uri: schema:identifier
-    range: uriorcurie
-    description: A unique identifier for a thing
+    range: string
   name:
-    slot_uri: schema:name
-    description: A human-readable name for a thing
+    description: Name of the information entity
+    range: string
+    required: true
+  creator:
+    description: Creator of the mapping specification
+    range: Agent
+  author:
+    description: Author of the mapping specification
+    range: Agent
+    required: true
+  publication_date:
+    description: Date of publication of the mapping specification
+    range: string
+    format: date
+  license:
+    description: License under which the mapping specification is released
+    range: string
+  version:
+    description: Version of the digital object
+    range: string
   description:
-    slot_uri: schema:description
-    description: A human-readable description for a thing
-  primary_email:
-    slot_uri: schema:email
-    description: The main email address of a person
-  birth_date:
-    slot_uri: schema:birthDate
-    range: date
-    description: Date on which a person is born
-  age_in_years:
-    range: integer
-    description: Number of years since birth
-  vital_status:
-    range: PersonStatus
-    description: living or dead status
-
-enums:
-  PersonStatus:
-    permissible_values:
-      ALIVE:
-        description: the person is living
-        meaning: PATO:0001421
-      DEAD:
-        description: the person is deceased
-        meaning: PATO:0001422
-      UNKNOWN:
-        description: the vital status is not known
-        todos:
-          - map this to an ontology
+    description: A brief description of the mapping specification
+    range: string
+  mapping_specification_type:
+    description: Type of the mapping specification
+    range: string
+  mapping_method:
+    description: Method used to create the mapping specification
+    range: string
+  documentation:
+    description: URL or reference to documentation for the mapping specification
+    range: string
+  mapping_content:
+    description: The actual content of the mapping specification, such as mapping rules or statements
+    range: string
+    required: true
+  subject_source:
+    description: The source from which the subject entities are drawn
+    range: Source
+    required: true
+  object_source:
+    description: The source from which the object entities are drawn
+    range: Source
+    required: true
