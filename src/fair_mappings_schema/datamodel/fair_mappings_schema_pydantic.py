@@ -63,7 +63,7 @@ class LinkMLMeta(RootModel):
 
 linkml_meta = LinkMLMeta({'default_prefix': 'fair_mappings_schema',
      'default_range': 'string',
-     'description': 'A basic metadata schema for FAIR mapping specifications',
+     'description': 'A minimal metadata schema for FAIR mapping specifications',
      'id': 'https://w3id.org/mapping-commons/fair-mappings-schema',
      'imports': ['linkml:types'],
      'license': 'Apache-2.0',
@@ -84,81 +84,54 @@ linkml_meta = LinkMLMeta({'default_prefix': 'fair_mappings_schema',
      'source_file': 'src/fair_mappings_schema/schema/fair_mappings_schema.yaml',
      'title': 'fair-mappings-schema'} )
 
-class PersonStatus(str, Enum):
-    ALIVE = "ALIVE"
+
+class Agent(ConfiguredBaseModel):
     """
-    the person is living
+    An entity that can create or contribute to a digital object, such as an author or creator.
     """
-    DEAD = "DEAD"
-    """
-    the person is deceased
-    """
-    UNKNOWN = "UNKNOWN"
-    """
-    the vital status is not known
-    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/mapping-commons/fair-mappings-schema'})
+
+    id: str = Field(default=..., description="""Identifier for the information entity""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['Agent']} })
+    name: Optional[str] = Field(default=None, description="""Name of the information entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['Agent', 'Source']} })
 
 
-
-class NamedThing(ConfiguredBaseModel):
+class Source(ConfiguredBaseModel):
     """
-    A generic grouping for any identifiable entity
+    A data source from which entities are drawn, such as a database, ontology, or vocabulary.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'schema:Thing',
-         'from_schema': 'https://w3id.org/mapping-commons/fair-mappings-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/mapping-commons/fair-mappings-schema'})
 
-    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
-    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
-    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['NamedThing'],
-         'slot_uri': 'schema:description'} })
+    name: Optional[str] = Field(default=None, description="""Name of the information entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['Agent', 'Source']} })
+    version: Optional[str] = Field(default=None, description="""Version of the digital object""", json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['Source', 'MappingSpecification']} })
+    type: Optional[str] = Field(default=None, description="""Type of the information entity""", json_schema_extra = { "linkml_meta": {'alias': 'type', 'domain_of': ['Source', 'MappingSpecification']} })
+    documentation: Optional[str] = Field(default=None, description="""URL or reference to documentation for the mapping specification""", json_schema_extra = { "linkml_meta": {'alias': 'documentation', 'domain_of': ['Source', 'MappingSpecification']} })
+    content: Optional[str] = Field(default=None, description="""Reference to the actual content of the digital object""", json_schema_extra = { "linkml_meta": {'alias': 'content', 'domain_of': ['Source', 'MappingSpecification']} })
+    content_type: Optional[str] = Field(default=None, description="""The type of the content of the digital object""", json_schema_extra = { "linkml_meta": {'alias': 'content_type', 'domain_of': ['Source']} })
 
 
-class Person(NamedThing):
+class MappingSpecification(ConfiguredBaseModel):
     """
-    Represents a Person
+    A formal description of correspondences between entities in a source and a target, expressed as rules, functions, or mapping statements.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/mapping-commons/fair-mappings-schema',
-         'slot_usage': {'primary_email': {'name': 'primary_email',
-                                          'pattern': '^\\S+@[\\S+\\.]+\\S+'}}})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/mapping-commons/fair-mappings-schema'})
 
-    primary_email: Optional[str] = Field(default=None, description="""The main email address of a person""", json_schema_extra = { "linkml_meta": {'alias': 'primary_email', 'domain_of': ['Person'], 'slot_uri': 'schema:email'} })
-    birth_date: Optional[date] = Field(default=None, description="""Date on which a person is born""", json_schema_extra = { "linkml_meta": {'alias': 'birth_date', 'domain_of': ['Person'], 'slot_uri': 'schema:birthDate'} })
-    age_in_years: Optional[int] = Field(default=None, description="""Number of years since birth""", json_schema_extra = { "linkml_meta": {'alias': 'age_in_years', 'domain_of': ['Person']} })
-    vital_status: Optional[PersonStatus] = Field(default=None, description="""living or dead status""", json_schema_extra = { "linkml_meta": {'alias': 'vital_status', 'domain_of': ['Person']} })
-    id: str = Field(default=..., description="""A unique identifier for a thing""", json_schema_extra = { "linkml_meta": {'alias': 'id', 'domain_of': ['NamedThing'], 'slot_uri': 'schema:identifier'} })
-    name: Optional[str] = Field(default=None, description="""A human-readable name for a thing""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['NamedThing'], 'slot_uri': 'schema:name'} })
-    description: Optional[str] = Field(default=None, description="""A human-readable description for a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['NamedThing'],
-         'slot_uri': 'schema:description'} })
-
-    @field_validator('primary_email')
-    def pattern_primary_email(cls, v):
-        pattern=re.compile(r"^\S+@[\S+\.]+\S+")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid primary_email format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid primary_email format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-
-class PersonCollection(ConfiguredBaseModel):
-    """
-    A holder for Person objects
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/mapping-commons/fair-mappings-schema',
-         'tree_root': True})
-
-    entries: Optional[list[Person]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'entries', 'domain_of': ['PersonCollection']} })
+    author: Optional[Agent] = Field(default=None, description="""Author of the mapping specification""", json_schema_extra = { "linkml_meta": {'alias': 'author', 'domain_of': ['MappingSpecification']} })
+    creator: Optional[Agent] = Field(default=None, description="""Creator of the mapping specification""", json_schema_extra = { "linkml_meta": {'alias': 'creator', 'domain_of': ['MappingSpecification']} })
+    publication_date: Optional[str] = Field(default=None, description="""Date of publication of the mapping specification""", json_schema_extra = { "linkml_meta": {'alias': 'publication_date', 'domain_of': ['MappingSpecification']} })
+    license: Optional[str] = Field(default=None, description="""License under which the mapping specification is released""", json_schema_extra = { "linkml_meta": {'alias': 'license', 'domain_of': ['MappingSpecification']} })
+    version: Optional[str] = Field(default=None, description="""Version of the digital object""", json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['Source', 'MappingSpecification']} })
+    description: Optional[str] = Field(default=None, description="""A brief description of the mapping specification""", json_schema_extra = { "linkml_meta": {'alias': 'description', 'domain_of': ['MappingSpecification']} })
+    type: Optional[str] = Field(default=None, description="""Type of the information entity""", json_schema_extra = { "linkml_meta": {'alias': 'type', 'domain_of': ['Source', 'MappingSpecification']} })
+    mapping_method: Optional[str] = Field(default=None, description="""Method used to create the mapping specification""", json_schema_extra = { "linkml_meta": {'alias': 'mapping_method', 'domain_of': ['MappingSpecification']} })
+    documentation: Optional[str] = Field(default=None, description="""URL or reference to documentation for the mapping specification""", json_schema_extra = { "linkml_meta": {'alias': 'documentation', 'domain_of': ['Source', 'MappingSpecification']} })
+    content: Optional[str] = Field(default=None, description="""Reference to the actual content of the digital object""", json_schema_extra = { "linkml_meta": {'alias': 'content', 'domain_of': ['Source', 'MappingSpecification']} })
+    subject_source: Optional[Source] = Field(default=None, description="""The source from which the subject entities are drawn""", json_schema_extra = { "linkml_meta": {'alias': 'subject_source', 'domain_of': ['MappingSpecification']} })
+    object_source: Optional[Source] = Field(default=None, description="""The source from which the object entities are drawn""", json_schema_extra = { "linkml_meta": {'alias': 'object_source', 'domain_of': ['MappingSpecification']} })
 
 
 # Model rebuild
 # see https://pydantic-docs.helpmanual.io/usage/models/#rebuilding-a-model
-NamedThing.model_rebuild()
-Person.model_rebuild()
-PersonCollection.model_rebuild()
+Agent.model_rebuild()
+Source.model_rebuild()
+MappingSpecification.model_rebuild()
 

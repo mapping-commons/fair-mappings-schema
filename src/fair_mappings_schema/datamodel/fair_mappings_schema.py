@@ -1,9 +1,9 @@
 # Auto generated from fair_mappings_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-10-04T08:59:50
+# Generation date: 2025-10-04T12:17:23
 # Schema: fair-mappings-schema
 #
 # id: https://w3id.org/mapping-commons/fair-mappings-schema
-# description: A basic metadata schema for FAIR mapping specifications
+# description: A minimal metadata schema for FAIR mapping specifications
 # license: Apache-2.0
 
 import dataclasses
@@ -56,8 +56,7 @@ from rdflib import (
     URIRef
 )
 
-from linkml_runtime.linkml_model.types import Date, Integer, String, Uriorcurie
-from linkml_runtime.utils.metamodelcore import URIorCURIE, XSDDate
+from linkml_runtime.linkml_model.types import String
 
 metamodel_version = "1.7.0"
 version = None
@@ -75,151 +74,192 @@ DEFAULT_ = FAIR_MAPPINGS_SCHEMA
 # Types
 
 # Class references
-class NamedThingId(URIorCURIE):
-    pass
-
-
-class PersonId(NamedThingId):
+class AgentId(extended_str):
     pass
 
 
 @dataclass(repr=False)
-class NamedThing(YAMLRoot):
+class Agent(YAMLRoot):
     """
-    A generic grouping for any identifiable entity
+    An entity that can create or contribute to a digital object, such as an author or creator.
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = SCHEMA["Thing"]
-    class_class_curie: ClassVar[str] = "schema:Thing"
-    class_name: ClassVar[str] = "NamedThing"
-    class_model_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA.NamedThing
+    class_class_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA["Agent"]
+    class_class_curie: ClassVar[str] = "fair_mappings_schema:Agent"
+    class_name: ClassVar[str] = "Agent"
+    class_model_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA.Agent
 
-    id: Union[str, NamedThingId] = None
+    id: Union[str, AgentId] = None
     name: Optional[str] = None
-    description: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, NamedThingId):
-            self.id = NamedThingId(self.id)
+        if not isinstance(self.id, AgentId):
+            self.id = AgentId(self.id)
 
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Source(YAMLRoot):
+    """
+    A data source from which entities are drawn, such as a database, ontology, or vocabulary.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA["Source"]
+    class_class_curie: ClassVar[str] = "fair_mappings_schema:Source"
+    class_name: ClassVar[str] = "Source"
+    class_model_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA.Source
+
+    name: Optional[str] = None
+    version: Optional[str] = None
+    type: Optional[str] = None
+    documentation: Optional[str] = None
+    content: Optional[str] = None
+    content_type: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.version is not None and not isinstance(self.version, str):
+            self.version = str(self.version)
+
+        if self.type is not None and not isinstance(self.type, str):
+            self.type = str(self.type)
+
+        if self.documentation is not None and not isinstance(self.documentation, str):
+            self.documentation = str(self.documentation)
+
+        if self.content is not None and not isinstance(self.content, str):
+            self.content = str(self.content)
+
+        if self.content_type is not None and not isinstance(self.content_type, str):
+            self.content_type = str(self.content_type)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MappingSpecification(YAMLRoot):
+    """
+    A formal description of correspondences between entities in a source and a target, expressed as rules, functions,
+    or mapping statements.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA["MappingSpecification"]
+    class_class_curie: ClassVar[str] = "fair_mappings_schema:MappingSpecification"
+    class_name: ClassVar[str] = "MappingSpecification"
+    class_model_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA.MappingSpecification
+
+    author: Optional[Union[dict, Agent]] = None
+    creator: Optional[Union[dict, Agent]] = None
+    publication_date: Optional[str] = None
+    license: Optional[str] = None
+    version: Optional[str] = None
+    description: Optional[str] = None
+    type: Optional[str] = None
+    mapping_method: Optional[str] = None
+    documentation: Optional[str] = None
+    content: Optional[str] = None
+    subject_source: Optional[Union[dict, Source]] = None
+    object_source: Optional[Union[dict, Source]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.author is not None and not isinstance(self.author, Agent):
+            self.author = Agent(**as_dict(self.author))
+
+        if self.creator is not None and not isinstance(self.creator, Agent):
+            self.creator = Agent(**as_dict(self.creator))
+
+        if self.publication_date is not None and not isinstance(self.publication_date, str):
+            self.publication_date = str(self.publication_date)
+
+        if self.license is not None and not isinstance(self.license, str):
+            self.license = str(self.license)
+
+        if self.version is not None and not isinstance(self.version, str):
+            self.version = str(self.version)
+
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
-        super().__post_init__(**kwargs)
+        if self.type is not None and not isinstance(self.type, str):
+            self.type = str(self.type)
 
+        if self.mapping_method is not None and not isinstance(self.mapping_method, str):
+            self.mapping_method = str(self.mapping_method)
 
-@dataclass(repr=False)
-class Person(NamedThing):
-    """
-    Represents a Person
-    """
-    _inherited_slots: ClassVar[list[str]] = []
+        if self.documentation is not None and not isinstance(self.documentation, str):
+            self.documentation = str(self.documentation)
 
-    class_class_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA["Person"]
-    class_class_curie: ClassVar[str] = "fair_mappings_schema:Person"
-    class_name: ClassVar[str] = "Person"
-    class_model_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA.Person
+        if self.content is not None and not isinstance(self.content, str):
+            self.content = str(self.content)
 
-    id: Union[str, PersonId] = None
-    primary_email: Optional[str] = None
-    birth_date: Optional[Union[str, XSDDate]] = None
-    age_in_years: Optional[int] = None
-    vital_status: Optional[Union[str, "PersonStatus"]] = None
+        if self.subject_source is not None and not isinstance(self.subject_source, Source):
+            self.subject_source = Source(**as_dict(self.subject_source))
 
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, PersonId):
-            self.id = PersonId(self.id)
-
-        if self.primary_email is not None and not isinstance(self.primary_email, str):
-            self.primary_email = str(self.primary_email)
-
-        if self.birth_date is not None and not isinstance(self.birth_date, XSDDate):
-            self.birth_date = XSDDate(self.birth_date)
-
-        if self.age_in_years is not None and not isinstance(self.age_in_years, int):
-            self.age_in_years = int(self.age_in_years)
-
-        if self.vital_status is not None and not isinstance(self.vital_status, PersonStatus):
-            self.vital_status = PersonStatus(self.vital_status)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class PersonCollection(YAMLRoot):
-    """
-    A holder for Person objects
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA["PersonCollection"]
-    class_class_curie: ClassVar[str] = "fair_mappings_schema:PersonCollection"
-    class_name: ClassVar[str] = "PersonCollection"
-    class_model_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA.PersonCollection
-
-    entries: Optional[Union[dict[Union[str, PersonId], Union[dict, Person]], list[Union[dict, Person]]]] = empty_dict()
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        self._normalize_inlined_as_list(slot_name="entries", slot_type=Person, key_name="id", keyed=True)
+        if self.object_source is not None and not isinstance(self.object_source, Source):
+            self.object_source = Source(**as_dict(self.object_source))
 
         super().__post_init__(**kwargs)
 
 
 # Enumerations
-class PersonStatus(EnumDefinitionImpl):
 
-    ALIVE = PermissibleValue(
-        text="ALIVE",
-        description="the person is living",
-        meaning=PATO["0001421"])
-    DEAD = PermissibleValue(
-        text="DEAD",
-        description="the person is deceased",
-        meaning=PATO["0001422"])
-    UNKNOWN = PermissibleValue(
-        text="UNKNOWN",
-        description="the vital status is not known")
-
-    _defn = EnumDefinition(
-        name="PersonStatus",
-    )
 
 # Slots
 class slots:
     pass
 
-slots.id = Slot(uri=SCHEMA.identifier, name="id", curie=SCHEMA.curie('identifier'),
+slots.id = Slot(uri=FAIR_MAPPINGS_SCHEMA.id, name="id", curie=FAIR_MAPPINGS_SCHEMA.curie('id'),
                    model_uri=FAIR_MAPPINGS_SCHEMA.id, domain=None, range=URIRef)
 
-slots.name = Slot(uri=SCHEMA.name, name="name", curie=SCHEMA.curie('name'),
+slots.name = Slot(uri=FAIR_MAPPINGS_SCHEMA.name, name="name", curie=FAIR_MAPPINGS_SCHEMA.curie('name'),
                    model_uri=FAIR_MAPPINGS_SCHEMA.name, domain=None, range=Optional[str])
 
-slots.description = Slot(uri=SCHEMA.description, name="description", curie=SCHEMA.curie('description'),
+slots.creator = Slot(uri=FAIR_MAPPINGS_SCHEMA.creator, name="creator", curie=FAIR_MAPPINGS_SCHEMA.curie('creator'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.creator, domain=None, range=Optional[Union[dict, Agent]])
+
+slots.author = Slot(uri=FAIR_MAPPINGS_SCHEMA.author, name="author", curie=FAIR_MAPPINGS_SCHEMA.curie('author'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.author, domain=None, range=Optional[Union[dict, Agent]])
+
+slots.publication_date = Slot(uri=FAIR_MAPPINGS_SCHEMA.publication_date, name="publication_date", curie=FAIR_MAPPINGS_SCHEMA.curie('publication_date'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.publication_date, domain=None, range=Optional[str])
+
+slots.license = Slot(uri=FAIR_MAPPINGS_SCHEMA.license, name="license", curie=FAIR_MAPPINGS_SCHEMA.curie('license'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.license, domain=None, range=Optional[str])
+
+slots.version = Slot(uri=FAIR_MAPPINGS_SCHEMA.version, name="version", curie=FAIR_MAPPINGS_SCHEMA.curie('version'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.version, domain=None, range=Optional[str])
+
+slots.description = Slot(uri=FAIR_MAPPINGS_SCHEMA.description, name="description", curie=FAIR_MAPPINGS_SCHEMA.curie('description'),
                    model_uri=FAIR_MAPPINGS_SCHEMA.description, domain=None, range=Optional[str])
 
-slots.primary_email = Slot(uri=SCHEMA.email, name="primary_email", curie=SCHEMA.curie('email'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.primary_email, domain=None, range=Optional[str])
+slots.type = Slot(uri=FAIR_MAPPINGS_SCHEMA.type, name="type", curie=FAIR_MAPPINGS_SCHEMA.curie('type'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.type, domain=None, range=Optional[str])
 
-slots.birth_date = Slot(uri=SCHEMA.birthDate, name="birth_date", curie=SCHEMA.curie('birthDate'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.birth_date, domain=None, range=Optional[Union[str, XSDDate]])
+slots.mapping_method = Slot(uri=FAIR_MAPPINGS_SCHEMA.mapping_method, name="mapping_method", curie=FAIR_MAPPINGS_SCHEMA.curie('mapping_method'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.mapping_method, domain=None, range=Optional[str])
 
-slots.age_in_years = Slot(uri=FAIR_MAPPINGS_SCHEMA.age_in_years, name="age_in_years", curie=FAIR_MAPPINGS_SCHEMA.curie('age_in_years'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.age_in_years, domain=None, range=Optional[int])
+slots.documentation = Slot(uri=FAIR_MAPPINGS_SCHEMA.documentation, name="documentation", curie=FAIR_MAPPINGS_SCHEMA.curie('documentation'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.documentation, domain=None, range=Optional[str])
 
-slots.vital_status = Slot(uri=FAIR_MAPPINGS_SCHEMA.vital_status, name="vital_status", curie=FAIR_MAPPINGS_SCHEMA.curie('vital_status'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.vital_status, domain=None, range=Optional[Union[str, "PersonStatus"]])
+slots.content = Slot(uri=FAIR_MAPPINGS_SCHEMA.content, name="content", curie=FAIR_MAPPINGS_SCHEMA.curie('content'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.content, domain=None, range=Optional[str])
 
-slots.personCollection__entries = Slot(uri=FAIR_MAPPINGS_SCHEMA.entries, name="personCollection__entries", curie=FAIR_MAPPINGS_SCHEMA.curie('entries'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.personCollection__entries, domain=None, range=Optional[Union[dict[Union[str, PersonId], Union[dict, Person]], list[Union[dict, Person]]]])
+slots.content_type = Slot(uri=FAIR_MAPPINGS_SCHEMA.content_type, name="content_type", curie=FAIR_MAPPINGS_SCHEMA.curie('content_type'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.content_type, domain=None, range=Optional[str])
 
-slots.Person_primary_email = Slot(uri=SCHEMA.email, name="Person_primary_email", curie=SCHEMA.curie('email'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.Person_primary_email, domain=Person, range=Optional[str],
-                   pattern=re.compile(r'^\S+@[\S+\.]+\S+'))
+slots.subject_source = Slot(uri=FAIR_MAPPINGS_SCHEMA.subject_source, name="subject_source", curie=FAIR_MAPPINGS_SCHEMA.curie('subject_source'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.subject_source, domain=None, range=Optional[Union[dict, Source]])
+
+slots.object_source = Slot(uri=FAIR_MAPPINGS_SCHEMA.object_source, name="object_source", curie=FAIR_MAPPINGS_SCHEMA.curie('object_source'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.object_source, domain=None, range=Optional[Union[dict, Source]])
