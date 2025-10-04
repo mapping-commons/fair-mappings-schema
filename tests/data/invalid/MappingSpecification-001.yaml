@@ -1,0 +1,12 @@
+# Invalid MappingSpecification - author is a string instead of Agent object
+---
+author: "Jane Smith"
+content: https://example.org/mappings/invalid.sssom.tsv
+subject_source:
+  name: Source X
+  content: https://example.org/source-x
+  content_type: text/plain
+object_source:
+  name: Source Y
+  content: https://example.org/source-y
+  content_type: text/plain
