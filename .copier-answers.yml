@@ -1,0 +1,15 @@
+# Changes here will be overwritten by Copier
+_commit: v0.4.1
+_src_path: https://github.com/linkml/linkml-project-copier
+add_example: true
+copyright_year: '2025'
+email: nicolas.matentzoglu@gmail.com
+full_name: Nicolas Matentzoglu
+gh_action_docs_preview: true
+gh_action_pypi: true
+github_org: mapping-commons
+license: Apache-2.0
+project_description: A basic metadata schema for FAIR mapping specifications
+project_name: fair-mappings-schema
+project_slug: fair_mappings_schema
+
