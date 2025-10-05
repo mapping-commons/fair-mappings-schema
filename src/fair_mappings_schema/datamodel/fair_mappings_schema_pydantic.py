@@ -156,9 +156,9 @@ class MappingSpecificationTypeEnum(str, Enum):
     """
     SPARQL-based mapping
     """
-    custom = "custom"
+    other = "other"
     """
-    Custom mapping format
+    Other type of mapping specification
     """
 
 

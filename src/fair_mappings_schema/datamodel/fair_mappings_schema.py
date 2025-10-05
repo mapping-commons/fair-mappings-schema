@@ -1,5 +1,5 @@
 # Auto generated from fair_mappings_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-10-06T00:29:50
+# Generation date: 2025-10-06T00:35:53
 # Schema: fair-mappings-schema
 #
 # id: https://w3id.org/mapping-commons/fair-mappings-schema
@@ -300,9 +300,9 @@ class MappingSpecificationTypeEnum(EnumDefinitionImpl):
     sparql = PermissibleValue(
         text="sparql",
         description="SPARQL-based mapping")
-    custom = PermissibleValue(
-        text="custom",
-        description="Custom mapping format")
+    other = PermissibleValue(
+        text="other",
+        description="Other type of mapping specification")
 
     _defn = EnumDefinition(
         name="MappingSpecificationTypeEnum",
