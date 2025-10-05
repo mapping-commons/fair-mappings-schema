@@ -1,5 +1,5 @@
 # Auto generated from fair_mappings_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-10-04T12:17:23
+# Generation date: 2025-10-06T00:29:50
 # Schema: fair-mappings-schema
 #
 # id: https://w3id.org/mapping-commons/fair-mappings-schema
@@ -74,8 +74,7 @@ DEFAULT_ = FAIR_MAPPINGS_SCHEMA
 # Types
 
 # Class references
-class AgentId(extended_str):
-    pass
+
 
 
 @dataclass(repr=False)
@@ -90,17 +89,23 @@ class Agent(YAMLRoot):
     class_name: ClassVar[str] = "Agent"
     class_model_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA.Agent
 
-    id: Union[str, AgentId] = None
+    id: Optional[str] = None
     name: Optional[str] = None
+    version: Optional[str] = None
+    type: Optional[Union[str, "AgentTypeEnum"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, AgentId):
-            self.id = AgentId(self.id)
+        if self.id is not None and not isinstance(self.id, str):
+            self.id = str(self.id)
 
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
+
+        if self.version is not None and not isinstance(self.version, str):
+            self.version = str(self.version)
+
+        if self.type is not None and not isinstance(self.type, AgentTypeEnum):
+            self.type = AgentTypeEnum(self.type)
 
         super().__post_init__(**kwargs)
 
@@ -117,22 +122,26 @@ class Source(YAMLRoot):
     class_name: ClassVar[str] = "Source"
     class_model_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA.Source
 
+    id: Optional[str] = None
     name: Optional[str] = None
     version: Optional[str] = None
-    type: Optional[str] = None
+    type: Optional[Union[str, "SourceTypeEnum"]] = None
     documentation: Optional[str] = None
     content: Optional[str] = None
     content_type: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self.id is not None and not isinstance(self.id, str):
+            self.id = str(self.id)
+
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
         if self.version is not None and not isinstance(self.version, str):
             self.version = str(self.version)
 
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
+        if self.type is not None and not isinstance(self.type, SourceTypeEnum):
+            self.type = SourceTypeEnum(self.type)
 
         if self.documentation is not None and not isinstance(self.documentation, str):
             self.documentation = str(self.documentation)
@@ -159,13 +168,16 @@ class MappingSpecification(YAMLRoot):
     class_name: ClassVar[str] = "MappingSpecification"
     class_model_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA.MappingSpecification
 
+    id: Optional[str] = None
+    name: Optional[str] = None
+    description: Optional[str] = None
     author: Optional[Union[dict, Agent]] = None
     creator: Optional[Union[dict, Agent]] = None
+    reviewer: Optional[Union[dict, Agent]] = None
     publication_date: Optional[str] = None
     license: Optional[str] = None
     version: Optional[str] = None
-    description: Optional[str] = None
-    type: Optional[str] = None
+    type: Optional[Union[str, "MappingSpecificationTypeEnum"]] = None
     mapping_method: Optional[str] = None
     documentation: Optional[str] = None
     content: Optional[str] = None
@@ -173,11 +185,23 @@ class MappingSpecification(YAMLRoot):
     object_source: Optional[Union[dict, Source]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self.id is not None and not isinstance(self.id, str):
+            self.id = str(self.id)
+
+        if self.name is not None and not isinstance(self.name, str):
+            self.name = str(self.name)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
         if self.author is not None and not isinstance(self.author, Agent):
             self.author = Agent(**as_dict(self.author))
 
         if self.creator is not None and not isinstance(self.creator, Agent):
             self.creator = Agent(**as_dict(self.creator))
+
+        if self.reviewer is not None and not isinstance(self.reviewer, Agent):
+            self.reviewer = Agent(**as_dict(self.reviewer))
 
         if self.publication_date is not None and not isinstance(self.publication_date, str):
             self.publication_date = str(self.publication_date)
@@ -188,11 +212,8 @@ class MappingSpecification(YAMLRoot):
         if self.version is not None and not isinstance(self.version, str):
             self.version = str(self.version)
 
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        if self.type is not None and not isinstance(self.type, str):
-            self.type = str(self.type)
+        if self.type is not None and not isinstance(self.type, MappingSpecificationTypeEnum):
+            self.type = MappingSpecificationTypeEnum(self.type)
 
         if self.mapping_method is not None and not isinstance(self.mapping_method, str):
             self.mapping_method = str(self.mapping_method)
@@ -213,14 +234,87 @@ class MappingSpecification(YAMLRoot):
 
 
 # Enumerations
+class AgentTypeEnum(EnumDefinitionImpl):
+    """
+    Types of agents that can contribute to a mapping specification
+    """
+    person = PermissibleValue(
+        text="person",
+        description="An individual person")
+    organization = PermissibleValue(
+        text="organization",
+        description="An organization or institution")
+    software = PermissibleValue(
+        text="software",
+        description="A software tool or system")
 
+    _defn = EnumDefinition(
+        name="AgentTypeEnum",
+        description="Types of agents that can contribute to a mapping specification",
+    )
+
+class SourceTypeEnum(EnumDefinitionImpl):
+    """
+    Types of data sources
+    """
+    owl_ontology = PermissibleValue(
+        text="owl_ontology",
+        description="An ontology in OWL format")
+    database = PermissibleValue(
+        text="database",
+        description="A relational or other database")
+    skos_vocabulary = PermissibleValue(
+        text="skos_vocabulary",
+        description="A SKOS vocabulary or terminology")
+    rdf_vocabulary = PermissibleValue(
+        text="rdf_vocabulary",
+        description="An RDF vocabulary or schema")
+    schema = PermissibleValue(
+        text="schema",
+        description="A data schema or model")
+    api = PermissibleValue(
+        text="api",
+        description="An API or web service")
+    other = PermissibleValue(
+        text="other",
+        description="Other type of source")
+
+    _defn = EnumDefinition(
+        name="SourceTypeEnum",
+        description="Types of data sources",
+    )
+
+class MappingSpecificationTypeEnum(EnumDefinitionImpl):
+    """
+    Types of mapping specifications
+    """
+    sssom = PermissibleValue(
+        text="sssom",
+        description="Simple Standard for Sharing Ontological Mappings")
+    r2rml = PermissibleValue(
+        text="r2rml",
+        description="RDB to RDF Mapping Language")
+    rml = PermissibleValue(
+        text="rml",
+        description="RDF Mapping Language")
+    sparql = PermissibleValue(
+        text="sparql",
+        description="SPARQL-based mapping")
+    custom = PermissibleValue(
+        text="custom",
+        description="Custom mapping format")
+
+    _defn = EnumDefinition(
+        name="MappingSpecificationTypeEnum",
+        description="Types of mapping specifications",
+    )
 
 # Slots
 class slots:
     pass
 
 slots.id = Slot(uri=FAIR_MAPPINGS_SCHEMA.id, name="id", curie=FAIR_MAPPINGS_SCHEMA.curie('id'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.id, domain=None, range=URIRef)
+                   model_uri=FAIR_MAPPINGS_SCHEMA.id, domain=None, range=Optional[str])
 
 slots.name = Slot(uri=FAIR_MAPPINGS_SCHEMA.name, name="name", curie=FAIR_MAPPINGS_SCHEMA.curie('name'),
                    model_uri=FAIR_MAPPINGS_SCHEMA.name, domain=None, range=Optional[str])
@@ -230,6 +324,12 @@ slots.creator = Slot(uri=FAIR_MAPPINGS_SCHEMA.creator, name="creator", curie=FAI
 
 slots.author = Slot(uri=FAIR_MAPPINGS_SCHEMA.author, name="author", curie=FAIR_MAPPINGS_SCHEMA.curie('author'),
                    model_uri=FAIR_MAPPINGS_SCHEMA.author, domain=None, range=Optional[Union[dict, Agent]])
+
+slots.reviewer = Slot(uri=FAIR_MAPPINGS_SCHEMA.reviewer, name="reviewer", curie=FAIR_MAPPINGS_SCHEMA.curie('reviewer'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.reviewer, domain=None, range=Optional[Union[dict, Agent]])
+
+slots.mapping_tool = Slot(uri=FAIR_MAPPINGS_SCHEMA.mapping_tool, name="mapping_tool", curie=FAIR_MAPPINGS_SCHEMA.curie('mapping_tool'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.mapping_tool, domain=None, range=Optional[Union[dict, Agent]])
 
 slots.publication_date = Slot(uri=FAIR_MAPPINGS_SCHEMA.publication_date, name="publication_date", curie=FAIR_MAPPINGS_SCHEMA.curie('publication_date'),
                    model_uri=FAIR_MAPPINGS_SCHEMA.publication_date, domain=None, range=Optional[str])
@@ -263,3 +363,12 @@ slots.subject_source = Slot(uri=FAIR_MAPPINGS_SCHEMA.subject_source, name="subje
 
 slots.object_source = Slot(uri=FAIR_MAPPINGS_SCHEMA.object_source, name="object_source", curie=FAIR_MAPPINGS_SCHEMA.curie('object_source'),
                    model_uri=FAIR_MAPPINGS_SCHEMA.object_source, domain=None, range=Optional[Union[dict, Source]])
+
+slots.Agent_type = Slot(uri=FAIR_MAPPINGS_SCHEMA.type, name="Agent_type", curie=FAIR_MAPPINGS_SCHEMA.curie('type'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.Agent_type, domain=Agent, range=Optional[Union[str, "AgentTypeEnum"]])
+
+slots.Source_type = Slot(uri=FAIR_MAPPINGS_SCHEMA.type, name="Source_type", curie=FAIR_MAPPINGS_SCHEMA.curie('type'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.Source_type, domain=Source, range=Optional[Union[str, "SourceTypeEnum"]])
+
+slots.MappingSpecification_type = Slot(uri=FAIR_MAPPINGS_SCHEMA.type, name="MappingSpecification_type", curie=FAIR_MAPPINGS_SCHEMA.curie('type'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.MappingSpecification_type, domain=MappingSpecification, range=Optional[Union[str, "MappingSpecificationTypeEnum"]])
