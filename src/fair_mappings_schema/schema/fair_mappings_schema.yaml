@@ -21,6 +21,49 @@ default_range: string
 imports:
   - linkml:types
 
+enums:
+  AgentTypeEnum:
+    description: Types of agents that can contribute to a mapping specification
+    permissible_values:
+      person:
+        description: An individual person
+      organization:
+        description: An organization or institution
+      software:
+        description: A software tool or system
+
+  SourceTypeEnum:
+    description: Types of data sources
+    permissible_values:
+      owl_ontology:
+        description: An ontology in OWL format
+      database:
+        description: A relational or other database
+      skos_vocabulary:
+        description: A SKOS vocabulary or terminology
+      rdf_vocabulary:
+        description: An RDF vocabulary or schema
+      schema:
+        description: A data schema or model
+      api:
+        description: An API or web service
+      other:
+        description: Other type of source
+
+  MappingSpecificationTypeEnum:
+    description: Types of mapping specifications
+    permissible_values:
+      sssom:
+        description: Simple Standard for Sharing Ontological Mappings
+      r2rml:
+        description: RDB to RDF Mapping Language
+      rml:
+        description: RDF Mapping Language
+      sparql:
+        description: SPARQL-based mapping
+      other:
+        description: Other type of mapping specification
+
 classes:
 
   Agent:
@@ -28,38 +71,53 @@ classes:
     slots:
       - id
       - name
+      - version
+      - type
+    slot_usage:
+      type:
+        range: AgentTypeEnum
   
   Source:
     description: >-
       A data source from which entities are drawn, such as a database, ontology, or vocabulary.
     slots:
+      - id
       - name
       - version
       - type
       - documentation
       - content
       - content_type
+    slot_usage:
+      type:
+        range: SourceTypeEnum
   MappingSpecification:
     description: >-
       A formal description of correspondences between entities in a source and a target, expressed as rules, functions, or mapping statements.
+    tree_root: true
     slots:
+      - id
+      - name
+      - description
       - author
       - creator
+      - reviewer
       - publication_date
       - license
       - version
-      - description
       - type
       - mapping_method
       - documentation
       - content
       - subject_source
       - object_source
+    slot_usage:
+      type:
+        range: MappingSpecificationTypeEnum
 
 slots:
   id:
     description: Identifier for the information entity
-    identifier: true
     range: string
   name:
     description: Name of the information entity
@@ -70,6 +128,14 @@ slots:
     inlined: true
   author:
     description: Author of the mapping specification
+    range: Agent
+    inlined: true
+  reviewer:
+    description: Reviewer of the mapping specification
+    range: Agent
+    inlined: true
+  mapping_tool:
+    description: The tool used to create the mapping specification
     range: Agent
     inlined: true
   publication_date:
