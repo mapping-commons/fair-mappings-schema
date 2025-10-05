@@ -4,7 +4,7 @@ publication_date: "2024-01-15"
 license: CC-BY-4.0
 version: "1.0.0"
 description: Mappings between disease ontologies DO and MONDO
-type: SSSOM
+type: sssom
 mapping_method: manual curation
 documentation: https://example.org/do-mondo-mappings/docs
 content: https://example.org/mappings/do-mondo.sssom.tsv
