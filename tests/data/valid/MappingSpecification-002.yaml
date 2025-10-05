@@ -19,7 +19,7 @@ subject_source:
 object_source:
   name: FHIR RDF Ontology
   version: "4.0.1"
-  type: rdf vocabulary
+  type: rdf_vocabulary
   documentation: http://hl7.org/fhir/
   content: http://hl7.org/fhir/fhir.ttl
   content_type: text/turtle
