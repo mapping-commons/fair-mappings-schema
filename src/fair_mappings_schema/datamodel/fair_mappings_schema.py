@@ -1,5 +1,5 @@
 # Auto generated from fair_mappings_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-10-06T00:35:53
+# Generation date: 2025-10-06T23:07:21
 # Schema: fair-mappings-schema
 #
 # id: https://w3id.org/mapping-commons/fair-mappings-schema
@@ -91,8 +91,7 @@ class Agent(YAMLRoot):
 
     id: Optional[str] = None
     name: Optional[str] = None
-    version: Optional[str] = None
-    type: Optional[Union[str, "AgentTypeEnum"]] = None
+    type: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.id is not None and not isinstance(self.id, str):
@@ -101,13 +100,105 @@ class Agent(YAMLRoot):
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
 
+        self.type = str(self.class_name)
+
+        super().__post_init__(**kwargs)
+        self.type = str(self.class_name)
+
+
+    def __new__(cls, *args, **kwargs):
+
+        type_designator = "type"
+        if not type_designator in kwargs:
+            return super().__new__(cls,*args,**kwargs)
+        else:
+            type_designator_value = kwargs[type_designator]
+            target_cls = cls._class_for("class_name", type_designator_value)
+
+
+            if target_cls is None:
+                raise ValueError(f"Wrong type designator value: class {cls.__name__} "
+                                 f"has no subclass with ['class_name']='{kwargs[type_designator]}'")
+            return super().__new__(target_cls,*args,**kwargs)
+
+
+
+@dataclass(repr=False)
+class Person(Agent):
+    """
+    An individual person who contributes to a mapping specification
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA["Person"]
+    class_class_curie: ClassVar[str] = "fair_mappings_schema:Person"
+    class_name: ClassVar[str] = "Person"
+    class_model_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA.Person
+
+    orcid: Optional[str] = None
+    affiliation: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.orcid is not None and not isinstance(self.orcid, str):
+            self.orcid = str(self.orcid)
+
+        if self.affiliation is not None and not isinstance(self.affiliation, str):
+            self.affiliation = str(self.affiliation)
+
+        super().__post_init__(**kwargs)
+        self.type = str(self.class_name)
+
+
+@dataclass(repr=False)
+class Organization(Agent):
+    """
+    An organization or institution that contributes to a mapping specification
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA["Organization"]
+    class_class_curie: ClassVar[str] = "fair_mappings_schema:Organization"
+    class_name: ClassVar[str] = "Organization"
+    class_model_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA.Organization
+
+    ror_id: Optional[str] = None
+    url: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.ror_id is not None and not isinstance(self.ror_id, str):
+            self.ror_id = str(self.ror_id)
+
+        if self.url is not None and not isinstance(self.url, str):
+            self.url = str(self.url)
+
+        super().__post_init__(**kwargs)
+        self.type = str(self.class_name)
+
+
+@dataclass(repr=False)
+class Software(Agent):
+    """
+    A software tool or system used in creating mappings
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA["Software"]
+    class_class_curie: ClassVar[str] = "fair_mappings_schema:Software"
+    class_name: ClassVar[str] = "Software"
+    class_model_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA.Software
+
+    version: Optional[str] = None
+    repository_url: Optional[str] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
         if self.version is not None and not isinstance(self.version, str):
             self.version = str(self.version)
 
-        if self.type is not None and not isinstance(self.type, AgentTypeEnum):
-            self.type = AgentTypeEnum(self.type)
+        if self.repository_url is not None and not isinstance(self.repository_url, str):
+            self.repository_url = str(self.repository_url)
 
         super().__post_init__(**kwargs)
+        self.type = str(self.class_name)
 
 
 @dataclass(repr=False)
@@ -234,25 +325,6 @@ class MappingSpecification(YAMLRoot):
 
 
 # Enumerations
-class AgentTypeEnum(EnumDefinitionImpl):
-    """
-    Types of agents that can contribute to a mapping specification
-    """
-    person = PermissibleValue(
-        text="person",
-        description="An individual person")
-    organization = PermissibleValue(
-        text="organization",
-        description="An organization or institution")
-    software = PermissibleValue(
-        text="software",
-        description="A software tool or system")
-
-    _defn = EnumDefinition(
-        name="AgentTypeEnum",
-        description="Types of agents that can contribute to a mapping specification",
-    )
-
 class SourceTypeEnum(EnumDefinitionImpl):
     """
     Types of data sources
@@ -364,8 +436,23 @@ slots.subject_source = Slot(uri=FAIR_MAPPINGS_SCHEMA.subject_source, name="subje
 slots.object_source = Slot(uri=FAIR_MAPPINGS_SCHEMA.object_source, name="object_source", curie=FAIR_MAPPINGS_SCHEMA.curie('object_source'),
                    model_uri=FAIR_MAPPINGS_SCHEMA.object_source, domain=None, range=Optional[Union[dict, Source]])
 
+slots.orcid = Slot(uri=FAIR_MAPPINGS_SCHEMA.orcid, name="orcid", curie=FAIR_MAPPINGS_SCHEMA.curie('orcid'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.orcid, domain=None, range=Optional[str])
+
+slots.affiliation = Slot(uri=FAIR_MAPPINGS_SCHEMA.affiliation, name="affiliation", curie=FAIR_MAPPINGS_SCHEMA.curie('affiliation'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.affiliation, domain=None, range=Optional[str])
+
+slots.ror_id = Slot(uri=FAIR_MAPPINGS_SCHEMA.ror_id, name="ror_id", curie=FAIR_MAPPINGS_SCHEMA.curie('ror_id'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.ror_id, domain=None, range=Optional[str])
+
+slots.url = Slot(uri=FAIR_MAPPINGS_SCHEMA.url, name="url", curie=FAIR_MAPPINGS_SCHEMA.curie('url'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.url, domain=None, range=Optional[str])
+
+slots.repository_url = Slot(uri=FAIR_MAPPINGS_SCHEMA.repository_url, name="repository_url", curie=FAIR_MAPPINGS_SCHEMA.curie('repository_url'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.repository_url, domain=None, range=Optional[str])
+
 slots.Agent_type = Slot(uri=FAIR_MAPPINGS_SCHEMA.type, name="Agent_type", curie=FAIR_MAPPINGS_SCHEMA.curie('type'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.Agent_type, domain=Agent, range=Optional[Union[str, "AgentTypeEnum"]])
+                   model_uri=FAIR_MAPPINGS_SCHEMA.Agent_type, domain=Agent, range=Optional[str])
 
 slots.Source_type = Slot(uri=FAIR_MAPPINGS_SCHEMA.type, name="Source_type", curie=FAIR_MAPPINGS_SCHEMA.curie('type'),
                    model_uri=FAIR_MAPPINGS_SCHEMA.Source_type, domain=Source, range=Optional[Union[str, "SourceTypeEnum"]])
