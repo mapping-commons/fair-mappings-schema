@@ -102,8 +102,10 @@ classes:
       - version
       - type
       - documentation
-      - content
+      - content_url
       - content_type
+      - metadata_url
+      - metadata_type
     slot_usage:
       type:
         range: SourceTypeEnum
@@ -125,7 +127,7 @@ classes:
       - type
       - mapping_method
       - documentation
-      - content
+      - content_url
       - subject_source
       - object_source
     slot_usage:
@@ -176,11 +178,17 @@ slots:
   documentation:
     description: URL or reference to documentation for the mapping specification
     range: string
-  content:
+  content_url:
     description: Reference to the actual content of the digital object
     range: string
   content_type:
     description: The type of the content of the digital object
+    range: string
+  metadata_url:
+    description: Reference to metadata about the digital object
+    range: string
+  metadata_type:
+    description: The type of the metadata about the digital object
     range: string
   subject_source:
     description: The source from which the subject entities are drawn

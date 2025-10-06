@@ -1,5 +1,5 @@
 # Auto generated from fair_mappings_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-10-06T23:07:21
+# Generation date: 2025-10-06T23:29:58
 # Schema: fair-mappings-schema
 #
 # id: https://w3id.org/mapping-commons/fair-mappings-schema
@@ -218,8 +218,10 @@ class Source(YAMLRoot):
     version: Optional[str] = None
     type: Optional[Union[str, "SourceTypeEnum"]] = None
     documentation: Optional[str] = None
-    content: Optional[str] = None
+    content_url: Optional[str] = None
     content_type: Optional[str] = None
+    metadata_url: Optional[str] = None
+    metadata_type: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self.id is not None and not isinstance(self.id, str):
@@ -237,11 +239,17 @@ class Source(YAMLRoot):
         if self.documentation is not None and not isinstance(self.documentation, str):
             self.documentation = str(self.documentation)
 
-        if self.content is not None and not isinstance(self.content, str):
-            self.content = str(self.content)
+        if self.content_url is not None and not isinstance(self.content_url, str):
+            self.content_url = str(self.content_url)
 
         if self.content_type is not None and not isinstance(self.content_type, str):
             self.content_type = str(self.content_type)
+
+        if self.metadata_url is not None and not isinstance(self.metadata_url, str):
+            self.metadata_url = str(self.metadata_url)
+
+        if self.metadata_type is not None and not isinstance(self.metadata_type, str):
+            self.metadata_type = str(self.metadata_type)
 
         super().__post_init__(**kwargs)
 
@@ -271,7 +279,7 @@ class MappingSpecification(YAMLRoot):
     type: Optional[Union[str, "MappingSpecificationTypeEnum"]] = None
     mapping_method: Optional[str] = None
     documentation: Optional[str] = None
-    content: Optional[str] = None
+    content_url: Optional[str] = None
     subject_source: Optional[Union[dict, Source]] = None
     object_source: Optional[Union[dict, Source]] = None
 
@@ -312,8 +320,8 @@ class MappingSpecification(YAMLRoot):
         if self.documentation is not None and not isinstance(self.documentation, str):
             self.documentation = str(self.documentation)
 
-        if self.content is not None and not isinstance(self.content, str):
-            self.content = str(self.content)
+        if self.content_url is not None and not isinstance(self.content_url, str):
+            self.content_url = str(self.content_url)
 
         if self.subject_source is not None and not isinstance(self.subject_source, Source):
             self.subject_source = Source(**as_dict(self.subject_source))
@@ -372,6 +380,12 @@ class MappingSpecificationTypeEnum(EnumDefinitionImpl):
     sparql = PermissibleValue(
         text="sparql",
         description="SPARQL-based mapping")
+    yarrrml = PermissibleValue(
+        text="yarrrml",
+        description="YARRRML mapping file")
+    xslt = PermissibleValue(
+        text="xslt",
+        description="XSLT-based mapping")
     other = PermissibleValue(
         text="other",
         description="Other type of mapping specification")
@@ -424,11 +438,17 @@ slots.mapping_method = Slot(uri=FAIR_MAPPINGS_SCHEMA.mapping_method, name="mappi
 slots.documentation = Slot(uri=FAIR_MAPPINGS_SCHEMA.documentation, name="documentation", curie=FAIR_MAPPINGS_SCHEMA.curie('documentation'),
                    model_uri=FAIR_MAPPINGS_SCHEMA.documentation, domain=None, range=Optional[str])
 
-slots.content = Slot(uri=FAIR_MAPPINGS_SCHEMA.content, name="content", curie=FAIR_MAPPINGS_SCHEMA.curie('content'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.content, domain=None, range=Optional[str])
+slots.content_url = Slot(uri=FAIR_MAPPINGS_SCHEMA.content_url, name="content_url", curie=FAIR_MAPPINGS_SCHEMA.curie('content_url'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.content_url, domain=None, range=Optional[str])
 
 slots.content_type = Slot(uri=FAIR_MAPPINGS_SCHEMA.content_type, name="content_type", curie=FAIR_MAPPINGS_SCHEMA.curie('content_type'),
                    model_uri=FAIR_MAPPINGS_SCHEMA.content_type, domain=None, range=Optional[str])
+
+slots.metadata_url = Slot(uri=FAIR_MAPPINGS_SCHEMA.metadata_url, name="metadata_url", curie=FAIR_MAPPINGS_SCHEMA.curie('metadata_url'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.metadata_url, domain=None, range=Optional[str])
+
+slots.metadata_type = Slot(uri=FAIR_MAPPINGS_SCHEMA.metadata_type, name="metadata_type", curie=FAIR_MAPPINGS_SCHEMA.curie('metadata_type'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.metadata_type, domain=None, range=Optional[str])
 
 slots.subject_source = Slot(uri=FAIR_MAPPINGS_SCHEMA.subject_source, name="subject_source", curie=FAIR_MAPPINGS_SCHEMA.curie('subject_source'),
                    model_uri=FAIR_MAPPINGS_SCHEMA.subject_source, domain=None, range=Optional[Union[dict, Source]])

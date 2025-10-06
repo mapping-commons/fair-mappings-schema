@@ -8,18 +8,18 @@ description: R2RML mapping from legacy patient database to FHIR RDF
 type: r2rml
 mapping_method: automated generation with manual review
 documentation: https://example.org/patient-fhir-mapping
-content: https://example.org/mappings/patient-db-to-fhir.r2rml.ttl
+content_url: https://example.org/mappings/patient-db-to-fhir.r2rml.ttl
 subject_source:
   name: Patient Database
   version: "v5.2"
   type: database
   documentation: https://example.org/db-schema
-  content: postgresql://example.org:5432/patients
+  content_url: postgresql://example.org:5432/patients
   content_type: application/sql
 object_source:
   name: FHIR RDF Ontology
   version: "4.0.1"
   type: rdf_vocabulary
   documentation: http://hl7.org/fhir/
-  content: http://hl7.org/fhir/fhir.ttl
+  content_url: http://hl7.org/fhir/fhir.ttl
   content_type: text/turtle

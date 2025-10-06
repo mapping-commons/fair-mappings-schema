@@ -82,7 +82,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'fair_mappings_schema',
                              'prefix_reference': 'http://schema.org/'}},
      'see_also': ['https://mapping-commons.github.io/fair-mappings-schema'],
      'source_file': 'src/fair_mappings_schema/schema/fair_mappings_schema.yaml',
-     'title': 'fair-mappings-schema'} )
+     'title': 'FAIR Mappings Schema'} )
 
 class SourceTypeEnum(str, Enum):
     """
@@ -137,6 +137,14 @@ class MappingSpecificationTypeEnum(str, Enum):
     sparql = "sparql"
     """
     SPARQL-based mapping
+    """
+    yarrrml = "yarrrml"
+    """
+    YARRRML mapping file
+    """
+    xslt = "xslt"
+    """
+    XSLT-based mapping
     """
     other = "other"
     """
@@ -221,8 +229,10 @@ class Source(ConfiguredBaseModel):
          'domain_of': ['Software', 'Source', 'MappingSpecification']} })
     type: Optional[SourceTypeEnum] = Field(default=None, description="""Type of the information entity""", json_schema_extra = { "linkml_meta": {'alias': 'type', 'domain_of': ['Agent', 'Source', 'MappingSpecification']} })
     documentation: Optional[str] = Field(default=None, description="""URL or reference to documentation for the mapping specification""", json_schema_extra = { "linkml_meta": {'alias': 'documentation', 'domain_of': ['Source', 'MappingSpecification']} })
-    content: Optional[str] = Field(default=None, description="""Reference to the actual content of the digital object""", json_schema_extra = { "linkml_meta": {'alias': 'content', 'domain_of': ['Source', 'MappingSpecification']} })
+    content_url: Optional[str] = Field(default=None, description="""Reference to the actual content of the digital object""", json_schema_extra = { "linkml_meta": {'alias': 'content_url', 'domain_of': ['Source', 'MappingSpecification']} })
     content_type: Optional[str] = Field(default=None, description="""The type of the content of the digital object""", json_schema_extra = { "linkml_meta": {'alias': 'content_type', 'domain_of': ['Source']} })
+    metadata_url: Optional[str] = Field(default=None, description="""Reference to metadata about the digital object""", json_schema_extra = { "linkml_meta": {'alias': 'metadata_url', 'domain_of': ['Source']} })
+    metadata_type: Optional[str] = Field(default=None, description="""The type of the metadata about the digital object""", json_schema_extra = { "linkml_meta": {'alias': 'metadata_type', 'domain_of': ['Source']} })
 
 
 class MappingSpecification(ConfiguredBaseModel):
@@ -247,7 +257,7 @@ class MappingSpecification(ConfiguredBaseModel):
     type: Optional[MappingSpecificationTypeEnum] = Field(default=None, description="""Type of the information entity""", json_schema_extra = { "linkml_meta": {'alias': 'type', 'domain_of': ['Agent', 'Source', 'MappingSpecification']} })
     mapping_method: Optional[str] = Field(default=None, description="""Method used to create the mapping specification""", json_schema_extra = { "linkml_meta": {'alias': 'mapping_method', 'domain_of': ['MappingSpecification']} })
     documentation: Optional[str] = Field(default=None, description="""URL or reference to documentation for the mapping specification""", json_schema_extra = { "linkml_meta": {'alias': 'documentation', 'domain_of': ['Source', 'MappingSpecification']} })
-    content: Optional[str] = Field(default=None, description="""Reference to the actual content of the digital object""", json_schema_extra = { "linkml_meta": {'alias': 'content', 'domain_of': ['Source', 'MappingSpecification']} })
+    content_url: Optional[str] = Field(default=None, description="""Reference to the actual content of the digital object""", json_schema_extra = { "linkml_meta": {'alias': 'content_url', 'domain_of': ['Source', 'MappingSpecification']} })
     subject_source: Optional[Source] = Field(default=None, description="""The source from which the subject entities are drawn""", json_schema_extra = { "linkml_meta": {'alias': 'subject_source', 'domain_of': ['MappingSpecification']} })
     object_source: Optional[Source] = Field(default=None, description="""The source from which the object entities are drawn""", json_schema_extra = { "linkml_meta": {'alias': 'object_source', 'domain_of': ['MappingSpecification']} })
 
