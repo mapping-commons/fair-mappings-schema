@@ -1,0 +1,11 @@
+# Valid MappingSpecification example - minimal required fields only
+---
+content_url: https://example.org/minimal-mapping.txt
+subject_source:
+  name: Source A
+  content_url: https://example.org/source-a
+  content_type: text/plain
+object_source:
+  name: Source B
+  content_url: https://example.org/source-b
+  content_type: text/plain
