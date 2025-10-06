@@ -1,7 +1,7 @@
 ---
 id: https://w3id.org/mapping-commons/fair-mappings-schema
 name: fair-mappings-schema
-title: fair-mappings-schema
+title: FAIR Mappings Schema
 description: |-
   A minimal metadata schema for FAIR mapping specifications
 license: Apache-2.0
@@ -22,16 +22,6 @@ imports:
   - linkml:types
 
 enums:
-  AgentTypeEnum:
-    description: Types of agents that can contribute to a mapping specification
-    permissible_values:
-      person:
-        description: An individual person
-      organization:
-        description: An organization or institution
-      software:
-        description: A software tool or system
-
   SourceTypeEnum:
     description: Types of data sources
     permissible_values:
@@ -61,6 +51,10 @@ enums:
         description: RDF Mapping Language
       sparql:
         description: SPARQL-based mapping
+      yarrrml:
+        description: YARRRML mapping file
+      xslt:
+        description: XSLT-based mapping
       other:
         description: Other type of mapping specification
 
@@ -68,14 +62,36 @@ classes:
 
   Agent:
     description: An entity that can create or contribute to a digital object, such as an author or creator.
+    abstract: true
     slots:
       - id
       - name
-      - version
       - type
     slot_usage:
       type:
-        range: AgentTypeEnum
+        designates_type: true
+        range: string
+
+  Person:
+    description: An individual person who contributes to a mapping specification
+    is_a: Agent
+    slots:
+      - orcid
+      - affiliation
+
+  Organization:
+    description: An organization or institution that contributes to a mapping specification
+    is_a: Agent
+    slots:
+      - ror_id
+      - url
+
+  Software:
+    description: A software tool or system used in creating mappings
+    is_a: Agent
+    slots:
+      - version
+      - repository_url
   
   Source:
     description: >-
@@ -91,6 +107,7 @@ classes:
     slot_usage:
       type:
         range: SourceTypeEnum
+  
   MappingSpecification:
     description: >-
       A formal description of correspondences between entities in a source and a target, expressed as rules, functions, or mapping statements.
@@ -173,3 +190,18 @@ slots:
     description: The source from which the object entities are drawn
     range: Source
     inlined: true
+  orcid:
+    description: ORCID identifier for a person
+    range: string
+  affiliation:
+    description: Institutional affiliation of a person
+    range: string
+  ror_id:
+    description: ROR (Research Organization Registry) identifier
+    range: string
+  url:
+    description: URL or web address
+    range: string
+  repository_url:
+    description: URL to a code repository
+    range: string
