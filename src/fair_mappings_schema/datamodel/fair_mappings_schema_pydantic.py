@@ -88,33 +88,29 @@ class SourceTypeEnum(str, Enum):
     """
     Types of data sources
     """
-    owl_ontology = "owl_ontology"
+    ontology = "ontology"
     """
-    An ontology in OWL format
+    A conceptualization or formal representation of a domain, such as an OWL ontology.
     """
     database = "database"
     """
     A relational or other database
     """
-    skos_vocabulary = "skos_vocabulary"
+    vocabulary = "vocabulary"
     """
-    A SKOS vocabulary or terminology
-    """
-    rdf_vocabulary = "rdf_vocabulary"
-    """
-    An RDF vocabulary or schema
+    A controlled vocabulary or thesaurus, such as a SKOS vocabulary or an RDFS vocabulary.
     """
     schema = "schema"
     """
-    A data schema or model
+    A data schema or model, such as an XML Schema or JSON Schema.
     """
     api = "api"
     """
-    An API or web service
+    An API or web service.
     """
     other = "other"
     """
-    Other type of source
+    Other type of source.
     """
 
 
@@ -145,6 +141,10 @@ class MappingSpecificationTypeEnum(str, Enum):
     xslt = "xslt"
     """
     XSLT-based mapping
+    """
+    shacl = "shacl"
+    """
+    SHACL-based mapping
     """
     other = "other"
     """

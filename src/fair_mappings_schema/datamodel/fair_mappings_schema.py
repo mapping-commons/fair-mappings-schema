@@ -1,5 +1,5 @@
 # Auto generated from fair_mappings_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-10-06T23:29:58
+# Generation date: 2025-12-17T23:27:54
 # Schema: fair-mappings-schema
 #
 # id: https://w3id.org/mapping-commons/fair-mappings-schema
@@ -337,27 +337,24 @@ class SourceTypeEnum(EnumDefinitionImpl):
     """
     Types of data sources
     """
-    owl_ontology = PermissibleValue(
-        text="owl_ontology",
-        description="An ontology in OWL format")
+    ontology = PermissibleValue(
+        text="ontology",
+        description="A conceptualization or formal representation of a domain, such as an OWL ontology.")
     database = PermissibleValue(
         text="database",
         description="A relational or other database")
-    skos_vocabulary = PermissibleValue(
-        text="skos_vocabulary",
-        description="A SKOS vocabulary or terminology")
-    rdf_vocabulary = PermissibleValue(
-        text="rdf_vocabulary",
-        description="An RDF vocabulary or schema")
+    vocabulary = PermissibleValue(
+        text="vocabulary",
+        description="A controlled vocabulary or thesaurus, such as a SKOS vocabulary or an RDFS vocabulary.")
     schema = PermissibleValue(
         text="schema",
-        description="A data schema or model")
+        description="A data schema or model, such as an XML Schema or JSON Schema.")
     api = PermissibleValue(
         text="api",
-        description="An API or web service")
+        description="An API or web service.")
     other = PermissibleValue(
         text="other",
-        description="Other type of source")
+        description="Other type of source.")
 
     _defn = EnumDefinition(
         name="SourceTypeEnum",
@@ -386,6 +383,9 @@ class MappingSpecificationTypeEnum(EnumDefinitionImpl):
     xslt = PermissibleValue(
         text="xslt",
         description="XSLT-based mapping")
+    shacl = PermissibleValue(
+        text="shacl",
+        description="SHACL-based mapping")
     other = PermissibleValue(
         text="other",
         description="Other type of mapping specification")

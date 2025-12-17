@@ -11,14 +11,14 @@ content_url: https://example.org/mappings/do-mondo.sssom.tsv
 subject_source:
   name: Disease Ontology
   version: "2024-01-01"
-  type: owl_ontology
+  type: ontology
   documentation: https://disease-ontology.org/
   content_url: http://purl.obolibrary.org/obo/doid.owl
   content_type: application/rdf+xml
 object_source:
   name: Mondo Disease Ontology
   version: "2024-01-10"
-  type: owl_ontology
+  type: ontology
   documentation: https://mondo.monarchinitiative.org/
   content_url: http://purl.obolibrary.org/obo/mondo.owl
   content_type: application/rdf+xml
