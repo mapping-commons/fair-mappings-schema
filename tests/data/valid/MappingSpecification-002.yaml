@@ -1,0 +1,25 @@
+# Valid MappingSpecification example - R2RML mapping between database and RDF
+---
+
+publication_date: "2023-11-20"
+license: Apache-2.0
+version: "2.1.0"
+description: R2RML mapping from legacy patient database to FHIR RDF
+type: r2rml
+mapping_method: automated generation with manual review
+documentation: https://example.org/patient-fhir-mapping
+content_url: https://example.org/mappings/patient-db-to-fhir.r2rml.ttl
+subject_source:
+  name: Patient Database
+  version: "v5.2"
+  type: database
+  documentation: https://example.org/db-schema
+  content_url: postgresql://example.org:5432/patients
+  content_type: application/sql
+object_source:
+  name: FHIR RDF Ontology
+  version: "4.0.1"
+  type: vocabulary
+  documentation: http://hl7.org/fhir/
+  content_url: http://hl7.org/fhir/fhir.ttl
+  content_type: text/turtle

@@ -1,0 +1,24 @@
+# Valid MappingSpecification example - SSSOM mapping between two ontologies
+---
+publication_date: "2024-01-15"
+license: CC-BY-4.0
+version: "1.0.0"
+description: Mappings between disease ontologies DO and MONDO
+type: sssom
+mapping_method: manual curation
+documentation: https://example.org/do-mondo-mappings/docs
+content_url: https://example.org/mappings/do-mondo.sssom.tsv
+subject_source:
+  name: Disease Ontology
+  version: "2024-01-01"
+  type: ontology
+  documentation: https://disease-ontology.org/
+  content_url: http://purl.obolibrary.org/obo/doid.owl
+  content_type: application/rdf+xml
+object_source:
+  name: Mondo Disease Ontology
+  version: "2024-01-10"
+  type: ontology
+  documentation: https://mondo.monarchinitiative.org/
+  content_url: http://purl.obolibrary.org/obo/mondo.owl
+  content_type: application/rdf+xml

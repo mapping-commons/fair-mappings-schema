@@ -1,0 +1,11 @@
+# Invalid MappingSpecification - subject_source is a string instead of Source object
+---
+author:
+  id: example:author456
+  name: Test Author
+content: https://example.org/mapping.txt
+subject_source: "Source A"
+object_source:
+  name: Source B
+  content: https://example.org/source-b
+  content_type: text/plain

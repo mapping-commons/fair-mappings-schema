@@ -1,7 +1,7 @@
 ---
 id: https://w3id.org/mapping-commons/fair-mappings-schema
 name: fair-mappings-schema
-title: fair-mappings-schema
+title: FAIR Mappings Schema
 description: |-
   A minimal metadata schema for FAIR mapping specifications
 license: Apache-2.0
@@ -21,3 +21,195 @@ default_range: string
 imports:
   - linkml:types
 
+enums:
+  SourceTypeEnum:
+    description: Types of data sources
+    permissible_values:
+      ontology:
+        description: A conceptualization or formal representation of a domain, such as an OWL ontology.
+      database:
+        description: A relational or other database
+      vocabulary:
+        description: A controlled vocabulary or thesaurus, such as a SKOS vocabulary or an RDFS vocabulary.
+      schema:
+        description: A data schema or model, such as an XML Schema or JSON Schema.
+      api:
+        description: An API or web service.
+      other:
+        description: Other type of source.
+
+  MappingSpecificationTypeEnum:
+    description: Types of mapping specifications
+    permissible_values:
+      sssom:
+        description: Simple Standard for Sharing Ontological Mappings
+      r2rml:
+        description: RDB to RDF Mapping Language
+      rml:
+        description: RDF Mapping Language
+      sparql:
+        description: SPARQL-based mapping
+      yarrrml:
+        description: YARRRML mapping file
+      xslt:
+        description: XSLT-based mapping
+      shacl:
+        description: SHACL-based mapping
+      other:
+        description: Other type of mapping specification
+
+classes:
+
+  Agent:
+    description: An entity that can create or contribute to a digital object, such as an author or creator.
+    abstract: true
+    slots:
+      - id
+      - name
+      - type
+    slot_usage:
+      type:
+        designates_type: true
+        range: string
+
+  Person:
+    description: An individual person who contributes to a mapping specification
+    is_a: Agent
+    slots:
+      - orcid
+      - affiliation
+
+  Organization:
+    description: An organization or institution that contributes to a mapping specification
+    is_a: Agent
+    slots:
+      - ror_id
+      - url
+
+  Software:
+    description: A software tool or system used in creating mappings
+    is_a: Agent
+    slots:
+      - version
+      - repository_url
+  
+  Source:
+    description: >-
+      A data source from which entities are drawn, such as a database, ontology, or vocabulary.
+    slots:
+      - id
+      - name
+      - version
+      - type
+      - documentation
+      - content_url
+      - content_type
+      - metadata_url
+      - metadata_type
+    slot_usage:
+      type:
+        range: SourceTypeEnum
+  
+  MappingSpecification:
+    description: >-
+      A formal description of correspondences between entities in a source and a target, expressed as rules, functions, or mapping statements.
+    tree_root: true
+    slots:
+      - id
+      - name
+      - description
+      - author
+      - creator
+      - reviewer
+      - publication_date
+      - license
+      - version
+      - type
+      - mapping_method
+      - documentation
+      - content_url
+      - subject_source
+      - object_source
+    slot_usage:
+      type:
+        range: MappingSpecificationTypeEnum
+
+slots:
+  id:
+    description: Identifier for the information entity
+    range: string
+  name:
+    description: Name of the information entity
+    range: string
+  creator:
+    description: Creator of the mapping specification
+    range: Agent
+    inlined: true
+  author:
+    description: Author of the mapping specification
+    range: Agent
+    inlined: true
+  reviewer:
+    description: Reviewer of the mapping specification
+    range: Agent
+    inlined: true
+  mapping_tool:
+    description: The tool used to create the mapping specification
+    range: Agent
+    inlined: true
+  publication_date:
+    description: Date of publication of the mapping specification
+    range: string
+  license:
+    description: License under which the mapping specification is released
+    range: string
+  version:
+    description: Version of the digital object
+    range: string
+  description:
+    description: A brief description of the mapping specification
+    range: string
+  type:
+    description: Type of the information entity
+    range: string
+  mapping_method:
+    description: Method used to create the mapping specification
+    range: string
+  documentation:
+    description: URL or reference to documentation for the mapping specification
+    range: string
+  content_url:
+    description: Reference to the actual content of the digital object
+    range: string
+  content_type:
+    description: The type of the content of the digital object
+    range: string
+  metadata_url:
+    description: Reference to metadata about the digital object
+    range: string
+  metadata_type:
+    description: The type of the metadata about the digital object
+    range: string
+  subject_source:
+    description: The source from which the subject entities are drawn
+    range: Source
+    inlined: true
+  object_source:
+    description: The source from which the object entities are drawn
+    range: Source
+    inlined: true
+  orcid:
+    description: ORCID identifier for a person
+    range: string
+  affiliation:
+    description: Institutional affiliation of a person
+    range: string
+  ror_id:
+    description: ROR (Research Organization Registry) identifier
+    range: string
+  url:
+    description: URL or web address
+    range: string
+  repository_url:
+    description: URL to a code repository
+    range: string

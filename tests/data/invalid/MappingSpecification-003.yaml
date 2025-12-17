@@ -1,0 +1,17 @@
+# Invalid MappingSpecification - creator is a list instead of Agent object
+---
+author:
+  id: example:author789
+  name: Another Author
+creator:
+  - John Doe
+  - Jane Smith
+content: https://example.org/mapping.txt
+subject_source:
+  name: Valid Source
+  content: https://example.org/source-valid
+  content_type: text/plain
+object_source:
+  name: Another Source
+  content: https://example.org/source-invalid
+  content_type: text/plain
