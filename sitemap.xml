@@ -2,94 +2,222 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/about/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Agent/</loc>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Boolean/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Curie/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Date/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/DateOrDatetime/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Datetime/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Decimal/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Double/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Float/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Integer/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Jsonpath/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Jsonpointer/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/MappingSpecification/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/MappingSpecificationTypeEnum/</loc>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Ncname/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Nodeidentifier/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Objectidentifier/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Organization/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Person/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Software/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Source/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/SourceTypeEnum/</loc>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Sparqlpath/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/String/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Time/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Uri/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/Uriorcurie/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/affiliation/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/author/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/content_type/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/content_url/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/creator/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/description/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/documentation/</loc>
+         <lastmod>2025-12-17</lastmod>
     </url>
     <url>
          <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/fair-mappings-schema/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/id/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/license/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/mapping_method/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/mapping_tool/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/metadata_type/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/metadata_url/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/name/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/object_source/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/orcid/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/publication_date/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/repository_url/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/reviewer/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/ror_id/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/subject_source/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/type/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/url/</loc>
+         <lastmod>2025-12-17</lastmod>
+    </url>
+    <url>
+         <loc>https://mapping-commons.github.io/fair-mappings-schema/elements/version/</loc>
+         <lastmod>2025-12-17</lastmod>
     </url>
 </urlset>
