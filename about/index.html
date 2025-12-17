@@ -277,6 +277,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -288,6 +301,85 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rda-fair-mappings-working-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      RDA FAIR Mappings Working Group
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema Design
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Schema Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contributing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      License
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -313,6 +405,74 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rda-fair-mappings-working-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      RDA FAIR Mappings Working Group
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema Design
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Schema Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Concepts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contributing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      License
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -330,8 +490,30 @@
   
 
 
-<h1 id="about-fair-mappings-schema">About fair-mappings-schema</h1>
-<p>A basic metadata schema for FAIR mapping specifications</p>
+<h1 id="about-fair-mappings-schema">About FAIR Mappings Schema</h1>
+<h2 id="background">Background</h2>
+<p>Semantic mappings between ontologies, vocabularies, databases, and other data sources are essential for data integration and interoperability. However, these mappings are often poorly documented, difficult to discover, and lack the metadata needed to assess their quality and provenance.</p>
+<p>The FAIR Mappings Schema addresses this gap by providing a minimal but comprehensive metadata model for describing mapping specifications in a way that adheres to <a href="https://www.go-fair.org/fair-principles/">FAIR principles</a> (Findable, Accessible, Interoperable, Reusable).</p>
+<h2 id="rda-fair-mappings-working-group">RDA FAIR Mappings Working Group</h2>
+<p>This schema is developed by the <a href="https://mapping-commons.github.io/rda-fair-mappings/">RDA FAIR Mappings Working Group</a>, which brings together researchers, practitioners, and standards developers to establish best practices for creating and sharing FAIR mappings.</p>
+<p>The working group aims to:</p>
+<ul>
+<li>Define metadata standards for mapping specifications</li>
+<li>Promote interoperability between different mapping formats</li>
+<li>Build a community around mapping best practices</li>
+</ul>
+<h2 id="schema-design">Schema Design</h2>
+<p>The schema is built using <a href="https://linkml.io/">LinkML</a>, a flexible modeling language that generates multiple representations including JSON Schema, Python dataclasses, and RDF/OWL.</p>
+<h3 id="core-concepts">Core Concepts</h3>
+<ul>
+<li><strong>MappingSpecification</strong>: The central class representing a mapping between sources</li>
+<li><strong>Source</strong>: A data source (ontology, database, vocabulary, schema, or API) from which entities are drawn</li>
+<li><strong>Agent</strong>: An entity (person, organization, or software) that contributes to creating mappings</li>
+</ul>
+<h2 id="contributing">Contributing</h2>
+<p>Contributions are welcome. Please visit the <a href="https://github.com/mapping-commons/fair-mappings-schema">GitHub repository</a> to report issues or submit pull requests.</p>
+<h2 id="license">License</h2>
+<p>This project is licensed under Apache-2.0.</p>
 
 
 

@@ -233,6 +233,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
@@ -244,6 +257,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Links
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -313,6 +390,59 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Links
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -330,10 +460,50 @@
   
 
 
-<h1 id="fair-mappings-schema">fair-mappings-schema</h1>
-<p>A basic metadata schema for FAIR mapping specifications</p>
+<h1 id="fair-mappings-schema">FAIR Mappings Schema</h1>
+<p>A minimal metadata schema for describing FAIR mapping specifications between data sources.</p>
+<h2 id="overview">Overview</h2>
+<p>The FAIR Mappings Schema provides a standardized way to describe mappings between different data sources such as ontologies, databases, vocabularies, and schemas. It captures essential metadata about mapping specifications including provenance, licensing, and the sources being mapped.</p>
+<p>This schema is developed as part of the <a href="https://mapping-commons.github.io/rda-fair-mappings/">RDA FAIR Mappings Working Group</a> effort to improve the findability, accessibility, interoperability, and reusability of semantic mappings.</p>
+<h2 id="key-features">Key Features</h2>
 <ul>
-<li>Auto-generated <a href="elements/">schema documentation</a></li>
+<li><strong>Source Description</strong>: Describe subject and object sources with their types, versions, and access URLs</li>
+<li><strong>Provenance Tracking</strong>: Record authors, creators, reviewers, and publication dates</li>
+<li><strong>Mapping Specification system agnostic</strong>: Can be used, or easily mapped to, SSSOM, R2RML, RML, SPARQL, YARRRML, XSLT, SHACL, and other mapping formats.</li>
+</ul>
+<h2 id="example">Example</h2>
+<pre><code class="language-yaml">---
+publication_date: &quot;2024-01-15&quot;
+license: CC-BY-4.0
+version: &quot;1.0.0&quot;
+description: Mappings between disease ontologies DO and MONDO
+type: sssom
+mapping_method: manual curation
+documentation: https://example.org/do-mondo-mappings/docs
+content_url: https://example.org/mappings/do-mondo.sssom.tsv
+subject_source:
+  name: Disease Ontology
+  version: &quot;2024-01-01&quot;
+  type: ontology
+  documentation: https://disease-ontology.org/
+  content_url: http://purl.obolibrary.org/obo/doid.owl
+  content_type: application/rdf+xml
+object_source:
+  name: Mondo Disease Ontology
+  version: &quot;2024-01-10&quot;
+  type: ontology
+  documentation: https://mondo.monarchinitiative.org/
+  content_url: http://purl.obolibrary.org/obo/mondo.owl
+  content_type: application/rdf+xml
+</code></pre>
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li><a href="elements/">Schema Elements</a> - Documentation for all schema classes, slots, and enums.</li>
+</ul>
+<h2 id="quick-links">Quick Links</h2>
+<ul>
+<li><a href="https://mapping-commons.github.io/rda-fair-mappings/">RDA FAIR Mappings Working Group</a></li>
+<li><a href="https://github.com/mapping-commons/fair-mappings-schema">GitHub Repository</a></li>
 </ul>
 
 
