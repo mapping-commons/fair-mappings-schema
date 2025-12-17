@@ -1,6 +1,6 @@
 name: fair-mappings-schema
-description: A basic metadata schema for FAIR mapping specifications
-title: fair-mappings-schema
+description: A minimal metadata schema for FAIR mapping specifications
+title: FAIR Mappings Schema
 see_also:
 - https://mapping-commons.github.io/fair-mappings-schema
 id: https://w3id.org/mapping-commons/fair-mappings-schema
@@ -298,187 +298,471 @@ types:
     uri: xsd:string
     repr: str
 enums:
-  PersonStatus:
-    name: PersonStatus
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/PersonStatus
+  SourceTypeEnum:
+    name: SourceTypeEnum
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/SourceTypeEnum
+    description: Types of data sources
     from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
     permissible_values:
-      ALIVE:
-        text: ALIVE
-        description: the person is living
-        meaning: PATO:0001421
-      DEAD:
-        text: DEAD
-        description: the person is deceased
-        meaning: PATO:0001422
-      UNKNOWN:
-        text: UNKNOWN
-        description: the vital status is not known
-        todos:
-        - map this to an ontology
+      ontology:
+        text: ontology
+        description: A conceptualization or formal representation of a domain, such
+          as an OWL ontology.
+      database:
+        text: database
+        description: A relational or other database
+      vocabulary:
+        text: vocabulary
+        description: A controlled vocabulary or thesaurus, such as a SKOS vocabulary
+          or an RDFS vocabulary.
+      schema:
+        text: schema
+        description: A data schema or model, such as an XML Schema or JSON Schema.
+      api:
+        text: api
+        description: An API or web service.
+      other:
+        text: other
+        description: Other type of source.
+  MappingSpecificationTypeEnum:
+    name: MappingSpecificationTypeEnum
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/MappingSpecificationTypeEnum
+    description: Types of mapping specifications
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    permissible_values:
+      sssom:
+        text: sssom
+        description: Simple Standard for Sharing Ontological Mappings
+      r2rml:
+        text: r2rml
+        description: RDB to RDF Mapping Language
+      rml:
+        text: rml
+        description: RDF Mapping Language
+      sparql:
+        text: sparql
+        description: SPARQL-based mapping
+      yarrrml:
+        text: yarrrml
+        description: YARRRML mapping file
+      xslt:
+        text: xslt
+        description: XSLT-based mapping
+      shacl:
+        text: shacl
+        description: SHACL-based mapping
+      other:
+        text: other
+        description: Other type of mapping specification
 slots:
   id:
     name: id
     definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/id
-    description: A unique identifier for a thing
+    description: Identifier for the information entity
     from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    mappings:
-    - schema:identifier
-    slot_uri: schema:identifier
-    identifier: true
-    owner: NamedThing
+    slot_uri: fair_mappings_schema:id
+    owner: MappingSpecification
     domain_of:
-    - NamedThing
-    range: uriorcurie
-    required: true
+    - Agent
+    - Source
+    - MappingSpecification
+    range: string
   name:
     name: name
     definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/name
-    description: A human-readable name for a thing
+    description: Name of the information entity
     from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    mappings:
-    - schema:name
-    slot_uri: schema:name
-    owner: NamedThing
+    slot_uri: fair_mappings_schema:name
+    owner: MappingSpecification
     domain_of:
-    - NamedThing
+    - Agent
+    - Source
+    - MappingSpecification
+    range: string
+  creator:
+    name: creator
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/creator
+    description: Creator of the mapping specification
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    slot_uri: fair_mappings_schema:creator
+    owner: MappingSpecification
+    domain_of:
+    - MappingSpecification
+    range: Agent
+    inlined: true
+  author:
+    name: author
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/author
+    description: Author of the mapping specification
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    slot_uri: fair_mappings_schema:author
+    owner: MappingSpecification
+    domain_of:
+    - MappingSpecification
+    range: Agent
+    inlined: true
+  reviewer:
+    name: reviewer
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/reviewer
+    description: Reviewer of the mapping specification
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    slot_uri: fair_mappings_schema:reviewer
+    owner: MappingSpecification
+    domain_of:
+    - MappingSpecification
+    range: Agent
+    inlined: true
+  mapping_tool:
+    name: mapping_tool
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/mapping_tool
+    description: The tool used to create the mapping specification
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    slot_uri: fair_mappings_schema:mapping_tool
+    range: Agent
+    inlined: true
+  publication_date:
+    name: publication_date
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/publication_date
+    description: Date of publication of the mapping specification
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    slot_uri: fair_mappings_schema:publication_date
+    owner: MappingSpecification
+    domain_of:
+    - MappingSpecification
+    range: string
+  license:
+    name: license
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/license
+    description: License under which the mapping specification is released
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    slot_uri: fair_mappings_schema:license
+    owner: MappingSpecification
+    domain_of:
+    - MappingSpecification
+    range: string
+  version:
+    name: version
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/version
+    description: Version of the digital object
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    slot_uri: fair_mappings_schema:version
+    owner: MappingSpecification
+    domain_of:
+    - Software
+    - Source
+    - MappingSpecification
     range: string
   description:
     name: description
     definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/description
-    description: A human-readable description for a thing
+    description: A brief description of the mapping specification
     from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    mappings:
-    - schema:description
-    slot_uri: schema:description
-    owner: NamedThing
+    slot_uri: fair_mappings_schema:description
+    owner: MappingSpecification
     domain_of:
-    - NamedThing
+    - MappingSpecification
     range: string
-  primary_email:
-    name: primary_email
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/primary_email
-    description: The main email address of a person
+  type:
+    name: type
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/type
+    description: Type of the information entity
     from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    mappings:
-    - schema:email
-    slot_uri: schema:email
-    owner: Person
+    slot_uri: fair_mappings_schema:type
+    owner: MappingSpecification
     domain_of:
-    - Person
+    - Agent
+    - Source
+    - MappingSpecification
     range: string
-  birth_date:
-    name: birth_date
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/birth_date
-    description: Date on which a person is born
+  mapping_method:
+    name: mapping_method
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/mapping_method
+    description: Method used to create the mapping specification
     from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    mappings:
-    - schema:birthDate
-    slot_uri: schema:birthDate
-    owner: Person
+    slot_uri: fair_mappings_schema:mapping_method
+    owner: MappingSpecification
     domain_of:
-    - Person
-    range: date
-  age_in_years:
-    name: age_in_years
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/age_in_years
-    description: Number of years since birth
+    - MappingSpecification
+    range: string
+  documentation:
+    name: documentation
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/documentation
+    description: URL or reference to documentation for the mapping specification
     from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:age_in_years
-    owner: Person
+    slot_uri: fair_mappings_schema:documentation
+    owner: MappingSpecification
     domain_of:
-    - Person
-    range: integer
-  vital_status:
-    name: vital_status
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/vital_status
-    description: living or dead status
+    - Source
+    - MappingSpecification
+    range: string
+  content_url:
+    name: content_url
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/content_url
+    description: Reference to the actual content of the digital object
     from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:vital_status
-    owner: Person
+    slot_uri: fair_mappings_schema:content_url
+    owner: MappingSpecification
     domain_of:
-    - Person
-    range: PersonStatus
-  personCollection__entries:
-    name: personCollection__entries
+    - Source
+    - MappingSpecification
+    range: string
+  content_type:
+    name: content_type
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/content_type
+    description: The type of the content of the digital object
     from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:entries
-    alias: entries
-    owner: PersonCollection
+    slot_uri: fair_mappings_schema:content_type
+    owner: Source
     domain_of:
-    - PersonCollection
-    range: Person
-    multivalued: true
+    - Source
+    range: string
+  metadata_url:
+    name: metadata_url
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/metadata_url
+    description: Reference to metadata about the digital object
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    slot_uri: fair_mappings_schema:metadata_url
+    owner: Source
+    domain_of:
+    - Source
+    range: string
+  metadata_type:
+    name: metadata_type
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/metadata_type
+    description: The type of the metadata about the digital object
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    slot_uri: fair_mappings_schema:metadata_type
+    owner: Source
+    domain_of:
+    - Source
+    range: string
+  subject_source:
+    name: subject_source
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/subject_source
+    description: The source from which the subject entities are drawn
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    slot_uri: fair_mappings_schema:subject_source
+    owner: MappingSpecification
+    domain_of:
+    - MappingSpecification
+    range: Source
     inlined: true
-    inlined_as_list: true
-  Person_primary_email:
-    name: Person_primary_email
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/primary_email
-    description: The main email address of a person
+  object_source:
+    name: object_source
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/object_source
+    description: The source from which the object entities are drawn
     from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    mappings:
-    - schema:email
-    is_a: primary_email
-    domain: Person
-    slot_uri: schema:email
-    alias: primary_email
+    slot_uri: fair_mappings_schema:object_source
+    owner: MappingSpecification
+    domain_of:
+    - MappingSpecification
+    range: Source
+    inlined: true
+  orcid:
+    name: orcid
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/orcid
+    description: ORCID identifier for a person
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    slot_uri: fair_mappings_schema:orcid
     owner: Person
     domain_of:
     - Person
-    is_usage_slot: true
-    usage_slot_name: primary_email
     range: string
-    pattern: ^\S+@[\S+\.]+\S+
-classes:
-  NamedThing:
-    name: NamedThing
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/NamedThing
-    description: A generic grouping for any identifiable entity
+  affiliation:
+    name: affiliation
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/affiliation
+    description: Institutional affiliation of a person
     from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    mappings:
-    - schema:Thing
+    slot_uri: fair_mappings_schema:affiliation
+    owner: Person
+    domain_of:
+    - Person
+    range: string
+  ror_id:
+    name: ror_id
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/ror_id
+    description: ROR (Research Organization Registry) identifier
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    slot_uri: fair_mappings_schema:ror_id
+    owner: Organization
+    domain_of:
+    - Organization
+    range: string
+  url:
+    name: url
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/url
+    description: URL or web address
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    slot_uri: fair_mappings_schema:url
+    owner: Organization
+    domain_of:
+    - Organization
+    range: string
+  repository_url:
+    name: repository_url
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/repository_url
+    description: URL to a code repository
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    slot_uri: fair_mappings_schema:repository_url
+    owner: Software
+    domain_of:
+    - Software
+    range: string
+  Agent_type:
+    name: Agent_type
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/type
+    description: Type of the information entity
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    is_a: type
+    domain: Agent
+    slot_uri: fair_mappings_schema:type
+    designates_type: true
+    alias: type
+    owner: Agent
+    domain_of:
+    - Agent
+    is_usage_slot: true
+    usage_slot_name: type
+    range: string
+  Source_type:
+    name: Source_type
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/type
+    description: Type of the information entity
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    is_a: type
+    domain: Source
+    slot_uri: fair_mappings_schema:type
+    alias: type
+    owner: Source
+    domain_of:
+    - Source
+    is_usage_slot: true
+    usage_slot_name: type
+    range: SourceTypeEnum
+  MappingSpecification_type:
+    name: MappingSpecification_type
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/type
+    description: Type of the information entity
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    is_a: type
+    domain: MappingSpecification
+    slot_uri: fair_mappings_schema:type
+    alias: type
+    owner: MappingSpecification
+    domain_of:
+    - MappingSpecification
+    is_usage_slot: true
+    usage_slot_name: type
+    range: MappingSpecificationTypeEnum
+classes:
+  Agent:
+    name: Agent
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/Agent
+    description: An entity that can create or contribute to a digital object, such
+      as an author or creator.
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    abstract: true
     slots:
     - id
     - name
-    - description
-    class_uri: schema:Thing
+    - Agent_type
+    slot_usage:
+      type:
+        name: type
+        designates_type: true
+        range: string
+    class_uri: fair_mappings_schema:Agent
   Person:
     name: Person
     definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/Person
-    description: Represents a Person
+    description: An individual person who contributes to a mapping specification
     from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    is_a: NamedThing
+    is_a: Agent
+    slots:
+    - id
+    - name
+    - Agent_type
+    - orcid
+    - affiliation
+    class_uri: fair_mappings_schema:Person
+  Organization:
+    name: Organization
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/Organization
+    description: An organization or institution that contributes to a mapping specification
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    is_a: Agent
+    slots:
+    - id
+    - name
+    - Agent_type
+    - ror_id
+    - url
+    class_uri: fair_mappings_schema:Organization
+  Software:
+    name: Software
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/Software
+    description: A software tool or system used in creating mappings
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    is_a: Agent
+    slots:
+    - id
+    - name
+    - Agent_type
+    - version
+    - repository_url
+    class_uri: fair_mappings_schema:Software
+  Source:
+    name: Source
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/Source
+    description: A data source from which entities are drawn, such as a database,
+      ontology, or vocabulary.
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    slots:
+    - id
+    - name
+    - version
+    - Source_type
+    - documentation
+    - content_url
+    - content_type
+    - metadata_url
+    - metadata_type
+    slot_usage:
+      type:
+        name: type
+        range: SourceTypeEnum
+    class_uri: fair_mappings_schema:Source
+  MappingSpecification:
+    name: MappingSpecification
+    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/MappingSpecification
+    description: A formal description of correspondences between entities in a source
+      and a target, expressed as rules, functions, or mapping statements.
+    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
     slots:
     - id
     - name
     - description
-    - Person_primary_email
-    - birth_date
-    - age_in_years
-    - vital_status
+    - author
+    - creator
+    - reviewer
+    - publication_date
+    - license
+    - version
+    - MappingSpecification_type
+    - mapping_method
+    - documentation
+    - content_url
+    - subject_source
+    - object_source
     slot_usage:
-      primary_email:
-        name: primary_email
-        pattern: ^\S+@[\S+\.]+\S+
-    class_uri: fair_mappings_schema:Person
-  PersonCollection:
-    name: PersonCollection
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/PersonCollection
-    description: A holder for Person objects
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slots:
-    - personCollection__entries
-    attributes:
-      entries:
-        name: entries
-        range: Person
-        multivalued: true
-        inlined_as_list: true
-    class_uri: fair_mappings_schema:PersonCollection
+      type:
+        name: type
+        range: MappingSpecificationTypeEnum
+    class_uri: fair_mappings_schema:MappingSpecification
     tree_root: true
 metamodel_version: 1.7.0
 source_file: fair_mappings_schema.yaml
-source_file_date: '2025-10-04T08:58:35'
-source_file_size: 2297
-generation_date: '2025-10-04T08:59:52'
+source_file_date: '2025-12-17T23:38:28'
+source_file_size: 5795
+generation_date: '2025-12-17T23:47:36'
 
