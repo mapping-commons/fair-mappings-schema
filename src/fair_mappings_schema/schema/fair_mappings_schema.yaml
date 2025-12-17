@@ -25,20 +25,18 @@ enums:
   SourceTypeEnum:
     description: Types of data sources
     permissible_values:
-      owl_ontology:
-        description: An ontology in OWL format
+      ontology:
+        description: A conceptualization or formal representation of a domain, such as an OWL ontology.
       database:
         description: A relational or other database
-      skos_vocabulary:
-        description: A SKOS vocabulary or terminology
-      rdf_vocabulary:
-        description: An RDF vocabulary or schema
+      vocabulary:
+        description: A controlled vocabulary or thesaurus, such as a SKOS vocabulary or an RDFS vocabulary.
       schema:
-        description: A data schema or model
+        description: A data schema or model, such as an XML Schema or JSON Schema.
       api:
-        description: An API or web service
+        description: An API or web service.
       other:
-        description: Other type of source
+        description: Other type of source.
 
   MappingSpecificationTypeEnum:
     description: Types of mapping specifications
@@ -55,6 +53,8 @@ enums:
         description: YARRRML mapping file
       xslt:
         description: XSLT-based mapping
+      shacl:
+        description: SHACL-based mapping
       other:
         description: Other type of mapping specification
 
