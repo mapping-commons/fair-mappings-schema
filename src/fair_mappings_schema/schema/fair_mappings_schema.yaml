@@ -74,13 +74,13 @@ classes:
         designates_type: true
         range: string
         annotations:
-          fair_weight: 3
+          fair_weight: 2
       id:
         annotations:
           fair_weight: 5
       name:
         annotations:
-          fair_weight: 4
+          fair_weight: 1
 
   Person:
     description: An individual person who contributes to a mapping specification
@@ -141,31 +141,31 @@ classes:
       type:
         range: SourceTypeEnum
         annotations:
-          fair_weight: 3
+          fair_weight: 2
       id:
         annotations:
           fair_weight: 5
       name:
         annotations:
-          fair_weight: 4
+          fair_weight: 2
       version:
         annotations:
           fair_weight: 4
       documentation:
         annotations:
-          fair_weight: 2
+          fair_weight: 1
       content_url:
         annotations:
-          fair_weight: 5
+          fair_weight: 0
       content_type:
         annotations:
-          fair_weight: 3
+          fair_weight: 0
       metadata_url:
         annotations:
-          fair_weight: 3
+          fair_weight: 0
       metadata_type:
         annotations:
-          fair_weight: 2
+          fair_weight: 0
 
   MappingSpecification:
     description: >-
@@ -191,19 +191,19 @@ classes:
       type:
         range: MappingSpecificationTypeEnum
         annotations:
-          fair_weight: 4
+          fair_weight: 2
       id:
         annotations:
           fair_weight: 5
       name:
         annotations:
-          fair_weight: 3
+          fair_weight: 2
       description:
         annotations:
-          fair_weight: 2
+          fair_weight: 3
       publication_date:
         annotations:
-          fair_weight: 3
+          fair_weight: 2
       license:
         annotations:
           fair_weight: 5
@@ -212,33 +212,33 @@ classes:
           fair_weight: 4
       mapping_method:
         annotations:
-          fair_weight: 3
+          fair_weight: 2
       documentation:
         annotations:
-          fair_weight: 3
+          fair_weight: 2
       content_url:
         annotations:
-          fair_weight: 5
+          fair_weight: 0
       author:
         annotations:
-          fair_weight: 4
-          fair_weight_aggregation_function: "(id*5 + name*4 + type*3) / 12"
+          fair_weight: 3
+          fair_weight_aggregation_function: "(id*5 + name*1 + type*2) / 8"
       creator:
         annotations:
           fair_weight: 4
-          fair_weight_aggregation_function: "(id*5 + name*4 + type*3) / 12"
+          fair_weight_aggregation_function: "(id*5 + name*1 + type*2) / 8"
       reviewer:
         annotations:
-          fair_weight: 3
-          fair_weight_aggregation_function: "(id*5 + name*4 + type*3) / 12"
+          fair_weight: 0
+          fair_weight_aggregation_function: "(id*5 + name*1 + type*2) / 8"
       subject_source:
         annotations:
           fair_weight: 5
-          fair_weight_aggregation_function: "(id*5 + name*4 + version*4 + type*3 + documentation*2 + content_url*5 + content_type*3 + metadata_url*3 + metadata_type*2) / 31"
+          fair_weight_aggregation_function: "(id*5 + name*2 + version*4 + type*2 + documentation*1 + content_url*0 + content_type*0 + metadata_url*0 + metadata_type*0) / 14"
       object_source:
         annotations:
           fair_weight: 5
-          fair_weight_aggregation_function: "(id*5 + name*4 + version*4 + type*3 + documentation*2 + content_url*5 + content_type*3 + metadata_url*3 + metadata_type*2) / 31"
+          fair_weight_aggregation_function: "(id*5 + name*2 + version*4 + type*2 + documentation*1 + content_url*0 + content_type*0 + metadata_url*0 + metadata_type*0) / 14"
 slots:
   id:
     description: Identifier for the information entity
