@@ -1,5 +1,5 @@
 # Auto generated from fair_mappings_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-12-17T23:27:54
+# Generation date: 2026-03-29T22:58:22
 # Schema: fair-mappings-schema
 #
 # id: https://w3id.org/mapping-commons/fair-mappings-schema
@@ -386,6 +386,9 @@ class MappingSpecificationTypeEnum(EnumDefinitionImpl):
     shacl = PermissibleValue(
         text="shacl",
         description="SHACL-based mapping")
+    linkml_map = PermissibleValue(
+        text="linkml_map",
+        description="LinkML-Map transformation specification")
     other = PermissibleValue(
         text="other",
         description="Other type of mapping specification")
@@ -474,8 +477,98 @@ slots.repository_url = Slot(uri=FAIR_MAPPINGS_SCHEMA.repository_url, name="repos
 slots.Agent_type = Slot(uri=FAIR_MAPPINGS_SCHEMA.type, name="Agent_type", curie=FAIR_MAPPINGS_SCHEMA.curie('type'),
                    model_uri=FAIR_MAPPINGS_SCHEMA.Agent_type, domain=Agent, range=Optional[str])
 
+slots.Agent_id = Slot(uri=FAIR_MAPPINGS_SCHEMA.id, name="Agent_id", curie=FAIR_MAPPINGS_SCHEMA.curie('id'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.Agent_id, domain=Agent, range=Optional[str])
+
+slots.Agent_name = Slot(uri=FAIR_MAPPINGS_SCHEMA.name, name="Agent_name", curie=FAIR_MAPPINGS_SCHEMA.curie('name'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.Agent_name, domain=Agent, range=Optional[str])
+
+slots.Person_orcid = Slot(uri=FAIR_MAPPINGS_SCHEMA.orcid, name="Person_orcid", curie=FAIR_MAPPINGS_SCHEMA.curie('orcid'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.Person_orcid, domain=Person, range=Optional[str])
+
+slots.Person_affiliation = Slot(uri=FAIR_MAPPINGS_SCHEMA.affiliation, name="Person_affiliation", curie=FAIR_MAPPINGS_SCHEMA.curie('affiliation'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.Person_affiliation, domain=Person, range=Optional[str])
+
+slots.Organization_ror_id = Slot(uri=FAIR_MAPPINGS_SCHEMA.ror_id, name="Organization_ror_id", curie=FAIR_MAPPINGS_SCHEMA.curie('ror_id'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.Organization_ror_id, domain=Organization, range=Optional[str])
+
+slots.Organization_url = Slot(uri=FAIR_MAPPINGS_SCHEMA.url, name="Organization_url", curie=FAIR_MAPPINGS_SCHEMA.curie('url'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.Organization_url, domain=Organization, range=Optional[str])
+
+slots.Software_version = Slot(uri=FAIR_MAPPINGS_SCHEMA.version, name="Software_version", curie=FAIR_MAPPINGS_SCHEMA.curie('version'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.Software_version, domain=Software, range=Optional[str])
+
+slots.Software_repository_url = Slot(uri=FAIR_MAPPINGS_SCHEMA.repository_url, name="Software_repository_url", curie=FAIR_MAPPINGS_SCHEMA.curie('repository_url'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.Software_repository_url, domain=Software, range=Optional[str])
+
 slots.Source_type = Slot(uri=FAIR_MAPPINGS_SCHEMA.type, name="Source_type", curie=FAIR_MAPPINGS_SCHEMA.curie('type'),
                    model_uri=FAIR_MAPPINGS_SCHEMA.Source_type, domain=Source, range=Optional[Union[str, "SourceTypeEnum"]])
 
+slots.Source_id = Slot(uri=FAIR_MAPPINGS_SCHEMA.id, name="Source_id", curie=FAIR_MAPPINGS_SCHEMA.curie('id'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.Source_id, domain=Source, range=Optional[str])
+
+slots.Source_name = Slot(uri=FAIR_MAPPINGS_SCHEMA.name, name="Source_name", curie=FAIR_MAPPINGS_SCHEMA.curie('name'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.Source_name, domain=Source, range=Optional[str])
+
+slots.Source_version = Slot(uri=FAIR_MAPPINGS_SCHEMA.version, name="Source_version", curie=FAIR_MAPPINGS_SCHEMA.curie('version'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.Source_version, domain=Source, range=Optional[str])
+
+slots.Source_documentation = Slot(uri=FAIR_MAPPINGS_SCHEMA.documentation, name="Source_documentation", curie=FAIR_MAPPINGS_SCHEMA.curie('documentation'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.Source_documentation, domain=Source, range=Optional[str])
+
+slots.Source_content_url = Slot(uri=FAIR_MAPPINGS_SCHEMA.content_url, name="Source_content_url", curie=FAIR_MAPPINGS_SCHEMA.curie('content_url'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.Source_content_url, domain=Source, range=Optional[str])
+
+slots.Source_content_type = Slot(uri=FAIR_MAPPINGS_SCHEMA.content_type, name="Source_content_type", curie=FAIR_MAPPINGS_SCHEMA.curie('content_type'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.Source_content_type, domain=Source, range=Optional[str])
+
+slots.Source_metadata_url = Slot(uri=FAIR_MAPPINGS_SCHEMA.metadata_url, name="Source_metadata_url", curie=FAIR_MAPPINGS_SCHEMA.curie('metadata_url'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.Source_metadata_url, domain=Source, range=Optional[str])
+
+slots.Source_metadata_type = Slot(uri=FAIR_MAPPINGS_SCHEMA.metadata_type, name="Source_metadata_type", curie=FAIR_MAPPINGS_SCHEMA.curie('metadata_type'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.Source_metadata_type, domain=Source, range=Optional[str])
+
 slots.MappingSpecification_type = Slot(uri=FAIR_MAPPINGS_SCHEMA.type, name="MappingSpecification_type", curie=FAIR_MAPPINGS_SCHEMA.curie('type'),
                    model_uri=FAIR_MAPPINGS_SCHEMA.MappingSpecification_type, domain=MappingSpecification, range=Optional[Union[str, "MappingSpecificationTypeEnum"]])
+
+slots.MappingSpecification_id = Slot(uri=FAIR_MAPPINGS_SCHEMA.id, name="MappingSpecification_id", curie=FAIR_MAPPINGS_SCHEMA.curie('id'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.MappingSpecification_id, domain=MappingSpecification, range=Optional[str])
+
+slots.MappingSpecification_name = Slot(uri=FAIR_MAPPINGS_SCHEMA.name, name="MappingSpecification_name", curie=FAIR_MAPPINGS_SCHEMA.curie('name'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.MappingSpecification_name, domain=MappingSpecification, range=Optional[str])
+
+slots.MappingSpecification_description = Slot(uri=FAIR_MAPPINGS_SCHEMA.description, name="MappingSpecification_description", curie=FAIR_MAPPINGS_SCHEMA.curie('description'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.MappingSpecification_description, domain=MappingSpecification, range=Optional[str])
+
+slots.MappingSpecification_publication_date = Slot(uri=FAIR_MAPPINGS_SCHEMA.publication_date, name="MappingSpecification_publication_date", curie=FAIR_MAPPINGS_SCHEMA.curie('publication_date'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.MappingSpecification_publication_date, domain=MappingSpecification, range=Optional[str])
+
+slots.MappingSpecification_license = Slot(uri=FAIR_MAPPINGS_SCHEMA.license, name="MappingSpecification_license", curie=FAIR_MAPPINGS_SCHEMA.curie('license'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.MappingSpecification_license, domain=MappingSpecification, range=Optional[str])
+
+slots.MappingSpecification_version = Slot(uri=FAIR_MAPPINGS_SCHEMA.version, name="MappingSpecification_version", curie=FAIR_MAPPINGS_SCHEMA.curie('version'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.MappingSpecification_version, domain=MappingSpecification, range=Optional[str])
+
+slots.MappingSpecification_mapping_method = Slot(uri=FAIR_MAPPINGS_SCHEMA.mapping_method, name="MappingSpecification_mapping_method", curie=FAIR_MAPPINGS_SCHEMA.curie('mapping_method'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.MappingSpecification_mapping_method, domain=MappingSpecification, range=Optional[str])
+
+slots.MappingSpecification_documentation = Slot(uri=FAIR_MAPPINGS_SCHEMA.documentation, name="MappingSpecification_documentation", curie=FAIR_MAPPINGS_SCHEMA.curie('documentation'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.MappingSpecification_documentation, domain=MappingSpecification, range=Optional[str])
+
+slots.MappingSpecification_content_url = Slot(uri=FAIR_MAPPINGS_SCHEMA.content_url, name="MappingSpecification_content_url", curie=FAIR_MAPPINGS_SCHEMA.curie('content_url'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.MappingSpecification_content_url, domain=MappingSpecification, range=Optional[str])
+
+slots.MappingSpecification_author = Slot(uri=FAIR_MAPPINGS_SCHEMA.author, name="MappingSpecification_author", curie=FAIR_MAPPINGS_SCHEMA.curie('author'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.MappingSpecification_author, domain=MappingSpecification, range=Optional[Union[dict, Agent]])
+
+slots.MappingSpecification_creator = Slot(uri=FAIR_MAPPINGS_SCHEMA.creator, name="MappingSpecification_creator", curie=FAIR_MAPPINGS_SCHEMA.curie('creator'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.MappingSpecification_creator, domain=MappingSpecification, range=Optional[Union[dict, Agent]])
+
+slots.MappingSpecification_reviewer = Slot(uri=FAIR_MAPPINGS_SCHEMA.reviewer, name="MappingSpecification_reviewer", curie=FAIR_MAPPINGS_SCHEMA.curie('reviewer'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.MappingSpecification_reviewer, domain=MappingSpecification, range=Optional[Union[dict, Agent]])
+
+slots.MappingSpecification_subject_source = Slot(uri=FAIR_MAPPINGS_SCHEMA.subject_source, name="MappingSpecification_subject_source", curie=FAIR_MAPPINGS_SCHEMA.curie('subject_source'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.MappingSpecification_subject_source, domain=MappingSpecification, range=Optional[Union[dict, Source]])
+
+slots.MappingSpecification_object_source = Slot(uri=FAIR_MAPPINGS_SCHEMA.object_source, name="MappingSpecification_object_source", curie=FAIR_MAPPINGS_SCHEMA.curie('object_source'),
+                   model_uri=FAIR_MAPPINGS_SCHEMA.MappingSpecification_object_source, domain=MappingSpecification, range=Optional[Union[dict, Source]])
