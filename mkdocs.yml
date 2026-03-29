@@ -27,6 +27,7 @@ watch:
 nav:
   - Home: index.md
   - Schema: elements/index.md
+  - FAIR Scoring: scoring.md
   - About: about.md
 
 exclude_docs: |
