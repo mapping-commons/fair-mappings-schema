@@ -3,7 +3,7 @@ requires = ["hatchling", "uv-dynamic-versioning"]
 build-backend = "hatchling.build"
 
 [project]
-name = "fair_mappings_schema"
+name = "fair-mappings"
 description = "A basic metadata schema for FAIR mapping specifications"
 authors = [
   {name = "Nicolas Matentzoglu", email = "nicolas.matentzoglu@gmail.com"},
@@ -15,9 +15,16 @@ requires-python = ">=3.9,<4.0"
 dynamic = ["version"]
 
 dependencies = [
+  "click>=8.0",
   "linkml>=1.9.4",
+  "linkml-map>=0.4.0",
   "linkml-runtime >=1.9.4",
+  "sssom>=0.4.16",
+  "sssom-schema>=1.0.0",
 ]
+
+[project.scripts]
+fair-mappings = "fair_mappings_schema.cli:cli"
 
 [dependency-groups]
 dev = [
@@ -30,6 +37,8 @@ dev = [
 
 # See https://hatch.pypa.io/latest/config/build/#file-selection for how to
 # explicitly include files other than default into the build distributions.
+[tool.hatch.build.targets.wheel]
+packages = ["src/fair_mappings_schema"]
 
 [tool.hatch.version]
 source = "uv-dynamic-versioning"
@@ -71,3 +80,6 @@ extend-exclude = [
   "src/fair_mappings_schema/datamodel/fair_mappings_schema_pydantic.py",
   "src/fair_mappings_schema/datamodel/fair_mappings_schema.py",
 ]
+
+[tool.uv.sources]
+linkml-map = { git = "https://github.com/linkml/linkml-map.git", rev = "main" }
