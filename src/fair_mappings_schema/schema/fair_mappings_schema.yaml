@@ -55,6 +55,8 @@ enums:
         description: XSLT-based mapping
       shacl:
         description: SHACL-based mapping
+      linkml_map:
+        description: LinkML-Map transformation specification
       other:
         description: Other type of mapping specification
 
@@ -71,6 +73,14 @@ classes:
       type:
         designates_type: true
         range: string
+        annotations:
+          fair_weight: 3
+      id:
+        annotations:
+          fair_weight: 5
+      name:
+        annotations:
+          fair_weight: 4
 
   Person:
     description: An individual person who contributes to a mapping specification
@@ -78,6 +88,13 @@ classes:
     slots:
       - orcid
       - affiliation
+    slot_usage:
+      orcid:
+        annotations:
+          fair_weight: 4
+      affiliation:
+        annotations:
+          fair_weight: 3
 
   Organization:
     description: An organization or institution that contributes to a mapping specification
@@ -85,6 +102,13 @@ classes:
     slots:
       - ror_id
       - url
+    slot_usage:
+      ror_id:
+        annotations:
+          fair_weight: 4
+      url:
+        annotations:
+          fair_weight: 3
 
   Software:
     description: A software tool or system used in creating mappings
@@ -92,7 +116,14 @@ classes:
     slots:
       - version
       - repository_url
-  
+    slot_usage:
+      version:
+        annotations:
+          fair_weight: 4
+      repository_url:
+        annotations:
+          fair_weight: 4
+
   Source:
     description: >-
       A data source from which entities are drawn, such as a database, ontology, or vocabulary.
@@ -109,7 +140,33 @@ classes:
     slot_usage:
       type:
         range: SourceTypeEnum
-  
+        annotations:
+          fair_weight: 3
+      id:
+        annotations:
+          fair_weight: 5
+      name:
+        annotations:
+          fair_weight: 4
+      version:
+        annotations:
+          fair_weight: 4
+      documentation:
+        annotations:
+          fair_weight: 2
+      content_url:
+        annotations:
+          fair_weight: 5
+      content_type:
+        annotations:
+          fair_weight: 3
+      metadata_url:
+        annotations:
+          fair_weight: 3
+      metadata_type:
+        annotations:
+          fair_weight: 2
+
   MappingSpecification:
     description: >-
       A formal description of correspondences between entities in a source and a target, expressed as rules, functions, or mapping statements.
@@ -133,7 +190,55 @@ classes:
     slot_usage:
       type:
         range: MappingSpecificationTypeEnum
-
+        annotations:
+          fair_weight: 4
+      id:
+        annotations:
+          fair_weight: 5
+      name:
+        annotations:
+          fair_weight: 3
+      description:
+        annotations:
+          fair_weight: 2
+      publication_date:
+        annotations:
+          fair_weight: 3
+      license:
+        annotations:
+          fair_weight: 5
+      version:
+        annotations:
+          fair_weight: 4
+      mapping_method:
+        annotations:
+          fair_weight: 3
+      documentation:
+        annotations:
+          fair_weight: 3
+      content_url:
+        annotations:
+          fair_weight: 5
+      author:
+        annotations:
+          fair_weight: 4
+          fair_weight_aggregation_function: "(id*5 + name*4 + type*3) / 12"
+      creator:
+        annotations:
+          fair_weight: 4
+          fair_weight_aggregation_function: "(id*5 + name*4 + type*3) / 12"
+      reviewer:
+        annotations:
+          fair_weight: 3
+          fair_weight_aggregation_function: "(id*5 + name*4 + type*3) / 12"
+      subject_source:
+        annotations:
+          fair_weight: 5
+          fair_weight_aggregation_function: "(id*5 + name*4 + version*4 + type*3 + documentation*2 + content_url*5 + content_type*3 + metadata_url*3 + metadata_type*2) / 31"
+      object_source:
+        annotations:
+          fair_weight: 5
+          fair_weight_aggregation_function: "(id*5 + name*4 + version*4 + type*3 + documentation*2 + content_url*5 + content_type*3 + metadata_url*3 + metadata_type*2) / 31"
 slots:
   id:
     description: Identifier for the information entity
