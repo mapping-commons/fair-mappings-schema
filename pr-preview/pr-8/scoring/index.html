@@ -1,0 +1,1044 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://mapping-commons.github.io/fair-mappings-schema/scoring/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../about/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>FAIR Scoring - fair-mappings-schema</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2a3383ac.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fair-scoring" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="fair-mappings-schema" class="md-header__button md-logo" aria-label="fair-mappings-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            fair-mappings-schema
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              FAIR Scoring
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mapping-commons/fair-mappings-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="fair-mappings-schema" class="md-nav__button md-logo" aria-label="fair-mappings-schema" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    fair-mappings-schema
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mapping-commons/fair-mappings-schema" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../elements/index.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Schema
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    FAIR Scoring
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAIR Scoring
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-basic-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      The basic idea
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simple-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple fields
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complex-fields-nested-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complex fields (nested objects)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complex fields (nested objects)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-the-author-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: the author field
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-the-subject_source-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: the subject_source field
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-weight-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full weight table
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Full weight table">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mappingspecification-top-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      MappingSpecification (top-level)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent-sub-fields-used-by-author-creator-reviewer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agent sub-fields (used by author, creator, reviewer)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-sub-fields-used-by-subject_source-object_source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source sub-fields (used by subject_source, object_source)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the CLI
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-basic-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      The basic idea
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simple-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple fields
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complex-fields-nested-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complex fields (nested objects)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complex fields (nested objects)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-the-author-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: the author field
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-the-subject_source-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: the subject_source field
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-weight-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full weight table
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Full weight table">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mappingspecification-top-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      MappingSpecification (top-level)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent-sub-fields-used-by-author-creator-reviewer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agent sub-fields (used by author, creator, reviewer)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#source-sub-fields-used-by-subject_source-object_source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source sub-fields (used by subject_source, object_source)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worked example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the CLI
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="fair-scoring">FAIR Scoring</h1>
+<p>The FAIR Mappings Schema includes a built-in scoring system that measures how completely a mapping specification describes itself. The more metadata you provide, the higher your score.</p>
+<h2 id="the-basic-idea">The basic idea</h2>
+<p>Every field (slot) in a <code>MappingSpecification</code> has a <strong>weight</strong> from 0 to 5 that reflects how important it is for FAIRness. If you fill in a field, you earn its weight. If you leave it empty, you earn nothing. Your final FAIR score is the percentage of total possible points you actually earned.</p>
+<pre><code>FAIR score = total points earned / total points possible
+</code></pre>
+<p>A score of 1.0 means you filled in everything. A score of 0.0 means the specification is empty.</p>
+<h2 id="simple-fields">Simple fields</h2>
+<p>Most fields are straightforward: they are either present or absent. For example:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Weight</th>
+<th>You filled it in?</th>
+<th>Points earned</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>5</td>
+<td>Yes</td>
+<td>5</td>
+</tr>
+<tr>
+<td>license</td>
+<td>5</td>
+<td>Yes</td>
+<td>5</td>
+</tr>
+<tr>
+<td>version</td>
+<td>4</td>
+<td>No</td>
+<td>0</td>
+</tr>
+<tr>
+<td>description</td>
+<td>3</td>
+<td>Yes</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>In this example you earned 13 out of 17 possible points from these four fields.</p>
+<h2 id="complex-fields-nested-objects">Complex fields (nested objects)</h2>
+<p>Some fields like <code>author</code>, <code>creator</code>, <code>subject_source</code>, and <code>object_source</code> are not simple text values -- they are nested objects with their own sub-fields. For these, you don't just get full credit for filling them in. Instead, the score depends on <strong>how completely</strong> you filled in the nested object.</p>
+<p>This is controlled by an <strong>aggregation function</strong> -- a formula that calculates a completeness ratio (0 to 1) based on which sub-fields are present.</p>
+<h3 id="example-the-author-field">Example: the <code>author</code> field</h3>
+<p>The <code>author</code> field has weight <strong>3</strong> and the aggregation function:</p>
+<pre><code>(id*5 + name*1 + type*2) / 8
+</code></pre>
+<p>This means the <code>author</code> object has three sub-fields (<code>id</code>, <code>name</code>, <code>type</code>), each with their own importance weight. The formula works like this:</p>
+<ol>
+<li>For each sub-field, substitute <strong>1</strong> if present, <strong>0</strong> if absent</li>
+<li>Evaluate the formula to get a completeness ratio (0 to 1)</li>
+<li>Multiply the completeness ratio by the field's weight to get points earned</li>
+</ol>
+<p><strong>Scenario</strong>: You provide an author with an <code>id</code> and a <code>name</code>, but no <code>type</code>:</p>
+<pre><code>completeness = (1*5 + 1*1 + 0*2) / 8 = 6/8 = 0.75
+points earned = 3 (author weight) x 0.75 = 2.25
+</code></pre>
+<p>If you had filled in all three sub-fields:</p>
+<pre><code>completeness = (1*5 + 1*1 + 1*2) / 8 = 8/8 = 1.0
+points earned = 3 x 1.0 = 3.0
+</code></pre>
+<h3 id="example-the-subject_source-field">Example: the <code>subject_source</code> field</h3>
+<p>The <code>subject_source</code> field has weight <strong>5</strong> and the aggregation function:</p>
+<pre><code>(id*5 + name*2 + version*4 + type*2 + documentation*1 + content_url*0
+ + content_type*0 + metadata_url*0 + metadata_type*0) / 14
+</code></pre>
+<p>Notice that some sub-fields like <code>content_url</code> and <code>metadata_url</code> have weight 0 -- they don't affect the score at all. The most important sub-fields are <code>id</code> (5) and <code>version</code> (4).</p>
+<p><strong>Scenario</strong>: You provide a source with <code>id</code>, <code>name</code>, and <code>version</code>:</p>
+<pre><code>completeness = (1*5 + 1*2 + 1*4 + 0*2 + 0*1 + 0*0 + 0*0 + 0*0 + 0*0) / 14
+             = 11/14 = 0.786
+points earned = 5 x 0.786 = 3.93
+</code></pre>
+<h2 id="full-weight-table">Full weight table</h2>
+<h3 id="mappingspecification-top-level">MappingSpecification (top-level)</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Weight</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>5</td>
+<td>simple</td>
+</tr>
+<tr>
+<td>license</td>
+<td>5</td>
+<td>simple</td>
+</tr>
+<tr>
+<td>subject_source</td>
+<td>5</td>
+<td>complex (Source)</td>
+</tr>
+<tr>
+<td>object_source</td>
+<td>5</td>
+<td>complex (Source)</td>
+</tr>
+<tr>
+<td>version</td>
+<td>4</td>
+<td>simple</td>
+</tr>
+<tr>
+<td>creator</td>
+<td>4</td>
+<td>complex (Agent)</td>
+</tr>
+<tr>
+<td>description</td>
+<td>3</td>
+<td>simple</td>
+</tr>
+<tr>
+<td>author</td>
+<td>3</td>
+<td>complex (Agent)</td>
+</tr>
+<tr>
+<td>type</td>
+<td>2</td>
+<td>simple</td>
+</tr>
+<tr>
+<td>name</td>
+<td>2</td>
+<td>simple</td>
+</tr>
+<tr>
+<td>publication_date</td>
+<td>2</td>
+<td>simple</td>
+</tr>
+<tr>
+<td>mapping_method</td>
+<td>2</td>
+<td>simple</td>
+</tr>
+<tr>
+<td>documentation</td>
+<td>2</td>
+<td>simple</td>
+</tr>
+<tr>
+<td>content_url</td>
+<td>0</td>
+<td>simple</td>
+</tr>
+<tr>
+<td>reviewer</td>
+<td>0</td>
+<td>complex (Agent)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="agent-sub-fields-used-by-author-creator-reviewer">Agent sub-fields (used by author, creator, reviewer)</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Weight in aggregation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>5</td>
+</tr>
+<tr>
+<td>type</td>
+<td>2</td>
+</tr>
+<tr>
+<td>name</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="source-sub-fields-used-by-subject_source-object_source">Source sub-fields (used by subject_source, object_source)</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Weight in aggregation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>5</td>
+</tr>
+<tr>
+<td>version</td>
+<td>4</td>
+</tr>
+<tr>
+<td>name</td>
+<td>2</td>
+</tr>
+<tr>
+<td>type</td>
+<td>2</td>
+</tr>
+<tr>
+<td>documentation</td>
+<td>1</td>
+</tr>
+<tr>
+<td>content_url</td>
+<td>0</td>
+</tr>
+<tr>
+<td>content_type</td>
+<td>0</td>
+</tr>
+<tr>
+<td>metadata_url</td>
+<td>0</td>
+</tr>
+<tr>
+<td>metadata_type</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="worked-example">Worked example</h2>
+<p>Given this mapping specification:</p>
+<pre><code class="language-yaml">id: &quot;https://example.org/my-mapping&quot;
+license: &quot;CC-BY-4.0&quot;
+version: &quot;1.0&quot;
+type: sssom
+author:
+  id: &quot;https://orcid.org/0000-0001-1234-5678&quot;
+  name: &quot;Jane Doe&quot;
+subject_source:
+  id: &quot;http://purl.obolibrary.org/obo/doid.owl&quot;
+  name: &quot;Disease Ontology&quot;
+  version: &quot;2024-01-01&quot;
+  type: ontology
+</code></pre>
+<p>The scoring works out as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Weight</th>
+<th>Earned</th>
+<th>Calculation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>5</td>
+<td>5.0</td>
+<td>present</td>
+</tr>
+<tr>
+<td>license</td>
+<td>5</td>
+<td>5.0</td>
+<td>present</td>
+</tr>
+<tr>
+<td>version</td>
+<td>4</td>
+<td>4.0</td>
+<td>present</td>
+</tr>
+<tr>
+<td>type</td>
+<td>2</td>
+<td>2.0</td>
+<td>present</td>
+</tr>
+<tr>
+<td>author</td>
+<td>3</td>
+<td>2.25</td>
+<td>(1*5 + 1*1 + 0*2)/8 = 0.75, then 3 x 0.75</td>
+</tr>
+<tr>
+<td>subject_source</td>
+<td>5</td>
+<td>4.64</td>
+<td>(1*5 + 1*2 + 1*4 + 1*2 + 0*1 + ...)/14 = 0.929, then 5 x 0.929</td>
+</tr>
+<tr>
+<td>object_source</td>
+<td>5</td>
+<td>0.0</td>
+<td>absent</td>
+</tr>
+<tr>
+<td>creator</td>
+<td>4</td>
+<td>0.0</td>
+<td>absent</td>
+</tr>
+<tr>
+<td>description</td>
+<td>3</td>
+<td>0.0</td>
+<td>absent</td>
+</tr>
+<tr>
+<td>name</td>
+<td>2</td>
+<td>0.0</td>
+<td>absent</td>
+</tr>
+<tr>
+<td>publication_date</td>
+<td>2</td>
+<td>0.0</td>
+<td>absent</td>
+</tr>
+<tr>
+<td>mapping_method</td>
+<td>2</td>
+<td>0.0</td>
+<td>absent</td>
+</tr>
+<tr>
+<td>documentation</td>
+<td>2</td>
+<td>0.0</td>
+<td>absent</td>
+</tr>
+<tr>
+<td>content_url</td>
+<td>0</td>
+<td>0.0</td>
+<td>absent (weight 0 anyway)</td>
+</tr>
+<tr>
+<td>reviewer</td>
+<td>0</td>
+<td>0.0</td>
+<td>absent (weight 0 anyway)</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>44</strong></td>
+<td><strong>22.89</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code>FAIR score = 22.89 / 44 = 0.52
+</code></pre>
+<p>This specification is about halfway there -- adding an <code>object_source</code>, <code>creator</code>, and <code>description</code> would significantly improve the score.</p>
+<h2 id="using-the-cli">Using the CLI</h2>
+<p>You can score a mapping specification file from the command line:</p>
+<pre><code class="language-bash">fair-mappings score my-mapping.yaml
+</code></pre>
+<p>This prints a detailed breakdown of the score for each field along with the overall FAIR score.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
