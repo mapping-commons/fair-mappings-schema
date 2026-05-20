@@ -59,7 +59,14 @@ def _get_script_data(script_url: str) -> dict[str, Any]:
     res = requests.get(script_url, timeout=5)
     res.raise_for_status()
     dd = extract_script_toml(res.text)
-    return dd.get("tool", {}).get("fair-mappings")
+    if not dd:
+        return {}
+    rv = dd.get("tool", {}).get("fair-mappings")
+    if rv.get("author"):
+        if rv['author']['email']:
+            del rv['author']['email']  # TODO
+        rv['author'] = Person.model_validate(rv['author'])
+    return rv
 
 
 def _get_person(project: dict[str, Any], key: str) -> Person | None:
