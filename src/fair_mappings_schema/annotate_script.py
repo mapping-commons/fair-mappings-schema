@@ -13,7 +13,30 @@
 # name = "FAIR Mappings Schema"
 # ///
 
-"""Extract metadata from Python script."""
+"""Extract metadata from Python script.
+
+Run this script by passing the URL to a script on GitHub like in:
+
+.. code-block:: console
+
+    $ python -m fair_mappings_schema.annotate_script https://github.com/cthoyt/fair-mappings-schema/raw/refs/heads/software-description/src/fair_mappings_schema/annotate_script.py
+    author:
+      name: Charles Tapley Hoyt
+      orcid: 0000-0003-4423-4370
+      type: Person
+    content_url: https://github.com/cthoyt/fair-mappings-schema/raw/refs/heads/software-description/src/fair_mappings_schema/annotate_script.py
+    description: A script that generates metadata describing a Mapping Specification implemented
+      in a Python script. See discussion in https://github.com/mapping-commons/fair-mappings-schema/pull/10.
+    license: Apache-2.0
+    mapping_method: Python script
+    name: Python Metadata to FAIR Mappings Schema
+    object_source:
+      name: FAIR Mappings Schema
+    subject_source:
+      name: Python Metadata
+    type: other
+
+"""
 
 import re
 from typing import Any
@@ -130,7 +153,7 @@ def extract_script_toml(source: str) -> dict[str, Any] | None:
 
 
 DEMO_URLS = [
-    "https://github.com/cthoyt/fair-mappings-schema/raw/refs/heads/software-description/src/fair_mappings_schema/get_packaged_python_script.py",
+    "https://github.com/cthoyt/fair-mappings-schema/raw/refs/heads/software-description/src/fair_mappings_schema/annotate_script.py",
     "https://github.com/data-literacy-alliance/oerbservatory/raw/refs/heads/main/src/oerbservatory/sources/dalia.py",
     "https://github.com/data-literacy-alliance/oerbservatory/raw/refs/heads/main/src/oerbservatory/sources/tess.py",
 ]
