@@ -19,7 +19,7 @@ Run this script by passing the URL to a script on GitHub like in:
 
 .. code-block:: console
 
-    $ python -m fair_mappings_schema.annotate_script https://github.com/cthoyt/fair-mappings-schema/raw/refs/heads/software-description/src/fair_mappings_schema/annotate_script.py
+    $ python -m fair_mappings_schema.annotate_script --url https://github.com/cthoyt/fair-mappings-schema/raw/refs/heads/software-description/src/fair_mappings_schema/annotate_script.py
     author:
       name: Charles Tapley Hoyt
       orcid: 0000-0003-4423-4370
@@ -56,16 +56,30 @@ __all__ = ["get_python_script"]
 
 def get_python_script(script_url: str) -> MappingSpecification:
     """Get a mapping specification from a package."""
-    owner, repo = _get_repository(script_url)
-    pyproject_toml_data = _get_pyproject_toml(owner, repo)
-    project = pyproject_toml_data["project"]
-    urls = pyproject_toml_data.get("urls", {})
-    documentation = urls.get("documentation") or urls.get("Documentation")
-    mapping_specification_dict = dict(
+    data = dict(
         content_url=script_url,
         # TODO add explicit way of saying it's code
         type=MappingSpecificationTypeEnum.other,
         mapping_method="Python script",
+    )
+    data.update(_get_package_data(script_url))
+    data.update(_get_script_data(script_url))
+    return MappingSpecification.model_validate(data)
+
+
+def _get_package_data(script_url: str, branch: str = "main") -> dict[str, Any]:
+    owner, repo = _get_repository(script_url)
+    pyproject_toml_url = (
+        f"https://github.com/{owner}/{repo}/raw/refs/heads/{branch}/pyproject.toml"
+    )
+    pyproject_toml_res = requests.get(pyproject_toml_url, timeout=5)
+    if pyproject_toml_res.status_code != 200:
+        return {}  # there's no package data
+    pyproject_toml_data = tomllib.loads(pyproject_toml_res.text)
+    project = pyproject_toml_data["project"]
+    urls = pyproject_toml_data.get("urls", {})
+    documentation = urls.get("documentation") or urls.get("Documentation")
+    return dict(
         name=project["name"],
         version=project.get("version"),
         description=project.get("description"),
@@ -73,8 +87,6 @@ def get_python_script(script_url: str) -> MappingSpecification:
         author=_get_person(project, "authors"),
         documentation=documentation,
     )
-    mapping_specification_dict.update(_get_script_data(script_url))
-    return MappingSpecification.model_validate(mapping_specification_dict)
 
 
 def _get_script_data(script_url: str) -> dict[str, Any]:
@@ -107,13 +119,6 @@ def _get_person(project: dict[str, Any], key: str) -> Person | None:
     return Person(name=name, orcid=orcid)
 
 
-def _get_pyproject_toml(owner: str, repo: str, branch: str = "main"):
-    url = f"https://github.com/{owner}/{repo}/raw/refs/heads/{branch}/pyproject.toml"
-    res = requests.get(url, timeout=5)
-    data = tomllib.loads(res.text)
-    return data
-
-
 def _get_repository(url: str) -> tuple[str, str]:
     """Get a mapping specification from a package."""
     if url.startswith("https://github.com/"):
@@ -128,18 +133,17 @@ def _get_repository(url: str) -> tuple[str, str]:
     return owner, repo
 
 
+TOML_PATTERN = re.compile(
+    r"^#\s/// script\s*\n"  # opening marker
+    r"((?:#[^\n]*\n)*?)"  # captured comment lines
+    r"#\s///\s*$",  # closing marker
+    re.MULTILINE,
+)
+
+
 def extract_script_toml(source: str) -> dict[str, Any] | None:
-    """
-    Extract the raw TOML string from a `# /// script` ... `# ///` block.
-    Returns the TOML text, or None if no such block is found.
-    """
-    pattern = re.compile(
-        r"^#\s/// script\s*\n"  # opening marker
-        r"((?:#[^\n]*\n)*?)"  # captured comment lines
-        r"#\s///\s*$",  # closing marker
-        re.MULTILINE,
-    )
-    match = pattern.search(source)
+    """Extract the raw TOML string from a `# /// script` ... `# ///` block."""
+    match = TOML_PATTERN.search(source)
     if not match:
         return None
 
@@ -159,25 +163,24 @@ DEMO_URLS = [
 ]
 
 
-def normalize_github_url(url: str) -> str:
-    """Clean a URL.
-
-    :param url:
-    :return: A URL with
-
-    >>> normalize_github_url("https://github.com/data-literacy-alliance/oerbservatory/blob/main/src/oerbservatory/sources/dalia.py")
-    'https://github.com/data-literacy-alliance/oerbservatory/raw/refs/heads/main/src/oerbservatory/sources/dalia.py'
-    """
+def fix_github_url(url: str) -> str:
+    """Ensure that a GitHub URL is downloadable."""
     return url.replace("/blob/", "/raw/refs/heads/")
 
 
 @click.command()
-@click.argument("url")
-def main(url: str) -> None:
+@click.option("--url", help="URL to a script on GitHub")
+def main(url: str | None) -> None:
     """Get mapping specification YAML from a URL to a packaged Python script on GitHub."""
-    url = normalize_github_url(url)
-    model = get_python_script(url)
-    click.echo(model_dump_yaml(model, exclude_none=True))
+    if url is not None:
+        url = fix_github_url(url)
+        model = get_python_script(url)
+        click.echo(model_dump_yaml(model, exclude_none=True))
+    else:
+        click.secho("Demo Mode, since no --url given", fg="green")
+        for url in DEMO_URLS:
+            model = get_python_script(url)
+            click.echo(model_dump_yaml(model, exclude_none=True))
 
 
 if __name__ == "__main__":
