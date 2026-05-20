@@ -3,7 +3,10 @@
 # name = "Python Metadata to FAIR Mappings Schema"
 # description = """A script that generates metadata describing a Mapping Specification implemented \
 # in a Python script. See discussion in https://github.com/mapping-commons/fair-mappings-schema/pull/10."""
-# author = { "name": "Charles Tapley Hoyt", "orcid": "0000-0003-4423-4370", "email": "cthoyt@gmail.com" }
+# [tool.fair-mappings.author]
+# name = "Charles Tapley Hoyt"
+# orcid = "0000-0003-4423-4370"
+# email = "cthoyt@gmail.com"
 # [tool.fair-mappings.subject_source]
 # name = "Python Metadata"
 # [tool.fair-mappings.object_source]
@@ -41,7 +44,7 @@ def get_python_script(script_url: str) -> MappingSpecification:
         type=MappingSpecificationTypeEnum.other,
         mapping_method="Python script",
         name=project["name"],
-        version=project["version"],
+        version=project.get("version"),
         description=project.get("description"),
         license=project.get("license"),
         author=_get_person(project, "authors"),
