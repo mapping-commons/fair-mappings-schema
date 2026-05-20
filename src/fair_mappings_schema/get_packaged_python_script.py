@@ -1,3 +1,15 @@
+# /// script
+# [tool.fair-mappings]
+# name = "Python Metadata to FAIR Mappings Schema"
+# description = """A script that generates metadata describing a Mapping Specification implemented \
+# in a Python script. See discussion in https://github.com/mapping-commons/fair-mappings-schema/pull/10."""
+# author = { "name": "Charles Tapley Hoyt", "orcid": "0000-0003-4423-4370", "email": "cthoyt@gmail.com" }
+# [tool.fair-mappings.subject_source]
+# name = "Python Metadata"
+# [tool.fair-mappings.object_source]
+# name = "FAIR Mappings Schema"
+# ///
+
 """Extract metadata from Python script."""
 
 import re
@@ -110,6 +122,7 @@ def extract_script_toml(source: str) -> dict[str, Any] | None:
 def _main():
     # TODO make function that fixes URL to be raw
     urls = [
+        "https://github.com/cthoyt/fair-mappings-schema/raw/refs/heads/software-description/src/fair_mappings_schema/get_packaged_python_script.py",
         "https://github.com/data-literacy-alliance/oerbservatory/raw/refs/heads/main/src/oerbservatory/sources/dalia.py",
         "https://github.com/data-literacy-alliance/oerbservatory/raw/refs/heads/main/src/oerbservatory/sources/tess.py",
     ]
