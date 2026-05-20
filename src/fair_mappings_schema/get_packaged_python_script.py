@@ -63,9 +63,9 @@ def _get_script_data(script_url: str) -> dict[str, Any]:
         return {}
     rv = dd.get("tool", {}).get("fair-mappings")
     if rv.get("author"):
-        if rv['author']['email']:
-            del rv['author']['email']  # TODO
-        rv['author'] = Person.model_validate(rv['author'])
+        if rv["author"]["email"]:
+            del rv["author"]["email"]  # TODO
+        rv["author"] = Person.model_validate(rv["author"])
     return rv
 
 
@@ -129,17 +129,33 @@ def extract_script_toml(source: str) -> dict[str, Any] | None:
     return tomllib.loads("\n".join(toml_lines))
 
 
-def _main():
-    # TODO make function that fixes URL to be raw
-    urls = [
-        "https://github.com/cthoyt/fair-mappings-schema/raw/refs/heads/software-description/src/fair_mappings_schema/get_packaged_python_script.py",
-        "https://github.com/data-literacy-alliance/oerbservatory/raw/refs/heads/main/src/oerbservatory/sources/dalia.py",
-        "https://github.com/data-literacy-alliance/oerbservatory/raw/refs/heads/main/src/oerbservatory/sources/tess.py",
-    ]
-    for url in urls:
-        model = get_python_script(url)
-        click.echo(model_dump_yaml(model, exclude_none=True, exclude={"author.type"}) + "\n")
+DEMO_URLS = [
+    "https://github.com/cthoyt/fair-mappings-schema/raw/refs/heads/software-description/src/fair_mappings_schema/get_packaged_python_script.py",
+    "https://github.com/data-literacy-alliance/oerbservatory/raw/refs/heads/main/src/oerbservatory/sources/dalia.py",
+    "https://github.com/data-literacy-alliance/oerbservatory/raw/refs/heads/main/src/oerbservatory/sources/tess.py",
+]
+
+
+def normalize_github_url(url: str) -> str:
+    """Clean a URL.
+
+    :param url:
+    :return: A URL with
+
+    >>> normalize_github_url("https://github.com/data-literacy-alliance/oerbservatory/blob/main/src/oerbservatory/sources/dalia.py")
+    'https://github.com/data-literacy-alliance/oerbservatory/raw/refs/heads/main/src/oerbservatory/sources/dalia.py'
+    """
+    return url.replace("/blob/", "/raw/refs/heads/")
+
+
+@click.command()
+@click.argument("url")
+def main(url: str) -> None:
+    """Get mapping specification YAML from a URL to a packaged Python script on GitHub."""
+    url = normalize_github_url(url)
+    model = get_python_script(url)
+    click.echo(model_dump_yaml(model, exclude_none=True))
 
 
 if __name__ == "__main__":
-    _main()
+    main()
