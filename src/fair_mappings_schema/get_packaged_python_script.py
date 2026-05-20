@@ -19,11 +19,11 @@ __all__ = ["get_python_script"]
 def get_python_script(script_url: str) -> MappingSpecification:
     """Get a mapping specification from a package."""
     owner, repo = _get_repository(script_url)
-    data = _get_pyproject_toml(owner, repo)
-    project = data["project"]
-    urls = data.get("urls", {})
+    pyproject_toml_data = _get_pyproject_toml(owner, repo)
+    project = pyproject_toml_data["project"]
+    urls = pyproject_toml_data.get("urls", {})
     documentation = urls.get("documentation") or urls.get("Documentation")
-    xxx = dict(
+    mapping_specification_dict = dict(
         content_url=script_url,
         # TODO add explicit way of saying it's code
         type=MappingSpecificationTypeEnum.other,
@@ -35,8 +35,8 @@ def get_python_script(script_url: str) -> MappingSpecification:
         author=_get_person(project, "authors"),
         documentation=documentation,
     )
-    xxx.update(_get_script_data(script_url))
-    return MappingSpecification.model_validate(xxx)
+    mapping_specification_dict.update(_get_script_data(script_url))
+    return MappingSpecification.model_validate(mapping_specification_dict)
 
 
 def _get_script_data(script_url: str) -> dict[str, Any]:
@@ -109,9 +109,13 @@ def extract_script_toml(source: str) -> dict[str, Any] | None:
 
 def _main():
     # TODO make function that fixes URL to be raw
-    better_url = "https://github.com/data-literacy-alliance/oerbservatory/raw/refs/heads/main/src/oerbservatory/sources/dalia.py"
-    model = get_python_script(better_url)
-    click.echo(model_dump_yaml(model, exclude_none=True, exclude={"author.type"}))
+    urls = [
+        "https://github.com/data-literacy-alliance/oerbservatory/raw/refs/heads/main/src/oerbservatory/sources/dalia.py",
+        "https://github.com/data-literacy-alliance/oerbservatory/raw/refs/heads/main/src/oerbservatory/sources/tess.py",
+    ]
+    for url in urls:
+        model = get_python_script(url)
+        click.echo(model_dump_yaml(model, exclude_none=True, exclude={"author.type"}) + "\n")
 
 
 if __name__ == "__main__":
