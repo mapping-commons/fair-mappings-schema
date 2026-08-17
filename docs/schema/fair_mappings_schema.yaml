@@ -389,7 +389,9 @@ slots:
     domain_of:
     - MappingSpecification
     range: Agent
+    multivalued: true
     inlined: true
+    inlined_as_list: true
   author:
     name: author
     definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/author
@@ -400,7 +402,9 @@ slots:
     domain_of:
     - MappingSpecification
     range: Agent
+    multivalued: true
     inlined: true
+    inlined_as_list: true
   reviewer:
     name: reviewer
     definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/reviewer
@@ -411,7 +415,9 @@ slots:
     domain_of:
     - MappingSpecification
     range: Agent
+    multivalued: true
     inlined: true
+    inlined_as_list: true
   mapping_tool:
     name: mapping_tool
     definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/mapping_tool
@@ -420,6 +426,7 @@ slots:
     slot_uri: fair_mappings_schema:mapping_tool
     range: Agent
     inlined: true
+    inlined_as_list: true
   publication_date:
     name: publication_date
     definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/publication_date
@@ -547,6 +554,7 @@ slots:
     - MappingSpecification
     range: Source
     inlined: true
+    inlined_as_list: true
   object_source:
     name: object_source
     definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/object_source
@@ -558,6 +566,7 @@ slots:
     - MappingSpecification
     range: Source
     inlined: true
+    inlined_as_list: true
   orcid:
     name: orcid
     definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/orcid
@@ -762,7 +771,7 @@ classes:
     tree_root: true
 metamodel_version: 1.7.0
 source_file: fair_mappings_schema.yaml
-source_file_date: '2025-12-17T23:38:28'
-source_file_size: 5795
-generation_date: '2025-12-17T23:47:36'
+source_file_date: '2026-08-17T09:27:26'
+source_file_size: 5939
+generation_date: '2026-08-17T09:29:39'
 

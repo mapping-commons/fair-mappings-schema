@@ -144,15 +144,21 @@ slots:
   creator:
     description: Creator of the mapping specification
     range: Agent
+    multivalued: true
     inlined: true
+    inlined_as_list: true
   author:
     description: Author of the mapping specification
     range: Agent
+    multivalued: true
     inlined: true
+    inlined_as_list: true
   reviewer:
     description: Reviewer of the mapping specification
     range: Agent
+    multivalued: true
     inlined: true
+    inlined_as_list: true
   mapping_tool:
     description: The tool used to create the mapping specification
     range: Agent
