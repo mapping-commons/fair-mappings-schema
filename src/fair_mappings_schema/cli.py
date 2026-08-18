@@ -1,4 +1,4 @@
-"""CLI for fair-mappings: parse, validate, and score mapping specifications."""
+"""CLI for fair-mappings: parse and validate mapping specifications."""
 
 from __future__ import annotations
 
@@ -9,8 +9,7 @@ import click
 import yaml
 
 from fair_mappings_schema.parsing import load_mapping
-from fair_mappings_schema.schema import get_mapping_type_choices, get_schema_view
-from fair_mappings_schema.scoring import score_instance
+from fair_mappings_schema.schema import get_mapping_type_choices
 from fair_mappings_schema.validation import validate_instance
 
 # ---------------------------------------------------------------------------
@@ -48,62 +47,13 @@ class MappingTypeChoice(click.ParamType):
 MAPPING_TYPE = MappingTypeChoice()
 
 # ---------------------------------------------------------------------------
-# Report formatting
-# ---------------------------------------------------------------------------
-
-
-def _print_score_report(results: dict, input_path: str) -> None:
-    click.echo(f"\n{'=' * 70}")
-    click.echo(f"  FAIR Score Report: {input_path}")
-    click.echo(f"{'=' * 70}\n")
-
-    click.echo("ATOMIC SLOTS:")
-    click.echo(f"  {'Slot':<25} {'Weight':>6} {'Present':>8} {'Earned':>7}")
-    click.echo(f"  {'-' * 25} {'-' * 6} {'-' * 8} {'-' * 7}")
-    for s in results["slots"]:
-        if s["type"] != "atomic":
-            continue
-        mark = "YES" if s["present"] else "---"
-        click.echo(
-            f"  {s['slot']:<25} {s['weight']:>6.0f} {mark:>8} {s['earned']:>7.1f}",
-        )
-
-    click.echo("\nCOMPLEX SLOTS:")
-    for s in results["slots"]:
-        if s["type"] != "complex":
-            continue
-        click.echo(
-            f"\n  {s['slot']} "
-            f"(weight={s['weight']:.0f}, completeness={s['completeness']:.2f}, "
-            f"earned={s['earned']:.2f})",
-        )
-        click.echo(f"    Formula: {s['formula']}")
-        click.echo(f"    {'Sub-slot':<23} {'Weight':>6} {'Present':>8}")
-        click.echo(f"    {'-' * 23} {'-' * 6} {'-' * 8}")
-        for ss in s["sub_slots"]:
-            mark = "YES" if ss["present"] else "---"
-            click.echo(f"    {ss['slot']:<23} {ss['weight']:>6.0f} {mark:>8}")
-
-    click.echo(f"\n{'=' * 70}")
-    click.echo(
-        f"  EARNED:     {results['total_earned']:.2f} / "
-        f"{results['total_possible']:.0f}",
-    )
-    click.echo(
-        f"  FAIR SCORE: {results['fair_score']:.4f}  "
-        f"({results['fair_score'] * 100:.1f}%)",
-    )
-    click.echo(f"{'=' * 70}\n")
-
-
-# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
 @click.group()
 @click.version_option(package_name="fair-mappings")
 def cli():
-    """FAIR Mappings Schema tools: parse, validate, and score mapping specifications."""
+    """FAIR Mappings Schema tools: parse and validate mapping specifications."""
 
 
 @cli.command()
@@ -156,24 +106,6 @@ def validate(input_file: str, mapping_type: str | None, schema_path: str | None,
             click.echo(e, err=True)
         sys.exit(1)
     click.echo(f"OK: {input_file} is valid.")
-
-
-@cli.command()
-@click.argument("input_file", type=click.Path(exists=True))
-@click.option(
-    "-I", "--mapping-type", type=MAPPING_TYPE, default=None,
-    help="Input mapping type. If set, transforms before scoring.",
-)
-@click.option(
-    "--schema", "schema_path", default=None, type=click.Path(exists=True),
-    help="Path to FAIR Mappings schema YAML (default: bundled).",
-)
-def score(input_file: str, mapping_type: str | None, schema_path: str | None):
-    """Score the FAIRness of a MappingSpecification instance (0-1)."""
-    data = load_mapping(input_file, mapping_type)
-    sv = get_schema_view(schema_path)
-    results = score_instance(data, sv=sv)
-    _print_score_report(results, input_file)
 
 
 if __name__ == "__main__":

@@ -18,9 +18,6 @@ class TestPublicAPI:
     def test_parse_sssom_tsv(self):
         assert callable(fair_mappings_schema.parse_sssom_tsv)
 
-    def test_score_instance(self):
-        assert callable(fair_mappings_schema.score_instance)
-
     def test_transform_to_fair(self):
         assert callable(fair_mappings_schema.transform_to_fair)
 
@@ -33,7 +30,7 @@ class TestPublicAPI:
 
 
 class TestIntegration:
-    """End-to-end: transform → validate → score via library API."""
+    """End-to-end: transform → validate via library API."""
 
     def test_linkml_map_pipeline(self):
         data = fair_mappings_schema.transform_to_fair(
@@ -43,7 +40,3 @@ class TestIntegration:
         )
         errors = fair_mappings_schema.validate_instance(data)
         assert errors == []
-
-        results = fair_mappings_schema.score_instance(data)
-        assert 0.0 < results["fair_score"] <= 1.0
-        assert results["total_possible"] > 0

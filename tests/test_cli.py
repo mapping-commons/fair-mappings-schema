@@ -29,7 +29,6 @@ class TestCLIHelp:
         assert result.exit_code == 0
         assert "parse" in result.output
         assert "validate" in result.output
-        assert "score" in result.output
 
     def test_version(self):
         result = runner.invoke(cli, ["--version"])
@@ -63,37 +62,6 @@ class TestValidateCommand:
         result = runner.invoke(cli, ["validate", "-I", "linkml_map", str(p)])
         assert result.exit_code == 0
         assert "OK" in result.output
-
-
-class TestScoreCommand:
-    def test_score_valid_file(self):
-        f = str(DATA_DIR_VALID / "MappingSpecification-001.yaml")
-        result = runner.invoke(cli, ["score", f])
-        assert result.exit_code == 0
-        assert "FAIR SCORE" in result.output
-        assert "ATOMIC SLOTS" in result.output
-        assert "COMPLEX SLOTS" in result.output
-
-    def test_score_empty_instance(self, tmp_path):
-        p = tmp_path / "empty.yaml"
-        p.write_text("---\n{}\n")
-        result = runner.invoke(cli, ["score", str(p)])
-        assert result.exit_code == 0
-        assert "0.0000" in result.output
-
-    def test_score_with_mapping_type(self, tmp_path):
-        spec = {
-            "id": "https://example.org/t",
-            "title": "T",
-            "description": "Desc",
-            "source_schema": "s.yaml",
-            "target_schema": "t.yaml",
-        }
-        p = tmp_path / "spec.yaml"
-        p.write_text(yaml.dump(spec))
-        result = runner.invoke(cli, ["score", "-I", "linkml_map", str(p)])
-        assert result.exit_code == 0
-        assert "FAIR SCORE" in result.output
 
 
 class TestParseCommand:
@@ -150,9 +118,9 @@ class TestParseCommand:
 
 
 class TestRoundTrip:
-    """Parse → validate → score round-trip."""
+    """Parse → validate round-trip."""
 
-    def test_parse_then_validate_and_score(self, tmp_path):
+    def test_parse_then_validate(self, tmp_path):
         spec = {
             "id": "https://example.org/rt",
             "title": "Round Trip",
@@ -172,8 +140,3 @@ class TestRoundTrip:
         r = runner.invoke(cli, ["validate", str(out)])
         assert r.exit_code == 0
         assert "OK" in r.output
-
-        # Score parsed output (no -I needed)
-        r = runner.invoke(cli, ["score", str(out)])
-        assert r.exit_code == 0
-        assert "FAIR SCORE" in r.output

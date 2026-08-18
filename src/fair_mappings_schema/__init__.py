@@ -6,14 +6,12 @@ except ImportError:  # pragma: no cover
 
 from fair_mappings_schema.parsing import load_mapping, parse_sssom_tsv, transform_to_fair
 from fair_mappings_schema.schema import get_schema_path, get_schema_view
-from fair_mappings_schema.scoring import score_instance
 
 __all__ = [
     "get_schema_path",
     "get_schema_view",
     "load_mapping",
     "parse_sssom_tsv",
-    "score_instance",
     "transform_to_fair",
     "validate_instance",
 ]

@@ -43,27 +43,11 @@ class TestSchemaView:
         sv = get_schema_view(get_schema_path())
         assert sv.get_class("Agent") is not None
 
-    def test_mapping_specification_has_fair_weights(self):
+    def test_mapping_specification_induced_slots(self):
         sv = get_schema_view()
-        slots = sv.class_induced_slots("MappingSpecification")
-        slot_names = {s.name for s in slots}
+        slot_names = {s.name for s in sv.class_induced_slots("MappingSpecification")}
         assert "id" in slot_names
         assert "license" in slot_names
-
-        # All slots should have fair_weight annotation
-        for slot in sv.class_induced_slots("MappingSpecification"):
-            fw = getattr(slot.annotations, "fair_weight", None)
-            assert fw is not None, f"Slot {slot.name} missing fair_weight"
-
-    def test_complex_slots_have_aggregation_formula(self):
-        sv = get_schema_view()
-        complex_slots = ["author", "creator", "reviewer", "subject_source", "object_source"]
-        for slot in sv.class_induced_slots("MappingSpecification"):
-            if slot.name in complex_slots:
-                formula = getattr(slot.annotations, "fair_weight_aggregation_function", None)
-                assert formula is not None, (
-                    f"Complex slot {slot.name} missing fair_weight_aggregation_function"
-                )
 
 
 class TestMappingTypeChoices:
