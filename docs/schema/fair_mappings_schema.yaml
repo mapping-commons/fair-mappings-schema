@@ -35,8 +35,8 @@ types:
     description: A character string
     notes:
     - In RDF serializations, a slot with range of string is treated as a literal or
-      type xsd:string.   If you are authoring schemas in LinkML YAML, the type is
-      referenced with the lower case "string".
+      type xsd:string. If you are authoring schemas in LinkML YAML, the type is referenced
+      with the lower case "string".
     from_schema: https://w3id.org/linkml/types
     imported_from: linkml:types
     exact_mappings:
@@ -351,6 +351,9 @@ enums:
       shacl:
         text: shacl
         description: SHACL-based mapping
+      linkml_map:
+        text: linkml_map
+        description: LinkML-Map transformation specification
       other:
         text: other
         description: Other type of mapping specification
@@ -390,6 +393,7 @@ slots:
     - MappingSpecification
     range: Agent
     inlined: true
+    inlined_as_list: true
   author:
     name: author
     definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/author
@@ -401,6 +405,7 @@ slots:
     - MappingSpecification
     range: Agent
     inlined: true
+    inlined_as_list: true
   reviewer:
     name: reviewer
     definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/reviewer
@@ -412,6 +417,7 @@ slots:
     - MappingSpecification
     range: Agent
     inlined: true
+    inlined_as_list: true
   mapping_tool:
     name: mapping_tool
     definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/mapping_tool
@@ -420,6 +426,7 @@ slots:
     slot_uri: fair_mappings_schema:mapping_tool
     range: Agent
     inlined: true
+    inlined_as_list: true
   publication_date:
     name: publication_date
     definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/publication_date
@@ -547,6 +554,7 @@ slots:
     - MappingSpecification
     range: Source
     inlined: true
+    inlined_as_list: true
   object_source:
     name: object_source
     definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/object_source
@@ -558,6 +566,7 @@ slots:
     - MappingSpecification
     range: Source
     inlined: true
+    inlined_as_list: true
   orcid:
     name: orcid
     definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/orcid
@@ -760,9 +769,9 @@ classes:
         range: MappingSpecificationTypeEnum
     class_uri: fair_mappings_schema:MappingSpecification
     tree_root: true
-metamodel_version: 1.7.0
+metamodel_version: 1.11.0
 source_file: fair_mappings_schema.yaml
-source_file_date: '2025-12-17T23:38:28'
-source_file_size: 5795
-generation_date: '2025-12-17T23:47:36'
+source_file_date: '2026-08-18T09:20:19'
+source_file_size: 5874
+generation_date: '2026-08-20T17:01:53'
 
