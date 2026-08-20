@@ -1,5 +1,5 @@
 # Auto generated from fair_mappings_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-18T09:21:31
+# Generation date: 2026-08-20T17:09:17
 # Schema: fair-mappings-schema
 #
 # id: https://w3id.org/mapping-commons/fair-mappings-schema
@@ -58,7 +58,7 @@ from rdflib import (
 
 from linkml_runtime.linkml_model.types import String
 
-metamodel_version = "1.7.0"
+metamodel_version = "1.11.0"
 version = None
 
 # Namespaces
