@@ -11,13 +11,13 @@ authors = [
 license = "Apache-2.0"
 license-files = ["LICENSE"]
 readme = "README.md"
-requires-python = ">=3.9,<4.0"
+requires-python = ">=3.10,<4.0"
 dynamic = ["version"]
 
 dependencies = [
   "click>=8.0",
   "linkml>=1.9.4",
-  "linkml-map>=0.4.0",
+  "linkml-map>=0.5.3",
   "linkml-runtime >=1.9.4",
   "sssom>=0.4.16",
   "sssom-schema>=1.0.0",
@@ -81,5 +81,3 @@ extend-exclude = [
   "src/fair_mappings_schema/datamodel/fair_mappings_schema.py",
 ]
 
-[tool.uv.sources]
-linkml-map = { git = "https://github.com/linkml/linkml-map.git", rev = "main" }
