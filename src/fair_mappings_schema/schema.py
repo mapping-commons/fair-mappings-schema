@@ -1,5 +1,7 @@
 """Resource paths for bundled and dependency schemas."""
 
+from __future__ import annotations
+
 from importlib import resources
 
 from linkml_runtime.utils.schemaview import SchemaView
