@@ -21,8 +21,10 @@ prefixes:
   sssom: https://w3id.org/sssom/
   fair_mappings_schema: https://w3id.org/mapping-commons/fair-mappings-schema/
 
-source_schema: tmp/sssom-schema.yaml
-target_schema: tmp/fair-mappings-schema.yaml
+source_schema:
+  name: sssom
+target_schema:
+  name: fair-mappings-schema
 
 class_derivations:
 

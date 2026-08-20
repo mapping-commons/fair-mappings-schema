@@ -10,8 +10,10 @@ prefixes:
   linkmlmap: https://w3id.org/linkml/transformer/
   fair_mappings_schema: https://w3id.org/mapping-commons/fair-mappings-schema/
 
-source_schema: tmp/linkml-map-schema.yaml
-target_schema: tmp/fair-mappings-schema.yaml
+source_schema:
+  name: linkml-map
+target_schema:
+  name: fair-mappings-schema
 
 class_derivations:
 
