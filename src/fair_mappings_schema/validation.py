@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from linkml.validators.jsonschemavalidator import JsonSchemaDataValidator
+from linkml.validator import validate
 
 from fair_mappings_schema.schema import get_schema_path
 
@@ -23,9 +23,5 @@ def validate_instance(
         An empty list if valid, or a list of error messages.
     """
     schema = schema_path or get_schema_path()
-    validator = JsonSchemaDataValidator(schema)
-    try:
-        validator.validate_dict(data, target_class=target_class)
-        return []
-    except Exception as e:
-        return str(e).splitlines()
+    report = validate(data, schema, target_class=target_class)
+    return [result.message for result in report.results]
