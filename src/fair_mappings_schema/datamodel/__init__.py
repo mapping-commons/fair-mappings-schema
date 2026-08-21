@@ -1,5 +1,5 @@
 from pathlib import Path
-from .fair_mappings_schema import *
+from .fair_mappings_schema import *  # noqa:F403
 
 THIS_PATH = Path(__file__).parent
 
