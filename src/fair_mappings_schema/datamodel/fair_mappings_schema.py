@@ -1,5 +1,5 @@
 # Auto generated from fair_mappings_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-17T09:29:06
+# Generation date: 2026-08-21T16:19:42
 # Schema: fair-mappings-schema
 #
 # id: https://w3id.org/mapping-commons/fair-mappings-schema
@@ -58,7 +58,7 @@ from rdflib import (
 
 from linkml_runtime.linkml_model.types import String
 
-metamodel_version = "1.7.0"
+metamodel_version = "1.11.0"
 version = None
 
 # Namespaces
@@ -389,6 +389,9 @@ class MappingSpecificationTypeEnum(EnumDefinitionImpl):
     shacl = PermissibleValue(
         text="shacl",
         description="SHACL-based mapping")
+    linkml_map = PermissibleValue(
+        text="linkml_map",
+        description="LinkML-Map transformation specification")
     other = PermissibleValue(
         text="other",
         description="Other type of mapping specification")
