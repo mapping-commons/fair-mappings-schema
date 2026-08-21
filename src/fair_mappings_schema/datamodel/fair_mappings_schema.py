@@ -270,9 +270,9 @@ class MappingSpecification(YAMLRoot):
     id: Optional[str] = None
     name: Optional[str] = None
     description: Optional[str] = None
-    author: Optional[Union[dict, Agent]] = None
-    creator: Optional[Union[dict, Agent]] = None
-    reviewer: Optional[Union[dict, Agent]] = None
+    author: Optional[Union[Union[dict, Agent], list[Union[dict, Agent]]]] = empty_list()
+    creator: Optional[Union[Union[dict, Agent], list[Union[dict, Agent]]]] = empty_list()
+    reviewer: Optional[Union[Union[dict, Agent], list[Union[dict, Agent]]]] = empty_list()
     publication_date: Optional[str] = None
     license: Optional[str] = None
     version: Optional[str] = None
@@ -293,14 +293,17 @@ class MappingSpecification(YAMLRoot):
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
 
-        if self.author is not None and not isinstance(self.author, Agent):
-            self.author = Agent(**as_dict(self.author))
+        if not isinstance(self.author, list):
+            self.author = [self.author] if self.author is not None else []
+        self.author = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.author]
 
-        if self.creator is not None and not isinstance(self.creator, Agent):
-            self.creator = Agent(**as_dict(self.creator))
+        if not isinstance(self.creator, list):
+            self.creator = [self.creator] if self.creator is not None else []
+        self.creator = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.creator]
 
-        if self.reviewer is not None and not isinstance(self.reviewer, Agent):
-            self.reviewer = Agent(**as_dict(self.reviewer))
+        if not isinstance(self.reviewer, list):
+            self.reviewer = [self.reviewer] if self.reviewer is not None else []
+        self.reviewer = [v if isinstance(v, Agent) else Agent(**as_dict(v)) for v in self.reviewer]
 
         if self.publication_date is not None and not isinstance(self.publication_date, str):
             self.publication_date = str(self.publication_date)
@@ -409,13 +412,13 @@ slots.name = Slot(uri=FAIR_MAPPINGS_SCHEMA.name, name="name", curie=FAIR_MAPPING
                    model_uri=FAIR_MAPPINGS_SCHEMA.name, domain=None, range=Optional[str])
 
 slots.creator = Slot(uri=FAIR_MAPPINGS_SCHEMA.creator, name="creator", curie=FAIR_MAPPINGS_SCHEMA.curie('creator'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.creator, domain=None, range=Optional[Union[dict, Agent]])
+                   model_uri=FAIR_MAPPINGS_SCHEMA.creator, domain=None, range=Optional[Union[Union[dict, Agent], list[Union[dict, Agent]]]])
 
 slots.author = Slot(uri=FAIR_MAPPINGS_SCHEMA.author, name="author", curie=FAIR_MAPPINGS_SCHEMA.curie('author'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.author, domain=None, range=Optional[Union[dict, Agent]])
+                   model_uri=FAIR_MAPPINGS_SCHEMA.author, domain=None, range=Optional[Union[Union[dict, Agent], list[Union[dict, Agent]]]])
 
 slots.reviewer = Slot(uri=FAIR_MAPPINGS_SCHEMA.reviewer, name="reviewer", curie=FAIR_MAPPINGS_SCHEMA.curie('reviewer'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.reviewer, domain=None, range=Optional[Union[dict, Agent]])
+                   model_uri=FAIR_MAPPINGS_SCHEMA.reviewer, domain=None, range=Optional[Union[Union[dict, Agent], list[Union[dict, Agent]]]])
 
 slots.mapping_tool = Slot(uri=FAIR_MAPPINGS_SCHEMA.mapping_tool, name="mapping_tool", curie=FAIR_MAPPINGS_SCHEMA.curie('mapping_tool'),
                    model_uri=FAIR_MAPPINGS_SCHEMA.mapping_tool, domain=None, range=Optional[Union[dict, Agent]])
