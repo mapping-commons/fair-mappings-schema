@@ -389,7 +389,9 @@ slots:
     domain_of:
     - MappingSpecification
     range: Agent
+    multivalued: true
     inlined: true
+    inlined_as_list: true
   author:
     name: author
     definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/author
@@ -400,7 +402,9 @@ slots:
     domain_of:
     - MappingSpecification
     range: Agent
+    multivalued: true
     inlined: true
+    inlined_as_list: true
   reviewer:
     name: reviewer
     definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/reviewer
@@ -411,7 +415,9 @@ slots:
     domain_of:
     - MappingSpecification
     range: Agent
+    multivalued: true
     inlined: true
+    inlined_as_list: true
   mapping_tool:
     name: mapping_tool
     definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/mapping_tool
@@ -762,7 +768,7 @@ classes:
     tree_root: true
 metamodel_version: 1.7.0
 source_file: fair_mappings_schema.yaml
-source_file_date: '2025-12-17T21:51:03'
-source_file_size: 5795
-generation_date: '2025-12-17T21:51:11'
+source_file_date: '2026-08-21T12:00:16'
+source_file_size: 5939
+generation_date: '2026-08-21T12:00:26'
 

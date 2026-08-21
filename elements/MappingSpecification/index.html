@@ -234,7 +234,7 @@
 
 
 
-        MappingSpecification --&gt; "0..1" Agent : author
+        MappingSpecification --&gt; "*" Agent : author
         click Agent href "../Agent/"
 
 
@@ -247,7 +247,7 @@
 
 
 
-        MappingSpecification --&gt; "0..1" Agent : creator
+        MappingSpecification --&gt; "*" Agent : creator
         click Agent href "../Agent/"
 
 
@@ -283,7 +283,7 @@
 
 
 
-        MappingSpecification --&gt; "0..1" Agent : reviewer
+        MappingSpecification --&gt; "*" Agent : reviewer
         click Agent href "../Agent/"
 
 
@@ -346,19 +346,19 @@
 </tr>
 <tr>
 <td><a href="../author/">author</a></td>
-<td>0..1 <br/> <a href="../Agent/">Agent</a></td>
+<td>* <br/> <a href="../Agent/">Agent</a></td>
 <td>Author of the mapping specification</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../creator/">creator</a></td>
-<td>0..1 <br/> <a href="../Agent/">Agent</a></td>
+<td>* <br/> <a href="../Agent/">Agent</a></td>
 <td>Creator of the mapping specification</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../reviewer/">reviewer</a></td>
-<td>0..1 <br/> <a href="../Agent/">Agent</a></td>
+<td>* <br/> <a href="../Agent/">Agent</a></td>
 <td>Reviewer of the mapping specification</td>
 <td>direct</td>
 </tr>
@@ -529,7 +529,9 @@ attributes:
     domain_of:
     - MappingSpecification
     range: Agent
+    multivalued: true
     inlined: true
+    inlined_as_list: true
   creator:
     name: creator
     description: Creator of the mapping specification
@@ -540,7 +542,9 @@ attributes:
     domain_of:
     - MappingSpecification
     range: Agent
+    multivalued: true
     inlined: true
+    inlined_as_list: true
   reviewer:
     name: reviewer
     description: Reviewer of the mapping specification
@@ -551,7 +555,9 @@ attributes:
     domain_of:
     - MappingSpecification
     range: Agent
+    multivalued: true
     inlined: true
+    inlined_as_list: true
   publication_date:
     name: publication_date
     description: Date of publication of the mapping specification
