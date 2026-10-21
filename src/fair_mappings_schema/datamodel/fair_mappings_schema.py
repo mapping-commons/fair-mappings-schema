@@ -1,8 +1,8 @@
 # Auto generated from fair_mappings_schema.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-08-17T09:29:06
+# Generation date: 2026-10-21T19:47:20
 # Schema: fair-mappings-schema
 #
-# id: https://w3id.org/mapping-commons/fair-mappings-schema
+# id: https://w3id.org/fair-map/schema
 # description: A minimal metadata schema for FAIR mapping specifications
 # license: Apache-2.0
 
@@ -65,10 +65,10 @@ version = None
 PATO = CurieNamespace('PATO', 'http://purl.obolibrary.org/obo/PATO_')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/')
 EXAMPLE = CurieNamespace('example', 'https://example.org/')
-FAIR_MAPPINGS_SCHEMA = CurieNamespace('fair_mappings_schema', 'https://w3id.org/mapping-commons/fair-mappings-schema/')
+FAIRMAP = CurieNamespace('fairmap', 'https://w3id.org/fair-map/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 SCHEMA = CurieNamespace('schema', 'http://schema.org/')
-DEFAULT_ = FAIR_MAPPINGS_SCHEMA
+DEFAULT_ = FAIRMAP
 
 
 # Types
@@ -84,10 +84,10 @@ class Agent(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA["Agent"]
-    class_class_curie: ClassVar[str] = "fair_mappings_schema:Agent"
+    class_class_uri: ClassVar[URIRef] = FAIRMAP["Agent"]
+    class_class_curie: ClassVar[str] = "fairmap:Agent"
     class_name: ClassVar[str] = "Agent"
-    class_model_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA.Agent
+    class_model_uri: ClassVar[URIRef] = FAIRMAP.Agent
 
     id: Optional[str] = None
     name: Optional[str] = None
@@ -130,10 +130,10 @@ class Person(Agent):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA["Person"]
-    class_class_curie: ClassVar[str] = "fair_mappings_schema:Person"
+    class_class_uri: ClassVar[URIRef] = FAIRMAP["Person"]
+    class_class_curie: ClassVar[str] = "fairmap:Person"
     class_name: ClassVar[str] = "Person"
-    class_model_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA.Person
+    class_model_uri: ClassVar[URIRef] = FAIRMAP.Person
 
     orcid: Optional[str] = None
     affiliation: Optional[str] = None
@@ -156,10 +156,10 @@ class Organization(Agent):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA["Organization"]
-    class_class_curie: ClassVar[str] = "fair_mappings_schema:Organization"
+    class_class_uri: ClassVar[URIRef] = FAIRMAP["Organization"]
+    class_class_curie: ClassVar[str] = "fairmap:Organization"
     class_name: ClassVar[str] = "Organization"
-    class_model_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA.Organization
+    class_model_uri: ClassVar[URIRef] = FAIRMAP.Organization
 
     ror_id: Optional[str] = None
     url: Optional[str] = None
@@ -182,10 +182,10 @@ class Software(Agent):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA["Software"]
-    class_class_curie: ClassVar[str] = "fair_mappings_schema:Software"
+    class_class_uri: ClassVar[URIRef] = FAIRMAP["Software"]
+    class_class_curie: ClassVar[str] = "fairmap:Software"
     class_name: ClassVar[str] = "Software"
-    class_model_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA.Software
+    class_model_uri: ClassVar[URIRef] = FAIRMAP.Software
 
     version: Optional[str] = None
     repository_url: Optional[str] = None
@@ -208,10 +208,10 @@ class Source(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA["Source"]
-    class_class_curie: ClassVar[str] = "fair_mappings_schema:Source"
+    class_class_uri: ClassVar[URIRef] = FAIRMAP["Source"]
+    class_class_curie: ClassVar[str] = "fairmap:Source"
     class_name: ClassVar[str] = "Source"
-    class_model_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA.Source
+    class_model_uri: ClassVar[URIRef] = FAIRMAP.Source
 
     id: Optional[str] = None
     name: Optional[str] = None
@@ -262,10 +262,10 @@ class MappingSpecification(YAMLRoot):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA["MappingSpecification"]
-    class_class_curie: ClassVar[str] = "fair_mappings_schema:MappingSpecification"
+    class_class_uri: ClassVar[URIRef] = FAIRMAP["MappingSpecification"]
+    class_class_curie: ClassVar[str] = "fairmap:MappingSpecification"
     class_name: ClassVar[str] = "MappingSpecification"
-    class_model_uri: ClassVar[URIRef] = FAIR_MAPPINGS_SCHEMA.MappingSpecification
+    class_model_uri: ClassVar[URIRef] = FAIRMAP.MappingSpecification
 
     id: Optional[str] = None
     name: Optional[str] = None
@@ -402,83 +402,83 @@ class MappingSpecificationTypeEnum(EnumDefinitionImpl):
 class slots:
     pass
 
-slots.id = Slot(uri=FAIR_MAPPINGS_SCHEMA.id, name="id", curie=FAIR_MAPPINGS_SCHEMA.curie('id'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.id, domain=None, range=Optional[str])
+slots.id = Slot(uri=FAIRMAP.id, name="id", curie=FAIRMAP.curie('id'),
+                   model_uri=FAIRMAP.id, domain=None, range=Optional[str])
 
-slots.name = Slot(uri=FAIR_MAPPINGS_SCHEMA.name, name="name", curie=FAIR_MAPPINGS_SCHEMA.curie('name'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.name, domain=None, range=Optional[str])
+slots.name = Slot(uri=FAIRMAP.name, name="name", curie=FAIRMAP.curie('name'),
+                   model_uri=FAIRMAP.name, domain=None, range=Optional[str])
 
-slots.creator = Slot(uri=FAIR_MAPPINGS_SCHEMA.creator, name="creator", curie=FAIR_MAPPINGS_SCHEMA.curie('creator'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.creator, domain=None, range=Optional[Union[Union[dict, Agent], list[Union[dict, Agent]]]])
+slots.creator = Slot(uri=FAIRMAP.creator, name="creator", curie=FAIRMAP.curie('creator'),
+                   model_uri=FAIRMAP.creator, domain=None, range=Optional[Union[Union[dict, Agent], list[Union[dict, Agent]]]])
 
-slots.author = Slot(uri=FAIR_MAPPINGS_SCHEMA.author, name="author", curie=FAIR_MAPPINGS_SCHEMA.curie('author'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.author, domain=None, range=Optional[Union[Union[dict, Agent], list[Union[dict, Agent]]]])
+slots.author = Slot(uri=FAIRMAP.author, name="author", curie=FAIRMAP.curie('author'),
+                   model_uri=FAIRMAP.author, domain=None, range=Optional[Union[Union[dict, Agent], list[Union[dict, Agent]]]])
 
-slots.reviewer = Slot(uri=FAIR_MAPPINGS_SCHEMA.reviewer, name="reviewer", curie=FAIR_MAPPINGS_SCHEMA.curie('reviewer'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.reviewer, domain=None, range=Optional[Union[Union[dict, Agent], list[Union[dict, Agent]]]])
+slots.reviewer = Slot(uri=FAIRMAP.reviewer, name="reviewer", curie=FAIRMAP.curie('reviewer'),
+                   model_uri=FAIRMAP.reviewer, domain=None, range=Optional[Union[Union[dict, Agent], list[Union[dict, Agent]]]])
 
-slots.mapping_tool = Slot(uri=FAIR_MAPPINGS_SCHEMA.mapping_tool, name="mapping_tool", curie=FAIR_MAPPINGS_SCHEMA.curie('mapping_tool'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.mapping_tool, domain=None, range=Optional[Union[dict, Agent]])
+slots.mapping_tool = Slot(uri=FAIRMAP.mapping_tool, name="mapping_tool", curie=FAIRMAP.curie('mapping_tool'),
+                   model_uri=FAIRMAP.mapping_tool, domain=None, range=Optional[Union[dict, Agent]])
 
-slots.publication_date = Slot(uri=FAIR_MAPPINGS_SCHEMA.publication_date, name="publication_date", curie=FAIR_MAPPINGS_SCHEMA.curie('publication_date'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.publication_date, domain=None, range=Optional[str])
+slots.publication_date = Slot(uri=FAIRMAP.publication_date, name="publication_date", curie=FAIRMAP.curie('publication_date'),
+                   model_uri=FAIRMAP.publication_date, domain=None, range=Optional[str])
 
-slots.license = Slot(uri=FAIR_MAPPINGS_SCHEMA.license, name="license", curie=FAIR_MAPPINGS_SCHEMA.curie('license'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.license, domain=None, range=Optional[str])
+slots.license = Slot(uri=FAIRMAP.license, name="license", curie=FAIRMAP.curie('license'),
+                   model_uri=FAIRMAP.license, domain=None, range=Optional[str])
 
-slots.version = Slot(uri=FAIR_MAPPINGS_SCHEMA.version, name="version", curie=FAIR_MAPPINGS_SCHEMA.curie('version'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.version, domain=None, range=Optional[str])
+slots.version = Slot(uri=FAIRMAP.version, name="version", curie=FAIRMAP.curie('version'),
+                   model_uri=FAIRMAP.version, domain=None, range=Optional[str])
 
-slots.description = Slot(uri=FAIR_MAPPINGS_SCHEMA.description, name="description", curie=FAIR_MAPPINGS_SCHEMA.curie('description'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.description, domain=None, range=Optional[str])
+slots.description = Slot(uri=FAIRMAP.description, name="description", curie=FAIRMAP.curie('description'),
+                   model_uri=FAIRMAP.description, domain=None, range=Optional[str])
 
-slots.type = Slot(uri=FAIR_MAPPINGS_SCHEMA.type, name="type", curie=FAIR_MAPPINGS_SCHEMA.curie('type'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.type, domain=None, range=Optional[str])
+slots.type = Slot(uri=FAIRMAP.type, name="type", curie=FAIRMAP.curie('type'),
+                   model_uri=FAIRMAP.type, domain=None, range=Optional[str])
 
-slots.mapping_method = Slot(uri=FAIR_MAPPINGS_SCHEMA.mapping_method, name="mapping_method", curie=FAIR_MAPPINGS_SCHEMA.curie('mapping_method'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.mapping_method, domain=None, range=Optional[str])
+slots.mapping_method = Slot(uri=FAIRMAP.mapping_method, name="mapping_method", curie=FAIRMAP.curie('mapping_method'),
+                   model_uri=FAIRMAP.mapping_method, domain=None, range=Optional[str])
 
-slots.documentation = Slot(uri=FAIR_MAPPINGS_SCHEMA.documentation, name="documentation", curie=FAIR_MAPPINGS_SCHEMA.curie('documentation'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.documentation, domain=None, range=Optional[str])
+slots.documentation = Slot(uri=FAIRMAP.documentation, name="documentation", curie=FAIRMAP.curie('documentation'),
+                   model_uri=FAIRMAP.documentation, domain=None, range=Optional[str])
 
-slots.content_url = Slot(uri=FAIR_MAPPINGS_SCHEMA.content_url, name="content_url", curie=FAIR_MAPPINGS_SCHEMA.curie('content_url'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.content_url, domain=None, range=Optional[str])
+slots.content_url = Slot(uri=FAIRMAP.content_url, name="content_url", curie=FAIRMAP.curie('content_url'),
+                   model_uri=FAIRMAP.content_url, domain=None, range=Optional[str])
 
-slots.content_type = Slot(uri=FAIR_MAPPINGS_SCHEMA.content_type, name="content_type", curie=FAIR_MAPPINGS_SCHEMA.curie('content_type'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.content_type, domain=None, range=Optional[str])
+slots.content_type = Slot(uri=FAIRMAP.content_type, name="content_type", curie=FAIRMAP.curie('content_type'),
+                   model_uri=FAIRMAP.content_type, domain=None, range=Optional[str])
 
-slots.metadata_url = Slot(uri=FAIR_MAPPINGS_SCHEMA.metadata_url, name="metadata_url", curie=FAIR_MAPPINGS_SCHEMA.curie('metadata_url'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.metadata_url, domain=None, range=Optional[str])
+slots.metadata_url = Slot(uri=FAIRMAP.metadata_url, name="metadata_url", curie=FAIRMAP.curie('metadata_url'),
+                   model_uri=FAIRMAP.metadata_url, domain=None, range=Optional[str])
 
-slots.metadata_type = Slot(uri=FAIR_MAPPINGS_SCHEMA.metadata_type, name="metadata_type", curie=FAIR_MAPPINGS_SCHEMA.curie('metadata_type'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.metadata_type, domain=None, range=Optional[str])
+slots.metadata_type = Slot(uri=FAIRMAP.metadata_type, name="metadata_type", curie=FAIRMAP.curie('metadata_type'),
+                   model_uri=FAIRMAP.metadata_type, domain=None, range=Optional[str])
 
-slots.subject_source = Slot(uri=FAIR_MAPPINGS_SCHEMA.subject_source, name="subject_source", curie=FAIR_MAPPINGS_SCHEMA.curie('subject_source'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.subject_source, domain=None, range=Optional[Union[dict, Source]])
+slots.subject_source = Slot(uri=FAIRMAP.subject_source, name="subject_source", curie=FAIRMAP.curie('subject_source'),
+                   model_uri=FAIRMAP.subject_source, domain=None, range=Optional[Union[dict, Source]])
 
-slots.object_source = Slot(uri=FAIR_MAPPINGS_SCHEMA.object_source, name="object_source", curie=FAIR_MAPPINGS_SCHEMA.curie('object_source'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.object_source, domain=None, range=Optional[Union[dict, Source]])
+slots.object_source = Slot(uri=FAIRMAP.object_source, name="object_source", curie=FAIRMAP.curie('object_source'),
+                   model_uri=FAIRMAP.object_source, domain=None, range=Optional[Union[dict, Source]])
 
-slots.orcid = Slot(uri=FAIR_MAPPINGS_SCHEMA.orcid, name="orcid", curie=FAIR_MAPPINGS_SCHEMA.curie('orcid'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.orcid, domain=None, range=Optional[str])
+slots.orcid = Slot(uri=FAIRMAP.orcid, name="orcid", curie=FAIRMAP.curie('orcid'),
+                   model_uri=FAIRMAP.orcid, domain=None, range=Optional[str])
 
-slots.affiliation = Slot(uri=FAIR_MAPPINGS_SCHEMA.affiliation, name="affiliation", curie=FAIR_MAPPINGS_SCHEMA.curie('affiliation'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.affiliation, domain=None, range=Optional[str])
+slots.affiliation = Slot(uri=FAIRMAP.affiliation, name="affiliation", curie=FAIRMAP.curie('affiliation'),
+                   model_uri=FAIRMAP.affiliation, domain=None, range=Optional[str])
 
-slots.ror_id = Slot(uri=FAIR_MAPPINGS_SCHEMA.ror_id, name="ror_id", curie=FAIR_MAPPINGS_SCHEMA.curie('ror_id'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.ror_id, domain=None, range=Optional[str])
+slots.ror_id = Slot(uri=FAIRMAP.ror_id, name="ror_id", curie=FAIRMAP.curie('ror_id'),
+                   model_uri=FAIRMAP.ror_id, domain=None, range=Optional[str])
 
-slots.url = Slot(uri=FAIR_MAPPINGS_SCHEMA.url, name="url", curie=FAIR_MAPPINGS_SCHEMA.curie('url'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.url, domain=None, range=Optional[str])
+slots.url = Slot(uri=FAIRMAP.url, name="url", curie=FAIRMAP.curie('url'),
+                   model_uri=FAIRMAP.url, domain=None, range=Optional[str])
 
-slots.repository_url = Slot(uri=FAIR_MAPPINGS_SCHEMA.repository_url, name="repository_url", curie=FAIR_MAPPINGS_SCHEMA.curie('repository_url'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.repository_url, domain=None, range=Optional[str])
+slots.repository_url = Slot(uri=FAIRMAP.repository_url, name="repository_url", curie=FAIRMAP.curie('repository_url'),
+                   model_uri=FAIRMAP.repository_url, domain=None, range=Optional[str])
 
-slots.Agent_type = Slot(uri=FAIR_MAPPINGS_SCHEMA.type, name="Agent_type", curie=FAIR_MAPPINGS_SCHEMA.curie('type'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.Agent_type, domain=Agent, range=Optional[str])
+slots.Agent_type = Slot(uri=FAIRMAP.type, name="Agent_type", curie=FAIRMAP.curie('type'),
+                   model_uri=FAIRMAP.Agent_type, domain=Agent, range=Optional[str])
 
-slots.Source_type = Slot(uri=FAIR_MAPPINGS_SCHEMA.type, name="Source_type", curie=FAIR_MAPPINGS_SCHEMA.curie('type'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.Source_type, domain=Source, range=Optional[Union[str, "SourceTypeEnum"]])
+slots.Source_type = Slot(uri=FAIRMAP.type, name="Source_type", curie=FAIRMAP.curie('type'),
+                   model_uri=FAIRMAP.Source_type, domain=Source, range=Optional[Union[str, "SourceTypeEnum"]])
 
-slots.MappingSpecification_type = Slot(uri=FAIR_MAPPINGS_SCHEMA.type, name="MappingSpecification_type", curie=FAIR_MAPPINGS_SCHEMA.curie('type'),
-                   model_uri=FAIR_MAPPINGS_SCHEMA.MappingSpecification_type, domain=MappingSpecification, range=Optional[Union[str, "MappingSpecificationTypeEnum"]])
+slots.MappingSpecification_type = Slot(uri=FAIRMAP.type, name="MappingSpecification_type", curie=FAIRMAP.curie('type'),
+                   model_uri=FAIRMAP.MappingSpecification_type, domain=MappingSpecification, range=Optional[Union[str, "MappingSpecificationTypeEnum"]])
