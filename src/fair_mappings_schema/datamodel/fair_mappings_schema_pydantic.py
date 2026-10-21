@@ -66,10 +66,10 @@ class LinkMLMeta(RootModel):
         return key in self.root
 
 
-linkml_meta = LinkMLMeta({'default_prefix': 'fair_mappings_schema',
+linkml_meta = LinkMLMeta({'default_prefix': 'fairmap',
      'default_range': 'string',
      'description': 'A minimal metadata schema for FAIR mapping specifications',
-     'id': 'https://w3id.org/mapping-commons/fair-mappings-schema',
+     'id': 'https://w3id.org/fair-map/schema',
      'imports': ['linkml:types'],
      'license': 'Apache-2.0',
      'name': 'fair-mappings-schema',
@@ -79,8 +79,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'fair_mappings_schema',
                               'prefix_reference': 'https://w3id.org/biolink/'},
                   'example': {'prefix_prefix': 'example',
                               'prefix_reference': 'https://example.org/'},
-                  'fair_mappings_schema': {'prefix_prefix': 'fair_mappings_schema',
-                                           'prefix_reference': 'https://w3id.org/mapping-commons/fair-mappings-schema/'},
+                  'fairmap': {'prefix_prefix': 'fairmap',
+                              'prefix_reference': 'https://w3id.org/fair-map/'},
                   'linkml': {'prefix_prefix': 'linkml',
                              'prefix_reference': 'https://w3id.org/linkml/'},
                   'schema': {'prefix_prefix': 'schema',
@@ -163,7 +163,7 @@ class Agent(ConfiguredBaseModel):
     An entity that can create or contribute to a digital object, such as an author or creator.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
-         'from_schema': 'https://w3id.org/mapping-commons/fair-mappings-schema',
+         'from_schema': 'https://w3id.org/fair-map/schema',
          'slot_usage': {'type': {'designates_type': True,
                                  'name': 'type',
                                  'range': 'string'}}})
@@ -178,7 +178,7 @@ class Person(Agent):
     """
     An individual person who contributes to a mapping specification
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/mapping-commons/fair-mappings-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/fair-map/schema'})
 
     orcid: Optional[str] = Field(default=None, description="""ORCID identifier for a person""", json_schema_extra = { "linkml_meta": {'domain_of': ['Person']} })
     affiliation: Optional[str] = Field(default=None, description="""Institutional affiliation of a person""", json_schema_extra = { "linkml_meta": {'domain_of': ['Person']} })
@@ -192,7 +192,7 @@ class Organization(Agent):
     """
     An organization or institution that contributes to a mapping specification
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/mapping-commons/fair-mappings-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/fair-map/schema'})
 
     ror_id: Optional[str] = Field(default=None, description="""ROR (Research Organization Registry) identifier""", json_schema_extra = { "linkml_meta": {'domain_of': ['Organization']} })
     url: Optional[str] = Field(default=None, description="""URL or web address""", json_schema_extra = { "linkml_meta": {'domain_of': ['Organization']} })
@@ -206,7 +206,7 @@ class Software(Agent):
     """
     A software tool or system used in creating mappings
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/mapping-commons/fair-mappings-schema'})
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/fair-map/schema'})
 
     version: Optional[str] = Field(default=None, description="""Version of the digital object""", json_schema_extra = { "linkml_meta": {'domain_of': ['Software', 'Source', 'MappingSpecification']} })
     repository_url: Optional[str] = Field(default=None, description="""URL to a code repository""", json_schema_extra = { "linkml_meta": {'domain_of': ['Software']} })
@@ -220,7 +220,7 @@ class Source(ConfiguredBaseModel):
     """
     A data source from which entities are drawn, such as a database, ontology, or vocabulary.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/mapping-commons/fair-mappings-schema',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/fair-map/schema',
          'slot_usage': {'type': {'name': 'type', 'range': 'SourceTypeEnum'}}})
 
     id: Optional[str] = Field(default=None, description="""Identifier for the information entity""", json_schema_extra = { "linkml_meta": {'domain_of': ['Agent', 'Source', 'MappingSpecification']} })
@@ -238,7 +238,7 @@ class MappingSpecification(ConfiguredBaseModel):
     """
     A formal description of correspondences between entities in a source and a target, expressed as rules, functions, or mapping statements.
     """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/mapping-commons/fair-mappings-schema',
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'from_schema': 'https://w3id.org/fair-map/schema',
          'slot_usage': {'type': {'name': 'type',
                                  'range': 'MappingSpecificationTypeEnum'}},
          'tree_root': True})
