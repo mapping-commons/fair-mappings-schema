@@ -3,14 +3,14 @@ description: A minimal metadata schema for FAIR mapping specifications
 title: FAIR Mappings Schema
 see_also:
 - https://mapping-commons.github.io/fair-mappings-schema
-id: https://w3id.org/mapping-commons/fair-mappings-schema
+id: https://w3id.org/fair-map/schema
 imports:
 - linkml:types
 license: Apache-2.0
 prefixes:
-  fair_mappings_schema:
-    prefix_prefix: fair_mappings_schema
-    prefix_reference: https://w3id.org/mapping-commons/fair-mappings-schema/
+  fairmap:
+    prefix_prefix: fairmap
+    prefix_reference: https://w3id.org/fair-map/
   linkml:
     prefix_prefix: linkml
     prefix_reference: https://w3id.org/linkml/
@@ -26,7 +26,7 @@ prefixes:
   example:
     prefix_prefix: example
     prefix_reference: https://example.org/
-default_prefix: fair_mappings_schema
+default_prefix: fairmap
 default_range: string
 types:
   string:
@@ -300,9 +300,9 @@ types:
 enums:
   SourceTypeEnum:
     name: SourceTypeEnum
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/SourceTypeEnum
+    definition_uri: https://w3id.org/fair-map/SourceTypeEnum
     description: Types of data sources
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    from_schema: https://w3id.org/fair-map/schema
     permissible_values:
       ontology:
         text: ontology
@@ -326,9 +326,9 @@ enums:
         description: Other type of source.
   MappingSpecificationTypeEnum:
     name: MappingSpecificationTypeEnum
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/MappingSpecificationTypeEnum
+    definition_uri: https://w3id.org/fair-map/MappingSpecificationTypeEnum
     description: Types of mapping specifications
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    from_schema: https://w3id.org/fair-map/schema
     permissible_values:
       sssom:
         text: sssom
@@ -357,10 +357,10 @@ enums:
 slots:
   id:
     name: id
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/id
+    definition_uri: https://w3id.org/fair-map/id
     description: Identifier for the information entity
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:id
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:id
     owner: MappingSpecification
     domain_of:
     - Agent
@@ -369,10 +369,10 @@ slots:
     range: string
   name:
     name: name
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/name
+    definition_uri: https://w3id.org/fair-map/name
     description: Name of the information entity
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:name
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:name
     owner: MappingSpecification
     domain_of:
     - Agent
@@ -381,10 +381,10 @@ slots:
     range: string
   creator:
     name: creator
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/creator
+    definition_uri: https://w3id.org/fair-map/creator
     description: Creator of the mapping specification
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:creator
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:creator
     owner: MappingSpecification
     domain_of:
     - MappingSpecification
@@ -394,10 +394,10 @@ slots:
     inlined_as_list: true
   author:
     name: author
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/author
+    definition_uri: https://w3id.org/fair-map/author
     description: Author of the mapping specification
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:author
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:author
     owner: MappingSpecification
     domain_of:
     - MappingSpecification
@@ -407,10 +407,10 @@ slots:
     inlined_as_list: true
   reviewer:
     name: reviewer
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/reviewer
+    definition_uri: https://w3id.org/fair-map/reviewer
     description: Reviewer of the mapping specification
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:reviewer
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:reviewer
     owner: MappingSpecification
     domain_of:
     - MappingSpecification
@@ -420,38 +420,38 @@ slots:
     inlined_as_list: true
   mapping_tool:
     name: mapping_tool
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/mapping_tool
+    definition_uri: https://w3id.org/fair-map/mapping_tool
     description: The tool used to create the mapping specification
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:mapping_tool
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:mapping_tool
     range: Agent
     inlined: true
   publication_date:
     name: publication_date
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/publication_date
+    definition_uri: https://w3id.org/fair-map/publication_date
     description: Date of publication of the mapping specification
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:publication_date
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:publication_date
     owner: MappingSpecification
     domain_of:
     - MappingSpecification
     range: string
   license:
     name: license
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/license
+    definition_uri: https://w3id.org/fair-map/license
     description: License under which the mapping specification is released
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:license
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:license
     owner: MappingSpecification
     domain_of:
     - MappingSpecification
     range: string
   version:
     name: version
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/version
+    definition_uri: https://w3id.org/fair-map/version
     description: Version of the digital object
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:version
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:version
     owner: MappingSpecification
     domain_of:
     - Software
@@ -460,20 +460,20 @@ slots:
     range: string
   description:
     name: description
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/description
+    definition_uri: https://w3id.org/fair-map/description
     description: A brief description of the mapping specification
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:description
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:description
     owner: MappingSpecification
     domain_of:
     - MappingSpecification
     range: string
   type:
     name: type
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/type
+    definition_uri: https://w3id.org/fair-map/type
     description: Type of the information entity
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:type
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:type
     owner: MappingSpecification
     domain_of:
     - Agent
@@ -482,20 +482,20 @@ slots:
     range: string
   mapping_method:
     name: mapping_method
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/mapping_method
+    definition_uri: https://w3id.org/fair-map/mapping_method
     description: Method used to create the mapping specification
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:mapping_method
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:mapping_method
     owner: MappingSpecification
     domain_of:
     - MappingSpecification
     range: string
   documentation:
     name: documentation
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/documentation
+    definition_uri: https://w3id.org/fair-map/documentation
     description: URL or reference to documentation for the mapping specification
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:documentation
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:documentation
     owner: MappingSpecification
     domain_of:
     - Source
@@ -503,10 +503,10 @@ slots:
     range: string
   content_url:
     name: content_url
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/content_url
+    definition_uri: https://w3id.org/fair-map/content_url
     description: Reference to the actual content of the digital object
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:content_url
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:content_url
     owner: MappingSpecification
     domain_of:
     - Source
@@ -514,40 +514,40 @@ slots:
     range: string
   content_type:
     name: content_type
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/content_type
+    definition_uri: https://w3id.org/fair-map/content_type
     description: The type of the content of the digital object
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:content_type
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:content_type
     owner: Source
     domain_of:
     - Source
     range: string
   metadata_url:
     name: metadata_url
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/metadata_url
+    definition_uri: https://w3id.org/fair-map/metadata_url
     description: Reference to metadata about the digital object
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:metadata_url
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:metadata_url
     owner: Source
     domain_of:
     - Source
     range: string
   metadata_type:
     name: metadata_type
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/metadata_type
+    definition_uri: https://w3id.org/fair-map/metadata_type
     description: The type of the metadata about the digital object
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:metadata_type
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:metadata_type
     owner: Source
     domain_of:
     - Source
     range: string
   subject_source:
     name: subject_source
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/subject_source
+    definition_uri: https://w3id.org/fair-map/subject_source
     description: The source from which the subject entities are drawn
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:subject_source
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:subject_source
     owner: MappingSpecification
     domain_of:
     - MappingSpecification
@@ -555,10 +555,10 @@ slots:
     inlined: true
   object_source:
     name: object_source
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/object_source
+    definition_uri: https://w3id.org/fair-map/object_source
     description: The source from which the object entities are drawn
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:object_source
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:object_source
     owner: MappingSpecification
     domain_of:
     - MappingSpecification
@@ -566,62 +566,62 @@ slots:
     inlined: true
   orcid:
     name: orcid
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/orcid
+    definition_uri: https://w3id.org/fair-map/orcid
     description: ORCID identifier for a person
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:orcid
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:orcid
     owner: Person
     domain_of:
     - Person
     range: string
   affiliation:
     name: affiliation
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/affiliation
+    definition_uri: https://w3id.org/fair-map/affiliation
     description: Institutional affiliation of a person
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:affiliation
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:affiliation
     owner: Person
     domain_of:
     - Person
     range: string
   ror_id:
     name: ror_id
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/ror_id
+    definition_uri: https://w3id.org/fair-map/ror_id
     description: ROR (Research Organization Registry) identifier
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:ror_id
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:ror_id
     owner: Organization
     domain_of:
     - Organization
     range: string
   url:
     name: url
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/url
+    definition_uri: https://w3id.org/fair-map/url
     description: URL or web address
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:url
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:url
     owner: Organization
     domain_of:
     - Organization
     range: string
   repository_url:
     name: repository_url
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/repository_url
+    definition_uri: https://w3id.org/fair-map/repository_url
     description: URL to a code repository
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
-    slot_uri: fair_mappings_schema:repository_url
+    from_schema: https://w3id.org/fair-map/schema
+    slot_uri: fairmap:repository_url
     owner: Software
     domain_of:
     - Software
     range: string
   Agent_type:
     name: Agent_type
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/type
+    definition_uri: https://w3id.org/fair-map/type
     description: Type of the information entity
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    from_schema: https://w3id.org/fair-map/schema
     is_a: type
     domain: Agent
-    slot_uri: fair_mappings_schema:type
+    slot_uri: fairmap:type
     designates_type: true
     alias: type
     owner: Agent
@@ -632,12 +632,12 @@ slots:
     range: string
   Source_type:
     name: Source_type
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/type
+    definition_uri: https://w3id.org/fair-map/type
     description: Type of the information entity
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    from_schema: https://w3id.org/fair-map/schema
     is_a: type
     domain: Source
-    slot_uri: fair_mappings_schema:type
+    slot_uri: fairmap:type
     alias: type
     owner: Source
     domain_of:
@@ -647,12 +647,12 @@ slots:
     range: SourceTypeEnum
   MappingSpecification_type:
     name: MappingSpecification_type
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/type
+    definition_uri: https://w3id.org/fair-map/type
     description: Type of the information entity
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    from_schema: https://w3id.org/fair-map/schema
     is_a: type
     domain: MappingSpecification
-    slot_uri: fair_mappings_schema:type
+    slot_uri: fairmap:type
     alias: type
     owner: MappingSpecification
     domain_of:
@@ -663,10 +663,10 @@ slots:
 classes:
   Agent:
     name: Agent
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/Agent
+    definition_uri: https://w3id.org/fair-map/Agent
     description: An entity that can create or contribute to a digital object, such
       as an author or creator.
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    from_schema: https://w3id.org/fair-map/schema
     abstract: true
     slots:
     - id
@@ -677,12 +677,12 @@ classes:
         name: type
         designates_type: true
         range: string
-    class_uri: fair_mappings_schema:Agent
+    class_uri: fairmap:Agent
   Person:
     name: Person
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/Person
+    definition_uri: https://w3id.org/fair-map/Person
     description: An individual person who contributes to a mapping specification
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    from_schema: https://w3id.org/fair-map/schema
     is_a: Agent
     slots:
     - id
@@ -690,12 +690,12 @@ classes:
     - Agent_type
     - orcid
     - affiliation
-    class_uri: fair_mappings_schema:Person
+    class_uri: fairmap:Person
   Organization:
     name: Organization
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/Organization
+    definition_uri: https://w3id.org/fair-map/Organization
     description: An organization or institution that contributes to a mapping specification
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    from_schema: https://w3id.org/fair-map/schema
     is_a: Agent
     slots:
     - id
@@ -703,12 +703,12 @@ classes:
     - Agent_type
     - ror_id
     - url
-    class_uri: fair_mappings_schema:Organization
+    class_uri: fairmap:Organization
   Software:
     name: Software
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/Software
+    definition_uri: https://w3id.org/fair-map/Software
     description: A software tool or system used in creating mappings
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    from_schema: https://w3id.org/fair-map/schema
     is_a: Agent
     slots:
     - id
@@ -716,13 +716,13 @@ classes:
     - Agent_type
     - version
     - repository_url
-    class_uri: fair_mappings_schema:Software
+    class_uri: fairmap:Software
   Source:
     name: Source
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/Source
+    definition_uri: https://w3id.org/fair-map/Source
     description: A data source from which entities are drawn, such as a database,
       ontology, or vocabulary.
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    from_schema: https://w3id.org/fair-map/schema
     slots:
     - id
     - name
@@ -737,13 +737,13 @@ classes:
       type:
         name: type
         range: SourceTypeEnum
-    class_uri: fair_mappings_schema:Source
+    class_uri: fairmap:Source
   MappingSpecification:
     name: MappingSpecification
-    definition_uri: https://w3id.org/mapping-commons/fair-mappings-schema/MappingSpecification
+    definition_uri: https://w3id.org/fair-map/MappingSpecification
     description: A formal description of correspondences between entities in a source
       and a target, expressed as rules, functions, or mapping statements.
-    from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+    from_schema: https://w3id.org/fair-map/schema
     slots:
     - id
     - name
@@ -764,11 +764,11 @@ classes:
       type:
         name: type
         range: MappingSpecificationTypeEnum
-    class_uri: fair_mappings_schema:MappingSpecification
+    class_uri: fairmap:MappingSpecification
     tree_root: true
 metamodel_version: 1.7.0
 source_file: fair_mappings_schema.yaml
-source_file_date: '2026-08-21T12:00:16'
-source_file_size: 5939
-generation_date: '2026-08-21T12:00:26'
+source_file_date: '2026-10-21T16:56:46'
+source_file_size: 5864
+generation_date: '2026-10-21T16:56:55'
 

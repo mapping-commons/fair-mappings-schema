@@ -388,7 +388,7 @@
 
 <h1 id="slot-name">Slot: name</h1>
 <p><em>Name of the information entity</em></p>
-<p>URI: <a href="https://w3id.org/mapping-commons/fair-mappings-schema/name">fair_mappings_schema:name</a>
+<p>URI: <a href="https://w3id.org/fair-map/name">fairmap:name</a>
 Alias: name</p>
 <!-- no inheritance hierarchy -->
 
@@ -403,8 +403,8 @@ Alias: name</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../MappingSpecification/">MappingSpecification</a></td>
-<td>A formal description of correspondences between entities in a source and a ta...</td>
+<td><a href="../Organization/">Organization</a></td>
+<td>An organization or institution that contributes to a mapping specification</td>
 <td>no</td>
 </tr>
 <tr>
@@ -413,23 +413,23 @@ Alias: name</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../Source/">Source</a></td>
+<td>A data source from which entities are drawn, such as a database, ontology, or...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Software/">Software</a></td>
 <td>A software tool or system used in creating mappings</td>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../MappingSpecification/">MappingSpecification</a></td>
+<td>A formal description of correspondences between entities in a source and a ta...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Person/">Person</a></td>
 <td>An individual person who contributes to a mapping specification</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Organization/">Organization</a></td>
-<td>An organization or institution that contributes to a mapping specification</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Source/">Source</a></td>
-<td>A data source from which entities are drawn, such as a database, ontology, or...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -441,7 +441,7 @@ Alias: name</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/mapping-commons/fair-mappings-schema</li>
+<li>from schema: https://w3id.org/fair-map/schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -454,11 +454,11 @@ Alias: name</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>fair_mappings_schema:name</td>
+<td>fairmap:name</td>
 </tr>
 <tr>
 <td>native</td>
-<td>fair_mappings_schema:name</td>
+<td>fairmap:name</td>
 </tr>
 </tbody>
 </table>
@@ -467,7 +467,7 @@ Alias: name</p>
 
 <pre><code class="language-yaml">name: name
 description: Name of the information entity
-from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+from_schema: https://w3id.org/fair-map/schema
 rank: 1000
 alias: name
 domain_of:

@@ -388,7 +388,7 @@
 
 <h1 id="slot-type">Slot: type</h1>
 <p><em>Type of the information entity</em></p>
-<p>URI: <a href="https://w3id.org/mapping-commons/fair-mappings-schema/type">fair_mappings_schema:type</a>
+<p>URI: <a href="https://w3id.org/fair-map/type">fairmap:type</a>
 Alias: type</p>
 <!-- no inheritance hierarchy -->
 
@@ -403,13 +403,18 @@ Alias: type</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../MappingSpecification/">MappingSpecification</a></td>
-<td>A formal description of correspondences between entities in a source and a ta...</td>
-<td>yes</td>
+<td><a href="../Organization/">Organization</a></td>
+<td>An organization or institution that contributes to a mapping specification</td>
+<td>no</td>
 </tr>
 <tr>
 <td><a href="../Agent/">Agent</a></td>
 <td>An entity that can create or contribute to a digital object, such as an autho...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Source/">Source</a></td>
+<td>A data source from which entities are drawn, such as a database, ontology, or...</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -418,19 +423,14 @@ Alias: type</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../MappingSpecification/">MappingSpecification</a></td>
+<td>A formal description of correspondences between entities in a source and a ta...</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../Person/">Person</a></td>
 <td>An individual person who contributes to a mapping specification</td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../Organization/">Organization</a></td>
-<td>An organization or institution that contributes to a mapping specification</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Source/">Source</a></td>
-<td>A data source from which entities are drawn, such as a database, ontology, or...</td>
-<td>yes</td>
 </tr>
 </tbody>
 </table>
@@ -441,7 +441,7 @@ Alias: type</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/mapping-commons/fair-mappings-schema</li>
+<li>from schema: https://w3id.org/fair-map/schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -454,11 +454,11 @@ Alias: type</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>fair_mappings_schema:type</td>
+<td>fairmap:type</td>
 </tr>
 <tr>
 <td>native</td>
-<td>fair_mappings_schema:type</td>
+<td>fairmap:type</td>
 </tr>
 </tbody>
 </table>
@@ -467,7 +467,7 @@ Alias: type</p>
 
 <pre><code class="language-yaml">name: type
 description: Type of the information entity
-from_schema: https://w3id.org/mapping-commons/fair-mappings-schema
+from_schema: https://w3id.org/fair-map/schema
 rank: 1000
 alias: type
 domain_of:
