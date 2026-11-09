@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Iterable
+from datetime import date, datetime
 from io import StringIO
 from pathlib import Path
 
@@ -162,4 +163,20 @@ def load_mapping(
     if mapping_type and mapping_type in TRANSFORM_CONFIG:
         data = transform_to_fair(data, mapping_type)
 
-    return data
+    return _dates_to_strings(data)
+
+
+def _dates_to_strings(value):
+    """Turn date/datetime values back into ISO strings, recursively.
+
+    YAML (and so the SSSOM header parser) reads an unquoted ``2026-11-01`` as
+    a ``datetime.date``, but every date-like slot in the schema has range
+    ``string``, so the validator would reject it.
+    """
+    if isinstance(value, dict):
+        return {k: _dates_to_strings(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_dates_to_strings(v) for v in value]
+    if isinstance(value, (date, datetime)):
+        return value.isoformat()
+    return value
