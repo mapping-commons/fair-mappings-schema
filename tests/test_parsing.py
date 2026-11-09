@@ -12,6 +12,7 @@ from fair_mappings_schema.parsing import (
     parse_sssom_tsv,
     transform_to_fair,
 )
+from fair_mappings_schema.validation import validate_instance
 
 DATA_DIR_VALID = Path(__file__).parent / "data" / "valid"
 
@@ -106,6 +107,35 @@ class TestTransformToFair:
         assert result["type"] == "sssom"
         assert result["id"] == "https://example.org/test"
         assert result["name"] == "Test"
+
+    def test_sssom_creators_become_agents(self):
+        data = {
+            "mapping_set_id": "https://example.org/test",
+            "creator_id": ["orcid:0000-0002-7356-1779", "orcid:0000-0001-2345-6789"],
+            "creator_label": ["Ada Curator", "Bo Curator"],
+        }
+        result = transform_to_fair(data, "sssom")
+        assert result["creator"] == [
+            {"id": "orcid:0000-0002-7356-1779", "name": "Ada Curator"},
+            {"id": "orcid:0000-0001-2345-6789", "name": "Bo Curator"},
+        ]
+        assert validate_instance(result) == []
+
+    def test_sssom_creators_without_labels(self):
+        data = {
+            "mapping_set_id": "https://example.org/test",
+            "creator_id": ["orcid:0000-0002-7356-1779", "orcid:0000-0001-2345-6789"],
+            "creator_label": ["Ada Curator"],
+        }
+        result = transform_to_fair(data, "sssom")
+        assert result["creator"] == [
+            {"id": "orcid:0000-0002-7356-1779", "name": "Ada Curator"},
+            {"id": "orcid:0000-0001-2345-6789"},
+        ]
+
+    def test_sssom_no_creators(self):
+        result = transform_to_fair({"mapping_set_id": "https://example.org/test"}, "sssom")
+        assert "creator" not in result
 
     def test_linkml_map_transform(self):
         work = dict(LINKML_MAP_SPEC)

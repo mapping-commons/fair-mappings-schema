@@ -12,10 +12,11 @@ description: |-
   - mapping_set_description → description
   - subject_source → subject_source (Source with id)
   - object_source → object_source (Source with id)
+  - creator_id → creator (list of Agent with id; creator_label added as name in parsing.py)
   - Sets type to 'sssom' to indicate the mapping specification type
 
-  Note: Creator/author/reviewer transformations are simplified since SSSOM
-  uses flat ID lists while FAIR Mappings uses structured Agent objects.
+  Note: SSSOM has author_id and reviewer_id only on individual mappings, not
+  on the mapping set, so author and reviewer are not populated.
 
 prefixes:
   sssom: https://w3id.org/sssom/
@@ -55,3 +56,8 @@ class_derivations:
         expr: "{'id': subject_source} if subject_source else None"
       object_source:
         expr: "{'id': object_source} if object_source else None"
+      # One Agent per creator_id. The agent type is left unset: SSSOM only gives a CURIE.
+      # creator_label is paired up by position in parsing.py, as the expression
+      # language has no enumerate/zip.
+      creator:
+        expr: "[{'id': c} for c in creator_id] if creator_id else None"

@@ -19,12 +19,25 @@ from fair_mappings_schema.schema import (
 # Transform configuration per mapping type
 # ---------------------------------------------------------------------------
 
+def _add_sssom_creator_names(result: dict, source: dict) -> dict:
+    """Name each creator Agent after the creator_label at the same position.
+
+    The linkml-map expression language has no enumerate/zip, so the
+    transformation spec can only build the Agents from creator_id.
+    """
+    labels = source.get("creator_label") or []
+    for agent, label in zip(result.get("creator") or [], labels):
+        agent["name"] = label
+    return result
+
+
 TRANSFORM_CONFIG: dict[str, dict] = {
     "sssom": {
         "source_schema": get_sssom_schema_path,
         "transform": "sssom-to-fair.transformation.yaml",
         "source_class": "mapping set",
         "strip_keys": [],
+        "postprocess": _add_sssom_creator_names,
     },
     "linkml_map": {
         "source_schema": get_linkml_map_schema_path,
@@ -127,7 +140,10 @@ def transform_to_fair(data: dict, mapping_type: str) -> dict:
     result = tr.map_object(work, source_class)
     if not result:
         raise ValueError(f"Transformation from {mapping_type} produced no output")
-    return {k: v for k, v in result.items() if v is not None}
+    result = {k: v for k, v in result.items() if v is not None}
+    if "postprocess" in config:
+        result = config["postprocess"](result, work)
+    return result
 
 
 def load_mapping(
