@@ -13,6 +13,15 @@ license-files = ["LICENSE"]
 readme = "README.md"
 requires-python = ">=3.10,<4.0"
 dynamic = ["version"]
+keywords = ["FAIR", "mappings", "metadata", "LinkML", "SSSOM", "linkml-map"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering",
+]
 
 dependencies = [
   "click>=8.0",
@@ -22,6 +31,12 @@ dependencies = [
   "sssom>=0.4.16",
   "sssom-schema>=1.0.0",
 ]
+
+[project.urls]
+Homepage = "https://mapping-commons.github.io/fair-mappings-schema"
+Documentation = "https://mapping-commons.github.io/fair-mappings-schema"
+Repository = "https://github.com/mapping-commons/fair-mappings-schema"
+Issues = "https://github.com/mapping-commons/fair-mappings-schema/issues"
 
 [project.scripts]
 fair-mappings = "fair_mappings_schema.cli:cli"
