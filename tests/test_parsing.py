@@ -12,6 +12,7 @@ from fair_mappings_schema.parsing import (
     parse_sssom_tsv,
     transform_to_fair,
 )
+from fair_mappings_schema.validation import validate_instance
 
 DATA_DIR_VALID = Path(__file__).parent / "data" / "valid"
 
@@ -161,3 +162,23 @@ class TestLoadMapping:
     def test_accepts_path_object(self, fair_instance_file):
         data = load_mapping(Path(fair_instance_file))
         assert data["id"] == "https://example.org/fair"
+
+    def test_sssom_dates_become_strings(self, tmp_path):
+        """YAML parses unquoted dates in the SSSOM header to date objects."""
+        p = tmp_path / "dated.sssom.tsv"
+        p.write_text(SSSOM_TSV_CONTENT.replace(
+            "#license:",
+            "#mapping_set_version: 2026-11-01\n#publication_date: 2026-11-01\n#license:",
+        ))
+        data = load_mapping(p, mapping_type="sssom")
+        assert data["publication_date"] == "2026-11-01"
+        assert data["version"] == "2026-11-01"
+        assert validate_instance(data) == []
+
+    def test_unquoted_yaml_dates_become_strings(self, tmp_path):
+        p = tmp_path / "dated.fms.yml"
+        p.write_text("id: x\npublication_date: 2024-06-01\nauthor:\n  - id: y\n    name: 2024-06-01\n")
+        data = load_mapping(p)
+        assert data["publication_date"] == "2024-06-01"
+        assert data["author"][0]["name"] == "2024-06-01"
+        assert validate_instance(data) == []
