@@ -42,6 +42,10 @@ object_source:
   content_type: application/rdf+xml
 ```
 
+## Identifiers
+
+The schema id is `https://w3id.org/fair-map/schema`. To reference schema elements, use the prefix `fairmap` with the expansion `https://w3id.org/fair-map/`, e.g. `fairmap:MappingSpecification` is `https://w3id.org/fair-map/MappingSpecification`. Element IRIs resolve to their documentation page, and `https://w3id.org/fair-map/schema.yaml` resolves to the LinkML schema source.
+
 ## Documentation
 
 - [Schema Elements](elements/index.md) - Documentation for all schema classes, slots, and enums.

@@ -1,5 +1,5 @@
 ---
-id: https://w3id.org/mapping-commons/fair-mappings-schema
+id: https://w3id.org/fair-map/schema
 name: fair-mappings-schema
 title: FAIR Mappings Schema
 description: |-
@@ -9,13 +9,13 @@ see_also:
   - https://mapping-commons.github.io/fair-mappings-schema
 
 prefixes:
-  fair_mappings_schema: https://w3id.org/mapping-commons/fair-mappings-schema/
+  fairmap: https://w3id.org/fair-map/
   linkml: https://w3id.org/linkml/
   biolink: https://w3id.org/biolink/
   schema: http://schema.org/
   PATO: http://purl.obolibrary.org/obo/PATO_
   example: https://example.org/
-default_prefix: fair_mappings_schema
+default_prefix: fairmap
 default_range: string
 
 imports:
@@ -55,6 +55,8 @@ enums:
         description: XSLT-based mapping
       shacl:
         description: SHACL-based mapping
+      linkml_map:
+        description: LinkML-Map transformation specification
       other:
         description: Other type of mapping specification
 
@@ -144,15 +146,21 @@ slots:
   creator:
     description: Creator of the mapping specification
     range: Agent
+    multivalued: true
     inlined: true
+    inlined_as_list: true
   author:
     description: Author of the mapping specification
     range: Agent
+    multivalued: true
     inlined: true
+    inlined_as_list: true
   reviewer:
     description: Reviewer of the mapping specification
     range: Agent
+    multivalued: true
     inlined: true
+    inlined_as_list: true
   mapping_tool:
     description: The tool used to create the mapping specification
     range: Agent

@@ -21,6 +21,11 @@ plugins:
   #     scripts:
   #       - gen_pages.py  # or any other name or path
 
+markdown_extensions:
+  # check_paths fails the build if the generated class diagram is missing (run `just gen-doc`)
+  - pymdownx.snippets:
+      check_paths: true
+
 watch:
   - src/fair_mappings_schema/schema
 
@@ -31,6 +36,7 @@ nav:
 
 exclude_docs: |
   /templates-linkml/
+  /schema/class-diagram.md
 
 site_url: https://mapping-commons.github.io/fair-mappings-schema
 repo_url: https://github.com/mapping-commons/fair-mappings-schema

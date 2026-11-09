@@ -26,13 +26,13 @@ jobs:
     steps:
       # https://github.com/actions/checkout
       - name: Checkout
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v5.0.0
         with:
           fetch-depth: 0
 
       # https://github.com/astral-sh/setup-uv
       - name: Install uv
-        uses: astral-sh/setup-uv@v6.4.3
+        uses: astral-sh/setup-uv@v6.8.0
         with:
           python-version: 3.13
           enable-cache: true
@@ -40,15 +40,20 @@ jobs:
 
       # https://github.com/actions/setup-python
       - name: Set up Python 3
-        uses: actions/setup-python@v5.6.0
+        uses: actions/setup-python@v6.0.0
         with:
           python-version: 3.13
+
+      - name: Install just
+        run: |
+          uv tool install rust-just
 
       - name: Install dependencies
         run: uv sync --dev --no-progress
 
       - name: Build documentation
         run: |
+          just gen-doc
           uv run mkdocs build -d site
           touch site/.nojekyll
 

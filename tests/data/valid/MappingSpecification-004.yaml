@@ -1,0 +1,51 @@
+# Valid MappingSpecification example - several agents per role, of mixed agent types
+---
+publication_date: "2024-06-01"
+license: CC0-1.0
+version: "3.0.0"
+description: Mappings between two anatomy ontologies, curated by a team with tool support
+type: sssom
+mapping_method: semi-automated matching followed by manual review
+documentation: https://example.org/anatomy-mappings/docs
+content_url: https://example.org/mappings/anatomy.sssom.tsv
+author:
+  - id: example:person-1
+    type: Person
+    name: Ada Curator
+    orcid: 0000-0002-1825-0097
+    affiliation: Example Institute
+  - id: example:person-2
+    type: Person
+    name: Bo Curator
+    orcid: 0000-0001-5109-3700
+    affiliation: Example University
+creator:
+  - id: example:org-1
+    type: Organization
+    name: Example Mapping Commons
+    ror_id: https://ror.org/02mhbdp94
+    url: https://example.org/commons
+  - id: example:software-1
+    type: Software
+    name: exomatch
+    version: "0.4.2"
+    repository_url: https://github.com/example/exomatch
+reviewer:
+  - id: example:person-3
+    type: Person
+    name: Cy Reviewer
+    orcid: 0000-0003-1613-5981
+subject_source:
+  name: Example Anatomy Ontology A
+  version: "2024-05-01"
+  type: ontology
+  documentation: https://example.org/anatomy-a
+  content_url: https://example.org/anatomy-a.owl
+  content_type: application/rdf+xml
+object_source:
+  name: Example Anatomy Ontology B
+  version: "2024-05-20"
+  type: ontology
+  documentation: https://example.org/anatomy-b
+  content_url: https://example.org/anatomy-b.owl
+  content_type: application/rdf+xml
