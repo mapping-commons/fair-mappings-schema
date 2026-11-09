@@ -8,6 +8,12 @@ A basic metadata schema for FAIR mapping specifications
 
 [https://mapping-commons.github.io/fair-mappings-schema](https://mapping-commons.github.io/fair-mappings-schema)
 
+## Identifiers
+
+* Schema id: `https://w3id.org/fair-map/schema`
+* Prefix: `fairmap` → `https://w3id.org/fair-map/` (e.g. `fairmap:MappingSpecification`)
+* Schema source: `https://w3id.org/fair-map/schema.yaml`
+
 ## Repository Structure
 
 * [docs/](docs/) - mkdocs-managed documentation

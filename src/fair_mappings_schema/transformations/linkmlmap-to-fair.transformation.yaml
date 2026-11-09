@@ -8,7 +8,7 @@ description: |-
 
 prefixes:
   linkmlmap: https://w3id.org/linkml/transformer/
-  fair_mappings_schema: https://w3id.org/mapping-commons/fair-mappings-schema/
+  fairmap: https://w3id.org/fair-map/
 
 source_schema:
   name: linkml-map

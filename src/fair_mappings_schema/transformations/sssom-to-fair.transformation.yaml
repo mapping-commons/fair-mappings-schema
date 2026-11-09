@@ -19,7 +19,7 @@ description: |-
 
 prefixes:
   sssom: https://w3id.org/sssom/
-  fair_mappings_schema: https://w3id.org/mapping-commons/fair-mappings-schema/
+  fairmap: https://w3id.org/fair-map/
 
 source_schema:
   name: sssom
