@@ -301,74 +301,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Applicable Classes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      Properties
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#identifier-and-mapping-information" class="md-nav__link">
-    <span class="md-ellipsis">
-      Identifier and Mapping Information
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mappings
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#linkml-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      LinkML Source
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -388,63 +320,83 @@
 
 <h1 id="slot-subject_source">Slot: subject_source</h1>
 <p><em>The source from which the subject entities are drawn</em></p>
-<p>URI: <a href="https://w3id.org/fair-map/subject_source">fairmap:subject_source</a>
-Alias: subject_source</p>
+<div data-search-exclude markdown="1">
+
+
+
+URI: [fairmap:subject_source](https://w3id.org/fair-map/subject_source)
 <!-- no inheritance hierarchy -->
 
-<h2 id="applicable-classes">Applicable Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Modifies Slot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../MappingSpecification/">MappingSpecification</a></td>
-<td>A formal description of correspondences between entities in a source and a ta...</td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
-<h2 id="properties">Properties</h2>
-<ul>
-<li>Range: <a href="../Source/">Source</a></li>
-</ul>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/fair-map/schema</li>
-</ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>fairmap:subject_source</td>
-</tr>
-<tr>
-<td>native</td>
-<td>fairmap:subject_source</td>
-</tr>
-</tbody>
-</table>
-<h2 id="linkml-source">LinkML Source</h2>
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [MappingSpecification](MappingSpecification.md) | A formal description of correspondences between entities in a source and a ta... |  no  |
+
+
+
+
+
+
+## Properties
+
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [Source](Source.md) |
+| Domain Of | [MappingSpecification](MappingSpecification.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/fair-map/schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | fairmap:subject_source |
+| native | fairmap:subject_source |
+
+
+
+
+## LinkML Source
+
 <details>
 
 <pre><code class="language-yaml">name: subject_source
 description: The source from which the subject entities are drawn
 from_schema: https://w3id.org/fair-map/schema
 rank: 1000
-alias: subject_source
 domain_of:
 - MappingSpecification
 range: Source
@@ -452,13 +404,16 @@ inlined: true
 
 </code></pre>
 
-</details>
+</details></div>
 
 
 
 
 
 
+
+  
+  
 
 
 

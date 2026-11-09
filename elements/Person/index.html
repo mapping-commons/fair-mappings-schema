@@ -153,76 +153,6 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#inheritance">
-<span class="md-ellipsis">
-      Inheritance
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#slots">
-<span class="md-ellipsis">
-      Slots
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#identifier-and-mapping-information">
-<span class="md-ellipsis">
-      Identifier and Mapping Information
-    </span>
-</a>
-<nav aria-label="Identifier and Mapping Information" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#schema-source">
-<span class="md-ellipsis">
-      Schema Source
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#mappings">
-<span class="md-ellipsis">
-      Mappings
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#linkml-source">
-<span class="md-ellipsis">
-      LinkML Source
-    </span>
-</a>
-<nav aria-label="LinkML Source" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#direct">
-<span class="md-ellipsis">
-      Direct
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#induced">
-<span class="md-ellipsis">
-      Induced
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
 </nav>
 </div>
 </div>
@@ -231,7 +161,17 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-person">Class: Person</h1>
 <p><em>An individual person who contributes to a mapping specification</em></p>
-<p>URI: <a href="https://w3id.org/fair-map/Person">fairmap:Person</a></p>
+<div data-search-exclude="" markdown="1">
+
+
+
+URI: [fairmap:Person](https://w3id.org/fair-map/Person)
+
+
+
+
+
+
 <div class="mermaid"> classDiagram
     class Person
     click Person href "../Person/"
@@ -250,83 +190,73 @@
 
 
 </div>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../Agent/">Agent</a><ul>
-<li><strong>Person</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="slots">Slots</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Cardinality and Range</th>
-<th>Description</th>
-<th>Inheritance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../orcid/">orcid</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>ORCID identifier for a person</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../affiliation/">affiliation</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Institutional affiliation of a person</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../id/">id</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Identifier for the information entity</td>
-<td><a href="../Agent/">Agent</a></td>
-</tr>
-<tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Name of the information entity</td>
-<td><a href="../Agent/">Agent</a></td>
-</tr>
-<tr>
-<td><a href="../type/">type</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Type of the information entity</td>
-<td><a href="../Agent/">Agent</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/fair-map/schema</li>
-</ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>fairmap:Person</td>
-</tr>
-<tr>
-<td>native</td>
-<td>fairmap:Person</td>
-</tr>
-</tbody>
-</table>
-<h2 id="linkml-source">LinkML Source</h2>
+
+
+
+
+
+
+## Inheritance
+* [Agent](Agent.md)
+    * **Person**
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [orcid](orcid.md) | 0..1 <br/> [String](String.md) | ORCID identifier for a person | direct |
+| [affiliation](affiliation.md) | 0..1 <br/> [String](String.md) | Institutional affiliation of a person | direct |
+| [id](id.md) | 0..1 <br/> [String](String.md) | Identifier for the information entity | [Agent](Agent.md) |
+| [name](name.md) | 0..1 <br/> [String](String.md) | Name of the information entity | [Agent](Agent.md) |
+| [type](type.md) | 0..1 <br/> [String](String.md) | Type of the information entity | [Agent](Agent.md) |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/fair-map/schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | fairmap:Person |
+| native | fairmap:Person |
+
+
+
+
+
+
+## LinkML Source
+
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
-<h3 id="direct">Direct</h3>
+
+### Direct
+
 <details>
 <pre><code class="language-yaml">name: Person
 description: An individual person who contributes to a mapping specification
@@ -338,7 +268,9 @@ slots:
 
 </code></pre>
 </details>
-<h3 id="induced">Induced</h3>
+
+### Induced
+
 <details>
 <pre><code class="language-yaml">name: Person
 description: An individual person who contributes to a mapping specification
@@ -350,7 +282,6 @@ attributes:
     description: ORCID identifier for a person
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
-    alias: orcid
     owner: Person
     domain_of:
     - Person
@@ -360,7 +291,6 @@ attributes:
     description: Institutional affiliation of a person
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
-    alias: affiliation
     owner: Person
     domain_of:
     - Person
@@ -370,7 +300,6 @@ attributes:
     description: Identifier for the information entity
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
-    alias: id
     owner: Person
     domain_of:
     - Agent
@@ -382,7 +311,6 @@ attributes:
     description: Name of the information entity
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
-    alias: name
     owner: Person
     domain_of:
     - Agent
@@ -395,7 +323,6 @@ attributes:
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
     designates_type: true
-    alias: type
     owner: Person
     domain_of:
     - Agent
@@ -404,7 +331,7 @@ attributes:
     range: string
 
 </code></pre>
-</details>
+</details></div>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>

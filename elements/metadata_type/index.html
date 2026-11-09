@@ -301,74 +301,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Applicable Classes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      Properties
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#identifier-and-mapping-information" class="md-nav__link">
-    <span class="md-ellipsis">
-      Identifier and Mapping Information
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mappings
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#linkml-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      LinkML Source
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -388,76 +320,99 @@
 
 <h1 id="slot-metadata_type">Slot: metadata_type</h1>
 <p><em>The type of the metadata about the digital object</em></p>
-<p>URI: <a href="https://w3id.org/fair-map/metadata_type">fairmap:metadata_type</a>
-Alias: metadata_type</p>
+<div data-search-exclude markdown="1">
+
+
+
+URI: [fairmap:metadata_type](https://w3id.org/fair-map/metadata_type)
 <!-- no inheritance hierarchy -->
 
-<h2 id="applicable-classes">Applicable Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Modifies Slot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../Source/">Source</a></td>
-<td>A data source from which entities are drawn, such as a database, ontology, or...</td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
-<h2 id="properties">Properties</h2>
-<ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/fair-map/schema</li>
-</ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>fairmap:metadata_type</td>
-</tr>
-<tr>
-<td>native</td>
-<td>fairmap:metadata_type</td>
-</tr>
-</tbody>
-</table>
-<h2 id="linkml-source">LinkML Source</h2>
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [Source](Source.md) | A data source from which entities are drawn, such as a database, ontology, or... |  no  |
+
+
+
+
+
+
+## Properties
+
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [Source](Source.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/fair-map/schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | fairmap:metadata_type |
+| native | fairmap:metadata_type |
+
+
+
+
+## LinkML Source
+
 <details>
 
 <pre><code class="language-yaml">name: metadata_type
 description: The type of the metadata about the digital object
 from_schema: https://w3id.org/fair-map/schema
 rank: 1000
-alias: metadata_type
 domain_of:
 - Source
 range: string
 
 </code></pre>
 
-</details>
+</details></div>
 
 
 
 
 
 
+
+  
+  
 
 
 

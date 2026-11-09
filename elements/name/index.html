@@ -301,74 +301,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Applicable Classes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      Properties
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#identifier-and-mapping-information" class="md-nav__link">
-    <span class="md-ellipsis">
-      Identifier and Mapping Information
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mappings
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#linkml-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      LinkML Source
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -388,88 +320,88 @@
 
 <h1 id="slot-name">Slot: name</h1>
 <p><em>Name of the information entity</em></p>
-<p>URI: <a href="https://w3id.org/fair-map/name">fairmap:name</a>
-Alias: name</p>
+<div data-search-exclude markdown="1">
+
+
+
+URI: [fairmap:name](https://w3id.org/fair-map/name)
 <!-- no inheritance hierarchy -->
 
-<h2 id="applicable-classes">Applicable Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Modifies Slot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../Organization/">Organization</a></td>
-<td>An organization or institution that contributes to a mapping specification</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Agent/">Agent</a></td>
-<td>An entity that can create or contribute to a digital object, such as an autho...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Source/">Source</a></td>
-<td>A data source from which entities are drawn, such as a database, ontology, or...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Software/">Software</a></td>
-<td>A software tool or system used in creating mappings</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MappingSpecification/">MappingSpecification</a></td>
-<td>A formal description of correspondences between entities in a source and a ta...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Person/">Person</a></td>
-<td>An individual person who contributes to a mapping specification</td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
-<h2 id="properties">Properties</h2>
-<ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/fair-map/schema</li>
-</ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>fairmap:name</td>
-</tr>
-<tr>
-<td>native</td>
-<td>fairmap:name</td>
-</tr>
-</tbody>
-</table>
-<h2 id="linkml-source">LinkML Source</h2>
+
+
+
+
+## Applicable Classes
+
+| Name | Description | Modifies Slot |
+| --- | --- | --- |
+| [Agent](Agent.md) | An entity that can create or contribute to a digital object, such as an autho... |  no  |
+| [Source](Source.md) | A data source from which entities are drawn, such as a database, ontology, or... |  no  |
+| [MappingSpecification](MappingSpecification.md) | A formal description of correspondences between entities in a source and a ta... |  no  |
+| [Person](Person.md) | An individual person who contributes to a mapping specification |  no  |
+| [Organization](Organization.md) | An organization or institution that contributes to a mapping specification |  no  |
+| [Software](Software.md) | A software tool or system used in creating mappings |  no  |
+
+
+
+
+
+
+## Properties
+
+### Type and Range
+
+| Property | Value |
+| --- | --- |
+| Range | [String](String.md) |
+| Domain Of | [Agent](Agent.md), [Source](Source.md), [MappingSpecification](MappingSpecification.md) |
+
+### Cardinality and Requirements
+
+| Property | Value |
+| --- | --- |
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/fair-map/schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | fairmap:name |
+| native | fairmap:name |
+
+
+
+
+## LinkML Source
+
 <details>
 
 <pre><code class="language-yaml">name: name
 description: Name of the information entity
 from_schema: https://w3id.org/fair-map/schema
 rank: 1000
-alias: name
 domain_of:
 - Agent
 - Source
@@ -478,13 +410,16 @@ range: string
 
 </code></pre>
 
-</details>
+</details></div>
 
 
 
 
 
 
+
+  
+  
 
 
 

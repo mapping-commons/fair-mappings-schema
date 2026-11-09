@@ -153,69 +153,6 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#slots">
-<span class="md-ellipsis">
-      Slots
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#identifier-and-mapping-information">
-<span class="md-ellipsis">
-      Identifier and Mapping Information
-    </span>
-</a>
-<nav aria-label="Identifier and Mapping Information" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#schema-source">
-<span class="md-ellipsis">
-      Schema Source
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#mappings">
-<span class="md-ellipsis">
-      Mappings
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#linkml-source">
-<span class="md-ellipsis">
-      LinkML Source
-    </span>
-</a>
-<nav aria-label="LinkML Source" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#direct">
-<span class="md-ellipsis">
-      Direct
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#induced">
-<span class="md-ellipsis">
-      Induced
-    </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
 </nav>
 </div>
 </div>
@@ -224,7 +161,17 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-mappingspecification">Class: MappingSpecification</h1>
 <p><em>A formal description of correspondences between entities in a source and a target, expressed as rules, functions, or mapping statements.</em></p>
-<p>URI: <a href="https://w3id.org/fair-map/MappingSpecification">fairmap:MappingSpecification</a></p>
+<div data-search-exclude="" markdown="1">
+
+
+
+URI: [fairmap:MappingSpecification](https://w3id.org/fair-map/MappingSpecification)
+
+
+
+
+
+
 <div class="mermaid"> classDiagram
     class MappingSpecification
     click MappingSpecification href "../MappingSpecification/"
@@ -315,136 +262,80 @@
 
 </div>
 <!-- no inheritance hierarchy -->
-<h2 id="slots">Slots</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Cardinality and Range</th>
-<th>Description</th>
-<th>Inheritance</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../id/">id</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Identifier for the information entity</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Name of the information entity</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../description/">description</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A brief description of the mapping specification</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../author/">author</a></td>
-<td>* <br/> <a href="../Agent/">Agent</a></td>
-<td>Author of the mapping specification</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../creator/">creator</a></td>
-<td>* <br/> <a href="../Agent/">Agent</a></td>
-<td>Creator of the mapping specification</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../reviewer/">reviewer</a></td>
-<td>* <br/> <a href="../Agent/">Agent</a></td>
-<td>Reviewer of the mapping specification</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../publication_date/">publication_date</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Date of publication of the mapping specification</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../license/">license</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>License under which the mapping specification is released</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../version/">version</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Version of the digital object</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../type/">type</a></td>
-<td>0..1 <br/> <a href="../MappingSpecificationTypeEnum/">MappingSpecificationTypeEnum</a></td>
-<td>Type of the information entity</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../mapping_method/">mapping_method</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Method used to create the mapping specification</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../documentation/">documentation</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>URL or reference to documentation for the mapping specification</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../content_url/">content_url</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Reference to the actual content of the digital object</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../subject_source/">subject_source</a></td>
-<td>0..1 <br/> <a href="../Source/">Source</a></td>
-<td>The source from which the subject entities are drawn</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../object_source/">object_source</a></td>
-<td>0..1 <br/> <a href="../Source/">Source</a></td>
-<td>The source from which the object entities are drawn</td>
-<td>direct</td>
-</tr>
-</tbody>
-</table>
-<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://w3id.org/fair-map/schema</li>
-</ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>fairmap:MappingSpecification</td>
-</tr>
-<tr>
-<td>native</td>
-<td>fairmap:MappingSpecification</td>
-</tr>
-</tbody>
-</table>
-<h2 id="linkml-source">LinkML Source</h2>
+
+## Class Properties
+
+| Property | Value |
+| --- | --- |
+| Tree Root | Yes |
+
+
+## Slots
+
+| Name | Cardinality and Range | Description | Inheritance |
+| ---  | --- | --- | --- |
+| [id](id.md) | 0..1 <br/> [String](String.md) | Identifier for the information entity | direct |
+| [name](name.md) | 0..1 <br/> [String](String.md) | Name of the information entity | direct |
+| [description](description.md) | 0..1 <br/> [String](String.md) | A brief description of the mapping specification | direct |
+| [author](author.md) | * <br/> [Agent](Agent.md) | Author of the mapping specification | direct |
+| [creator](creator.md) | * <br/> [Agent](Agent.md) | Creator of the mapping specification | direct |
+| [reviewer](reviewer.md) | * <br/> [Agent](Agent.md) | Reviewer of the mapping specification | direct |
+| [publication_date](publication_date.md) | 0..1 <br/> [String](String.md) | Date of publication of the mapping specification | direct |
+| [license](license.md) | 0..1 <br/> [String](String.md) | License under which the mapping specification is released | direct |
+| [version](version.md) | 0..1 <br/> [String](String.md) | Version of the digital object | direct |
+| [type](type.md) | 0..1 <br/> [MappingSpecificationTypeEnum](MappingSpecificationTypeEnum.md) | Type of the information entity | direct |
+| [mapping_method](mapping_method.md) | 0..1 <br/> [String](String.md) | Method used to create the mapping specification | direct |
+| [documentation](documentation.md) | 0..1 <br/> [String](String.md) | URL or reference to documentation for the mapping specification | direct |
+| [content_url](content_url.md) | 0..1 <br/> [String](String.md) | Reference to the actual content of the digital object | direct |
+| [subject_source](subject_source.md) | 0..1 <br/> [Source](Source.md) | The source from which the subject entities are drawn | direct |
+| [object_source](object_source.md) | 0..1 <br/> [Source](Source.md) | The source from which the object entities are drawn | direct |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Identifier and Mapping Information
+
+
+
+
+
+### Schema Source
+
+
+* from schema: https://w3id.org/fair-map/schema
+
+
+
+
+## Mappings
+
+| Mapping Type | Mapped Value |
+| ---  | ---  |
+| self | fairmap:MappingSpecification |
+| native | fairmap:MappingSpecification |
+
+
+
+
+
+
+## LinkML Source
+
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
-<h3 id="direct">Direct</h3>
+
+### Direct
+
 <details>
 <pre><code class="language-yaml">name: MappingSpecification
 description: A formal description of correspondences between entities in a source
@@ -474,7 +365,9 @@ tree_root: true
 
 </code></pre>
 </details>
-<h3 id="induced">Induced</h3>
+
+### Induced
+
 <details>
 <pre><code class="language-yaml">name: MappingSpecification
 description: A formal description of correspondences between entities in a source
@@ -490,7 +383,6 @@ attributes:
     description: Identifier for the information entity
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
-    alias: id
     owner: MappingSpecification
     domain_of:
     - Agent
@@ -502,7 +394,6 @@ attributes:
     description: Name of the information entity
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
-    alias: name
     owner: MappingSpecification
     domain_of:
     - Agent
@@ -514,7 +405,6 @@ attributes:
     description: A brief description of the mapping specification
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
-    alias: description
     owner: MappingSpecification
     domain_of:
     - MappingSpecification
@@ -524,7 +414,6 @@ attributes:
     description: Author of the mapping specification
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
-    alias: author
     owner: MappingSpecification
     domain_of:
     - MappingSpecification
@@ -537,7 +426,6 @@ attributes:
     description: Creator of the mapping specification
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
-    alias: creator
     owner: MappingSpecification
     domain_of:
     - MappingSpecification
@@ -550,7 +438,6 @@ attributes:
     description: Reviewer of the mapping specification
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
-    alias: reviewer
     owner: MappingSpecification
     domain_of:
     - MappingSpecification
@@ -563,7 +450,6 @@ attributes:
     description: Date of publication of the mapping specification
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
-    alias: publication_date
     owner: MappingSpecification
     domain_of:
     - MappingSpecification
@@ -573,7 +459,6 @@ attributes:
     description: License under which the mapping specification is released
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
-    alias: license
     owner: MappingSpecification
     domain_of:
     - MappingSpecification
@@ -583,7 +468,6 @@ attributes:
     description: Version of the digital object
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
-    alias: version
     owner: MappingSpecification
     domain_of:
     - Software
@@ -595,7 +479,6 @@ attributes:
     description: Type of the information entity
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
-    alias: type
     owner: MappingSpecification
     domain_of:
     - Agent
@@ -607,7 +490,6 @@ attributes:
     description: Method used to create the mapping specification
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
-    alias: mapping_method
     owner: MappingSpecification
     domain_of:
     - MappingSpecification
@@ -617,7 +499,6 @@ attributes:
     description: URL or reference to documentation for the mapping specification
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
-    alias: documentation
     owner: MappingSpecification
     domain_of:
     - Source
@@ -628,7 +509,6 @@ attributes:
     description: Reference to the actual content of the digital object
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
-    alias: content_url
     owner: MappingSpecification
     domain_of:
     - Source
@@ -639,7 +519,6 @@ attributes:
     description: The source from which the subject entities are drawn
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
-    alias: subject_source
     owner: MappingSpecification
     domain_of:
     - MappingSpecification
@@ -650,7 +529,6 @@ attributes:
     description: The source from which the object entities are drawn
     from_schema: https://w3id.org/fair-map/schema
     rank: 1000
-    alias: object_source
     owner: MappingSpecification
     domain_of:
     - MappingSpecification
@@ -659,7 +537,7 @@ attributes:
 tree_root: true
 
 </code></pre>
-</details>
+</details></div>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
