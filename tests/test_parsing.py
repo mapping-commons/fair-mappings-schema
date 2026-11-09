@@ -108,6 +108,52 @@ class TestTransformToFair:
         assert result["id"] == "https://example.org/test"
         assert result["name"] == "Test"
 
+    def test_sssom_creator_ids_and_labels_are_separate_agents(self):
+        """creator_id and creator_label are not paired: one of each is two agents."""
+        data = {
+            "mapping_set_id": "https://example.org/test",
+            "creator_id": ["orcid:0000-0002-7356-1779"],
+            "creator_label": ["Ada Curator"],
+        }
+        result = transform_to_fair(data, "sssom")
+        assert result["creator"] == [
+            {"id": "orcid:0000-0002-7356-1779"},
+            {"name": "Ada Curator"},
+        ]
+        assert validate_instance(result) == []
+
+    def test_sssom_creator_ids_only(self):
+        data = {
+            "mapping_set_id": "https://example.org/test",
+            "creator_id": ["orcid:0000-0002-7356-1779", "orcid:0000-0001-2345-6789"],
+        }
+        result = transform_to_fair(data, "sssom")
+        assert result["creator"] == [
+            {"id": "orcid:0000-0002-7356-1779"},
+            {"id": "orcid:0000-0001-2345-6789"},
+        ]
+
+    def test_sssom_creator_labels_only(self):
+        data = {"mapping_set_id": "https://example.org/test", "creator_label": ["Ada Curator"]}
+        result = transform_to_fair(data, "sssom")
+        assert result["creator"] == [{"name": "Ada Curator"}]
+        assert validate_instance(result) == []
+
+    def test_sssom_no_creators(self):
+        result = transform_to_fair({"mapping_set_id": "https://example.org/test"}, "sssom")
+        assert "creator" not in result
+
+    def test_sssom_mapping_authors_are_not_spec_authors(self, tmp_path):
+        """author_id/reviewer_id on a mapping say nothing about the whole specification."""
+        p = tmp_path / "authored.sssom.tsv"
+        p.write_text(
+            SSSOM_TSV_CONTENT.replace("mapping_justification\n", "mapping_justification\tauthor_id\treviewer_id\n")
+            .replace("semapv:ManualMappingCuration\n", "semapv:ManualMappingCuration\torcid:1\torcid:2\n")
+        )
+        data = load_mapping(p, mapping_type="sssom")
+        assert "author" not in data
+        assert "reviewer" not in data
+
     def test_linkml_map_transform(self):
         work = dict(LINKML_MAP_SPEC)
         result = transform_to_fair(work, "linkml_map")
