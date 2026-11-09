@@ -14,6 +14,14 @@ DATA_DIR_INVALID = Path(__file__).parent / "data" / "invalid"
 VALID_FILES = sorted(glob.glob(str(DATA_DIR_VALID / "*.yaml")))
 INVALID_FILES = sorted(glob.glob(str(DATA_DIR_INVALID / "*.yaml")))
 
+# Instance paths each invalid fixture must fail on, and nothing else, so a fixture
+# rejected for an unrelated reason (e.g. a stray key) cannot pass as a counter example.
+EXPECTED_ERROR_PATHS = {
+    "MappingSpecification-001.yaml": {"/author/0"},
+    "MappingSpecification-002.yaml": {"/subject_source"},
+    "MappingSpecification-003.yaml": {"/creator/0", "/creator/1"},
+}
+
 
 def _load(path: str) -> dict:
     with open(path) as f:
@@ -34,6 +42,8 @@ class TestInvalidInstances:
         data = _load(filepath)
         errors = validate_instance(data)
         assert len(errors) > 0, "Expected validation errors"
+        error_paths = {error.rsplit(" in ", 1)[-1] for error in errors}
+        assert error_paths == EXPECTED_ERROR_PATHS[Path(filepath).name], errors
 
 
 class TestValidationAPI:
