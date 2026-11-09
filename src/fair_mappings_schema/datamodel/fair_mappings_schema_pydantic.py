@@ -29,7 +29,7 @@ from pydantic import (
 )
 
 
-metamodel_version = "1.7.0"
+metamodel_version = "1.11.0"
 version = "None"
 
 
@@ -150,6 +150,10 @@ class MappingSpecificationTypeEnum(str, Enum):
     shacl = "shacl"
     """
     SHACL-based mapping
+    """
+    linkml_map = "linkml_map"
+    """
+    LinkML-Map transformation specification
     """
     other = "other"
     """

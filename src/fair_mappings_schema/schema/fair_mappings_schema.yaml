@@ -55,6 +55,8 @@ enums:
         description: XSLT-based mapping
       shacl:
         description: SHACL-based mapping
+      linkml_map:
+        description: LinkML-Map transformation specification
       other:
         description: Other type of mapping specification
 
