@@ -26,6 +26,13 @@ The schema is built using [LinkML](https://linkml.io/), a flexible modeling lang
 - **Source**: A data source (ontology, database, vocabulary, schema, or API) from which entities are drawn
 - **Agent**: An entity (person, organization, or software) that contributes to creating mappings
 
+### Class Diagram
+
+All classes and enumerations in the model and how they relate. The diagram is generated from the
+schema on every docs build, so it always matches the current model.
+
+--8<-- "docs/schema/class-diagram.md"
+
 ## Contributing
 
 Contributions are welcome. Please visit the [GitHub repository](https://github.com/mapping-commons/fair-mappings-schema) to report issues or submit pull requests.

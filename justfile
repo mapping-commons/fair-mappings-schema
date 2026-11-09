@@ -39,6 +39,7 @@ pymodel := src / schema_name / "datamodel"
 source_schema_path := source_schema_dir / schema_name + ".yaml"
 docdir := "docs/elements"  # Directory for generated documentation
 merged_schema_path := "docs/schema" / schema_name + ".yaml"
+class_diagram_path := "docs/schema/class-diagram.md"  # Included by docs/about.md
 
 # ============== Project recipes ==============
 
@@ -96,6 +97,7 @@ lint:
 [group('model development')]
 gen-doc: _gen-yaml
   uv run gen-doc {{gen_doc_args}} -d {{docdir}} {{source_schema_path}}
+  uv run python scripts/gen_class_diagram.py {{source_schema_path}} > {{class_diagram_path}}
 
 # Build docs and run test server
 [group('model development')]

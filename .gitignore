@@ -1,6 +1,7 @@
 # generated part of documentation
 /docs/elements/*.md
 /docs/schema/*.yaml
+/docs/schema/class-diagram.md
 # linkml-run-examples output (not useful to have in git in its current form)
 /examples/output/
 
