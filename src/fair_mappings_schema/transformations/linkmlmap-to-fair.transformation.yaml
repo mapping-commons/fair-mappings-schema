@@ -1,4 +1,4 @@
-id: https://w3id.org/linkml/transformer/linkml-map-to-fair-mappings
+id: https://w3id.org/fair-map/transforms/linkmlmap-to-fair
 title: LinkML-Map to FAIR Mappings Schema Transformation
 description: |-
   Transforms a LinkML-Map TransformationSpecification to a FAIR Mappings Schema

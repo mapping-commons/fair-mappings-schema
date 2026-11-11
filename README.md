@@ -125,6 +125,14 @@ can be read from a streamed response without downloading the whole file.
 | Schema | [`https://w3id.org/fair-map/schema`](https://w3id.org/fair-map/schema) |
 | Schema source | [`https://w3id.org/fair-map/schema.yaml`](https://w3id.org/fair-map/schema.yaml) |
 | Prefix | `fairmap` → `https://w3id.org/fair-map/`, e.g. `fairmap:MappingSpecification` |
+| SSSOM → FAIR transformation | [`https://w3id.org/fair-map/transforms/sssom-to-fair`](https://w3id.org/fair-map/transforms/sssom-to-fair) |
+| LinkML-Map → FAIR transformation | [`https://w3id.org/fair-map/transforms/linkmlmap-to-fair`](https://w3id.org/fair-map/transforms/linkmlmap-to-fair) |
+| SSSOM → FAIR slot mappings | [`https://w3id.org/fair-map/mappings/sssom-to-fair`](https://w3id.org/fair-map/mappings/sssom-to-fair) |
+| LinkML-Map → FAIR slot mappings | [`https://w3id.org/fair-map/mappings/linkmlmap-to-fair`](https://w3id.org/fair-map/mappings/linkmlmap-to-fair) |
+
+The two transformations are what `fair-mappings parse` runs. The slot mapping sets record the same
+correspondences field by field, as SSSOM, and a test keeps each set in step with its transformation.
+This repository is their source of truth.
 
 ## Development
 
