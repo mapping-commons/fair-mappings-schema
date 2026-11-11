@@ -27,6 +27,11 @@ def get_transformation_path(name: str) -> str:
     return str(resources.files("fair_mappings_schema") / "transformations" / name)
 
 
+def get_slot_mapping_path(name: str) -> str:
+    """Return the path to a bundled slot-level SSSOM mapping set."""
+    return str(resources.files("fair_mappings_schema") / "mappings" / name)
+
+
 def get_schema_view(schema_path: str | None = None) -> SchemaView:
     """Return a SchemaView for the given or default FAIR Mappings schema."""
     return SchemaView(schema_path or get_schema_path())
