@@ -53,11 +53,11 @@ class_derivations:
       reviewer:
         populated_from: reviewer
       subject_source:
-        expr: "{'name': source_schema}"
-        description: Maps source_schema string to a Source object with name field
+        populated_from: source_schema
+        description: Maps the source_schema SchemaReference to a Source
       object_source:
-        expr: "{'name': target_schema}"
-        description: Maps target_schema string to a Source object with name field
+        populated_from: target_schema
+        description: Maps the target_schema SchemaReference to a Source
 
   Agent:
     populated_from: Agent
@@ -116,22 +116,16 @@ class_derivations:
         populated_from: repository_url
 
   Source:
-    populated_from: Source
-    description: Maps Source (data source metadata)
+    populated_from: SchemaReference
+    description: |-
+      Maps a LinkML-Map SchemaReference (source_schema, target_schema) to a
+      Source. LinkML-Map has no Source class.
     slot_derivations:
       id:
-        populated_from: id
+        populated_from: schema_uri
       name:
         populated_from: name
       version:
         populated_from: version
-      documentation:
-        populated_from: documentation
       content_url:
-        populated_from: content_url
-      content_type:
-        populated_from: content_type
-      metadata_url:
-        populated_from: metadata_url
-      metadata_type:
-        populated_from: metadata_type
+        populated_from: source_file

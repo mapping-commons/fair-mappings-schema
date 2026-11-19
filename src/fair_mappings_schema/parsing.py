@@ -35,6 +35,9 @@ TRANSFORM_CONFIG: dict[str, dict] = {
             "class_derivations", "enum_derivations", "slot_derivations",
             "copy_directives", "schema_patches", "prefixes",
         ],
+        # Since linkml-map 0.5.3 these are SchemaReference objects. Older specs
+        # give a plain string, which is read as the reference's name.
+        "name_reference_keys": ["source_schema", "target_schema"],
     },
 }
 
@@ -123,12 +126,15 @@ def transform_to_fair(data: dict, mapping_type: str) -> dict:
     work = dict(data)
     for key in config["strip_keys"]:
         work.pop(key, None)
+    for key in config.get("name_reference_keys", []):
+        if isinstance(work.get(key), str):
+            work[key] = {"name": work[key]}
 
     tr.index(work, source_class)
     result = tr.map_object(work, source_class)
     if not result:
         raise ValueError(f"Transformation from {mapping_type} produced no output")
-    return {k: v for k, v in result.items() if v is not None}
+    return _drop_nones(result)
 
 
 def load_mapping(
@@ -164,6 +170,19 @@ def load_mapping(
         data = transform_to_fair(data, mapping_type)
 
     return _dates_to_strings(data)
+
+
+def _drop_nones(value):
+    """Remove keys whose value is None, recursively.
+
+    linkml-map fills every derived slot of a nested object, so unset slots
+    come back as None.
+    """
+    if isinstance(value, dict):
+        return {k: _drop_nones(v) for k, v in value.items() if v is not None}
+    if isinstance(value, list):
+        return [_drop_nones(v) for v in value]
+    return value
 
 
 def _dates_to_strings(value):

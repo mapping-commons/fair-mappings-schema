@@ -1,5 +1,6 @@
 """Tests for fair_mappings_schema.parsing — loading, SSSOM TSV, transforms."""
 
+import json
 import textwrap
 from pathlib import Path
 
@@ -12,6 +13,7 @@ from fair_mappings_schema.parsing import (
     parse_sssom_tsv,
     transform_to_fair,
 )
+from fair_mappings_schema.schema import get_transformation_path
 from fair_mappings_schema.validation import validate_instance
 
 DATA_DIR_VALID = Path(__file__).parent / "data" / "valid"
@@ -160,6 +162,45 @@ class TestTransformToFair:
         assert result["type"] == "linkml_map"
         assert result["id"] == LINKML_MAP_SPEC["id"]
         assert result["name"] == LINKML_MAP_SPEC["title"]
+
+    def test_linkml_map_string_schemas_become_sources(self):
+        """A plain string source_schema (pre linkml-map 0.5.3) is read as the name."""
+        result = transform_to_fair(dict(LINKML_MAP_SPEC), "linkml_map")
+        assert result["subject_source"] == {"name": "source.yaml"}
+        assert result["object_source"] == {"name": "target.yaml"}
+        assert validate_instance(result) == []
+
+    def test_linkml_map_schema_reference_becomes_source(self):
+        work = dict(LINKML_MAP_SPEC)
+        work["source_schema"] = {
+            "name": "sssom",
+            "version": "1.1.0",
+            "schema_uri": "https://w3id.org/sssom/schema/",
+            "source_file": "https://example.org/sssom_schema.yaml",
+        }
+        work["target_schema"] = {"name": "fair-mappings-schema"}
+        result = transform_to_fair(work, "linkml_map")
+        assert result["subject_source"] == {
+            "id": "https://w3id.org/sssom/schema/",
+            "name": "sssom",
+            "version": "1.1.0",
+            "content_url": "https://example.org/sssom_schema.yaml",
+        }
+        assert result["object_source"] == {"name": "fair-mappings-schema"}
+        assert validate_instance(result) == []
+
+    @pytest.mark.parametrize("name", [
+        "sssom-to-fair.transformation.yaml",
+        "linkmlmap-to-fair.transformation.yaml",
+    ])
+    def test_bundled_transformations_transform(self, name):
+        """The bundled specs are LinkML-Map documents and must parse as such."""
+        data = load_mapping(get_transformation_path(name), mapping_type="linkml_map")
+        assert data["type"] == "linkml_map"
+        assert data["subject_source"]["name"]
+        assert data["object_source"] == {"name": "fair-mappings-schema"}
+        json.dumps(data)
+        assert validate_instance(data) == []
 
     def test_linkml_map_strips_derivation_keys(self):
         """class_derivations etc. should be stripped before transform."""
