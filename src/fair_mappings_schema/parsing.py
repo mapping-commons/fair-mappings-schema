@@ -35,6 +35,7 @@ TRANSFORM_CONFIG: dict[str, dict] = {
             "class_derivations", "enum_derivations", "slot_derivations",
             "copy_directives", "schema_patches", "prefixes",
         ],
+        "schema_reference_slots": ["source_schema", "target_schema"],
         "typed_agent_slots": ["creator", "author", "reviewer"],
     },
 }
@@ -124,6 +125,11 @@ def transform_to_fair(data: dict, mapping_type: str) -> dict:
     work = dict(data)
     for key in config["strip_keys"]:
         work.pop(key, None)
+    # The deprecated bare-string form (`source_schema: x.yaml`) is a
+    # SchemaReference with only a name.
+    for slot in config.get("schema_reference_slots", []):
+        if isinstance(work.get(slot), str):
+            work[slot] = {"name": work[slot]}
 
     # linkml-map types nested objects by the slot range and ignores
     # designates_type, so a Person's orcid fails indexing (or is dropped).
@@ -142,7 +148,7 @@ def transform_to_fair(data: dict, mapping_type: str) -> dict:
         if not isinstance(values, list):
             values = [values]
         result[slot] = [_map_typed_agent(tr, agent) for agent in values]
-    return {k: v for k, v in result.items() if v is not None}
+    return _drop_none(result)
 
 
 def load_mapping(
@@ -178,6 +184,15 @@ def load_mapping(
         data = transform_to_fair(data, mapping_type)
 
     return _dates_to_strings(data)
+
+
+def _drop_none(value):
+    """Remove None values from dicts, recursively."""
+    if isinstance(value, dict):
+        return {k: _drop_none(v) for k, v in value.items() if v is not None}
+    if isinstance(value, list):
+        return [_drop_none(v) for v in value]
+    return value
 
 
 def _map_typed_agent(tr, agent):
