@@ -167,6 +167,27 @@ class TestTransformToFair:
         result = transform_to_fair(work, "linkml_map")
         assert "class_derivations" not in result
 
+    def test_linkml_map_typed_agents_keep_subclass_fields(self):
+        """Person, Organization and Software fields survive, not just the Agent ones."""
+        person = {"id": "https://orcid.org/0000-0002-7356-1779", "name": "Ada Curator", "type": "Person",
+                  "orcid": "0000-0002-7356-1779", "affiliation": "Example Institute"}
+        org = {"id": "https://ror.org/02catss52", "name": "Example Org", "type": "Organization",
+               "ror_id": "https://ror.org/02catss52", "url": "https://example.org"}
+        software = {"id": "https://example.org/tool", "name": "tool", "type": "Software",
+                    "version": "1.0", "repository_url": "https://github.com/example/tool"}
+        agent = {"id": "https://example.org/agent", "name": "Someone"}
+        work = {**LINKML_MAP_SPEC, "creator": [person, org], "author": [software], "reviewer": [agent]}
+        result = transform_to_fair(work, "linkml_map")
+        assert result["creator"] == [person, org]
+        assert result["author"] == [software]
+        assert result["reviewer"] == [agent]
+        assert validate_instance(result) == []
+
+    def test_linkml_map_unknown_agent_type_maps_as_agent(self):
+        work = {**LINKML_MAP_SPEC, "creator": [{"id": "https://example.org/r", "type": "Robot", "serial": "42"}]}
+        result = transform_to_fair(work, "linkml_map")
+        assert result["creator"] == [{"id": "https://example.org/r", "type": "Robot"}]
+
     def test_unknown_type_raises(self):
         with pytest.raises(KeyError):
             transform_to_fair({}, "nonexistent_type")

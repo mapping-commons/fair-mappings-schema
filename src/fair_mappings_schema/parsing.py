@@ -35,6 +35,7 @@ TRANSFORM_CONFIG: dict[str, dict] = {
             "class_derivations", "enum_derivations", "slot_derivations",
             "copy_directives", "schema_patches", "prefixes",
         ],
+        "typed_agent_slots": ["creator", "author", "reviewer"],
     },
 }
 
@@ -124,10 +125,23 @@ def transform_to_fair(data: dict, mapping_type: str) -> dict:
     for key in config["strip_keys"]:
         work.pop(key, None)
 
+    # linkml-map types nested objects by the slot range and ignores
+    # designates_type, so a Person's orcid fails indexing (or is dropped).
+    # Take the agents out and map each one with the class its `type` names.
+    agents = {
+        slot: work.pop(slot)
+        for slot in config.get("typed_agent_slots", [])
+        if work.get(slot)
+    }
+
     tr.index(work, source_class)
     result = tr.map_object(work, source_class)
     if not result:
         raise ValueError(f"Transformation from {mapping_type} produced no output")
+    for slot, values in agents.items():
+        if not isinstance(values, list):
+            values = [values]
+        result[slot] = [_map_typed_agent(tr, agent) for agent in values]
     return {k: v for k, v in result.items() if v is not None}
 
 
@@ -164,6 +178,18 @@ def load_mapping(
         data = transform_to_fair(data, mapping_type)
 
     return _dates_to_strings(data)
+
+
+def _map_typed_agent(tr, agent):
+    """Map one agent with the Agent subclass its ``type`` names, else as Agent."""
+    if not isinstance(agent, dict):
+        return agent
+    sv = tr.source_schemaview
+    agent_class = agent.get("type")
+    if agent_class not in sv.all_classes() or "Agent" not in sv.class_ancestors(agent_class):
+        agent_class = "Agent"
+    mapped = tr.map_object(agent, agent_class)
+    return {k: v for k, v in mapped.items() if v is not None}
 
 
 def _dates_to_strings(value):
