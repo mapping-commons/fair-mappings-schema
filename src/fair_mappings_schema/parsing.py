@@ -35,6 +35,7 @@ TRANSFORM_CONFIG: dict[str, dict] = {
             "class_derivations", "enum_derivations", "slot_derivations",
             "copy_directives", "schema_patches", "prefixes",
         ],
+        "schema_reference_slots": ["source_schema", "target_schema"],
     },
 }
 
@@ -123,12 +124,17 @@ def transform_to_fair(data: dict, mapping_type: str) -> dict:
     work = dict(data)
     for key in config["strip_keys"]:
         work.pop(key, None)
+    # The deprecated bare-string form (`source_schema: x.yaml`) is a
+    # SchemaReference with only a name.
+    for slot in config.get("schema_reference_slots", []):
+        if isinstance(work.get(slot), str):
+            work[slot] = {"name": work[slot]}
 
     tr.index(work, source_class)
     result = tr.map_object(work, source_class)
     if not result:
         raise ValueError(f"Transformation from {mapping_type} produced no output")
-    return {k: v for k, v in result.items() if v is not None}
+    return _drop_none(result)
 
 
 def load_mapping(
@@ -164,6 +170,15 @@ def load_mapping(
         data = transform_to_fair(data, mapping_type)
 
     return _dates_to_strings(data)
+
+
+def _drop_none(value):
+    """Remove None values from dicts, recursively."""
+    if isinstance(value, dict):
+        return {k: _drop_none(v) for k, v in value.items() if v is not None}
+    if isinstance(value, list):
+        return [_drop_none(v) for v in value]
+    return value
 
 
 def _dates_to_strings(value):

@@ -1,5 +1,6 @@
 """Tests for fair_mappings_schema.parsing — loading, SSSOM TSV, transforms."""
 
+import json
 import textwrap
 from pathlib import Path
 
@@ -12,6 +13,7 @@ from fair_mappings_schema.parsing import (
     parse_sssom_tsv,
     transform_to_fair,
 )
+from fair_mappings_schema.schema import get_transformation_path
 from fair_mappings_schema.validation import validate_instance
 
 DATA_DIR_VALID = Path(__file__).parent / "data" / "valid"
@@ -166,6 +168,33 @@ class TestTransformToFair:
         work = dict(LINKML_MAP_SPEC)
         result = transform_to_fair(work, "linkml_map")
         assert "class_derivations" not in result
+
+    def test_linkml_map_string_schemas_become_sources(self):
+        result = transform_to_fair(dict(LINKML_MAP_SPEC), "linkml_map")
+        assert result["subject_source"] == {"name": "source.yaml"}
+        assert result["object_source"] == {"name": "target.yaml"}
+        assert validate_instance(result) == []
+
+    def test_linkml_map_schema_references_become_sources(self):
+        work = {
+            **LINKML_MAP_SPEC,
+            "source_schema": {"name": "src", "version": "1.0", "schema_uri": "https://example.org/src",
+                              "source_file": "src.yaml"},
+            "target_schema": {"name": "tgt"},
+        }
+        result = transform_to_fair(work, "linkml_map")
+        assert result["subject_source"] == {"id": "https://example.org/src", "name": "src", "version": "1.0"}
+        assert result["object_source"] == {"name": "tgt"}
+        json.dumps(result)
+        assert validate_instance(result) == []
+
+    @pytest.mark.parametrize("name", ["sssom-to-fair", "linkmlmap-to-fair"])
+    def test_bundled_transforms_load_as_linkml_map(self, name):
+        """Our own transforms use the SchemaReference form."""
+        data = load_mapping(get_transformation_path(f"{name}.transformation.yaml"), mapping_type="linkml_map")
+        json.dumps(data)
+        assert isinstance(data["subject_source"]["name"], str)
+        assert validate_instance(data) == []
 
     def test_unknown_type_raises(self):
         with pytest.raises(KeyError):
